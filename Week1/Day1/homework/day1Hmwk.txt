@@ -1,0 +1,18 @@
+Ex 1
+command: git
+argument: status
+git status > shows the status displays the state of the working directory and the staging area.
+
+Ex 2
+command: rm
+argumemts: ./Sample
+options: -rf
+rm -rf ./Sample > removes the fidden file directoy 'Sample' recursively and forcibly.
+
+Ex 3
+command: curl
+arguemnts: URL, file path
+options -e, -fsSL
+
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+Transfers a URL to that file location
