@@ -87,3 +87,16 @@ while condition:
 
 - If the code block is true, the code block runs. If it's false, the code block does not run.
 - Must add a way to break out of the code (counter variable, break statement, etc)
+
+#### For Loops:
+
+- Ability to loop through a list.
+
+```
+for singlular in list:
+    do this
+```
+
+- "For each single item in this list, do this."
+- The 'singular' variable is created in this context and represents an individual item in a list.
+- Much more efficient for cycling through lists over using a while loop with a counter. There is a built-in break (length of the list).

@@ -29,5 +29,5 @@ dictionary = {
 key = dictionary["key"]
 print(dictionary["students"][0])
 
-print(data["president"]["name"])
+# print(data["president"]["name"])
 print(data["president"]["location"][0])
