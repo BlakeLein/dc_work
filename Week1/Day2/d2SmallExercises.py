@@ -67,5 +67,5 @@
 # #Ex. 10:
 # square = int(input("How big is the square? "))
 # for i in range(square):
-#     print("*" * square)
+#     print("*  " * square)
 
