@@ -1,8 +1,8 @@
-# listOfStudents = ["Amanda", "Andrea", "Blake", "Carlos", 
-# "Ethan", "Jason", "Olivia", "Rahmin", "Stacy", "West"]
+listOfStudents = ["Amanda", "Andrea", "Blake", "Carlos", 
+"Ethan", "Jason", "Olivia", "Rahmin", "Stacy", "West"]
 
-# listOfStudents.append("Bob")
-# print(listOfStudents)
+listOfStudents.append("Bob")
+print(listOfStudents)
 
 # Square the numbers in this list
 numbers = [1, 2, 3, 4, 5, 6, 7]
@@ -31,8 +31,8 @@ print(list2)
 list3 = [5, 10, 15, 20, 25, 50, 20]
 output = [5, 10, 15, 200, 25, 50, 20]
 
-# list3[3] = 200
-# print(list3)
+list3[3] = 200
+print(list3)
 
 for i in range(len(list3)):
     if list3[i] == 20:
