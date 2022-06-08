@@ -1,28 +1,20 @@
-#Tic Tac Toe Board?
-
-size = 3
-
-# for y in range(size):
-#     for x in range(size):
-#         print(x, y)
-
-
-board = [] #Start with an empty List
-
-for y in range(size):
-    # Each element in the board will also be a List
-    board.append([])
-    for x in range(size):
-        # Fill the inner pieces with our coordinates.
-        board[y].append(f"[{y}][{x}]")
-
-    for row in board:
-        for column in row:
-            print(f"{column}", end='')
-        print("\n")
+# Tic Tac Toe GRID
 
 
 # Validate Subsequence:
 
 
-#Three Number Sum:
+# Two Number Sum:
+nums = nums = [2, 7, 11, 15]
+target = 9
+
+def twoSum(nums, target):
+    for i in range(len(nums)):
+                for j in range(i, len(nums)):
+                    if nums[i] + nums[j] == target:
+                        return [i, j]
+
+print(twoSum(nums, target))
+
+# Three Number Sum:
+list = [12, 3, 1, 2, -6, 5, -8, 6]

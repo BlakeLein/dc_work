@@ -1,5 +1,7 @@
 # Day 3 Notes - 6/8/2022
 
+# Using the range(len(list))!
+
 ## Lists
 
 - You access things inside of lists using an index.
