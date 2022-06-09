@@ -44,17 +44,86 @@ You can iterate over a list; you can also iterate over:
 - A string
 - A dictionary
 
+# Reading Review of Sequences, Tuples, Lists
+
+### Lists
+
+- Lists are mutable (modifiable) sequences - versatile, general-purpose collection
+- Tuples are immutable sequences - best for representing a something with a fixed size
+- You can access an item in the list with it's index. If you try to access an item that isn't there, it throws an IndexError.
+- A negative index number will work backward from the end of the list.
+
+### Sequences
+
+- Sequence = word to describe a functional superset
+- There are six sequence types: strings, Unicode strings, lists, tuples, buffers, and xrange objects.
+- A list is a sequence, but a sequence isn't always a list.
+- Sequences are index-able, slice-able, length-able, and iterable!
+
+### Slicing a list
+
+- You can access certain parts of a list by slicing. [0:0:0]
+- The first number is where the you want to start (including that index)
+- The second number is where you want to end (NOT INCLUDING THAT INDEX!)
+- The third number is how you want to move through. -1 is from the end. 2 is every other. 3 is every 3rd and so forth.
+
+### Looping (Iterating) through a list
+
+- While Loop
+
 ```
-name = "Blake Lein"
-print(name[0])
+todos = ["pet the cat", "go to work", "shop for groceries", "go home", "feed the cat"]
+
+index = 0 # Begin with index 0
+
+while index < len(todos):
+
+    todo = todos[index]
+
+    print("%d: %s" % (index + 1, todo))
+
+    index += 1
 ```
 
-Output is
+- Notice:
+
+  - Counter variable
+  - Use len(list)
+
+- For Loop
 
 ```
-B
+todos = ["pet the cat", "go to work", "shop for groceries", "go home", "feed the cat"]
+
+count = 1
+
+for todo in todos:
+
+    print("%d: %s" % (count, todo))
+
+    count += 1
 ```
 
-```
-dictionary = "key": "value"
-```
+- Notice
+  - There is a counter variable so we can still number our items in the list for the user.
+
+### Modifying a List
+
+- .append() adds an item to the end of a list
+- .extend() uses elements from another list
+- Concactenate two lists together
+- del list[] to delete items(s) in a list
+- list() converts a string to a list
+
+Note:
+
+- You can not change the index of a string.
+- To make a list a string use: ''.join(list) - Must start with an empty string!
+
+### Tuples
+
+- Like a list, but immutable. They cannot be altered.
+- Notated with parentheses instead of brackets.
+- You cannot remove items in a tuple, but you can reassign items.
+
+# Sequences

@@ -9,3 +9,14 @@ while i < len(list1):
     i += 1
 
 print(ansList)
+
+# target = 5
+# def twoSum(list1, list2, target):
+#       for i in list1:
+#         for j in range(i, len(list2)):
+#             if i + j == target:
+#                 return [i, j]
+
+
+# print(twoSum(list1, list2, target))
+# #Ex 2: 
