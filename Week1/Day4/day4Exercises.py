@@ -124,16 +124,16 @@
 # In this exercise, are you using dynamic keys or fixed keys
 
 
-# def letter_histogram(word):
-#     d = dict() # Create an empty dictionary
-#     for w in word: # Loop through each letter in the passed string
-#         if w not in d: # Conditional: If the letter is not already in the dictionary, add it as a key and set the start value to 1
-#             d[w] = 1
-#         else:
-#             d[w] += 1 # Conditional: If the letter is already in the new dictionary, increase the value by 1 (counting up)
-#     return d #Return the new dictionary
+def letter_histogram(word):
+    d = dict() # Create an empty dictionary
+    for w in word: # Loop through each letter in the passed string
+        if w not in d: # Conditional: If the letter is not already in the dictionary, add it as a key and set the start value to 1
+            d[w] = 1
+        else:
+            d[w] += 1 # Conditional: If the letter is already in the new dictionary, increase the value by 1 (counting up)
+    return d #Return the new dictionary
 
-# print(letter_histogram('apple'))
+print(letter_histogram('apple'))
 
 # # Word Summary: 
 # def word_histogram(sentence):
