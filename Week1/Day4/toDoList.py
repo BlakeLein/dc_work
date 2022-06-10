@@ -1,10 +1,23 @@
-########################################################### To Do List ###########################################################
-import json
+toDoList = []
 
-toDo = {}
-count = 1
+def showList():
+    print("\n**************")   
+    print("Here is your updated To-Do List:")
+    print("**************\n")   
 
-def getInput(count):
+    if toDoList:
+        count = 1
+        for i in toDoList:
+            for k, v in i.items():
+                print(f"{count}. {k}: {v}")
+                count += 1
+
+    # Assign the task to an index and format neatly:
+
+# Main Loop
+while True:
+    showList()
+    
     option = int(input('''
     What would you like to do?\n
     1. Add a task\t
@@ -13,63 +26,39 @@ def getInput(count):
     >>>  '''))
 
     if option == 1:
-        action = addTask(count)
-        return action
+    # Adding an item
+        toDoDict = {}
+        item = input("What would you like to add? ")
+        priority = input('What priority level should I set this task to? '
+            '(1. High, 2. Normal, 3. Low) ')
+        if priority == '1':
+            priority = "high"
+        elif priority == '2':
+            priority = "normal"
+        elif priority == '3':
+            priority = "low"
+
+        toDoDict[item.title()] = priority.title()   
+        # Add the input to the dictionary
+        toDoList.append(toDoDict)
+ 
+    # showList()
+        
+    # Delete an item
     if option == 2:
-        action = deleteTask(count)
-        return action
+         # Get item to del and delete.
+        delete = int(input("Which number would you like to delete? "))
+        delIndex = delete - 1
+        taskToDelete = toDoList[delIndex]
+        del toDoList[delIndex]
+        print(f"I just deleted {taskToDelete}.")
+
     if option == 3:
-        action = saveAndQuit()
-        return action
-
-def addTask(count):
-    name = input("What is the name of the task? ") # Take in the name
-    priority = input("What is the priority for this task? (high, normal, low) ") # Take in the priority
-    toDo[str(count)] = f"{name.title()}: {priority.title()}" # Add to the dictionary in a format
-    count += 1
-
-    
-
-def deleteTask(count):
-    getTaskFormat(count)
-    task = input("Select the number of the task you want to delete: ")
-    if task in toDo:
-        del task
-        print("Task deleted.")
-    
-
-    
-def viewTasks():
-    print("Here is your list of tasks and their priority: \n")
-    
-    if toDo == None:
-        print("You don't have any items in your To-Do list.")
-    else:  
-        getTaskFormat()
-        
-        
-
-def getTaskFormat():
-    for key, value in toDo.items():
-            print(f"{key}. {value}")
-            
-
-def saveAndQuit():
-
-    return 'quit'
-    
-# def loadAndReadList():
-#     filename = 'toDoList.txt'
-#     with open(filename) as f:
-        
-
-
-
-    # loadList()
-
-viewTasks()
-
-while True:
-    if getInput(count) == 'quit':
+        print("We have saved your to do list! See you next time!")        
         break
-    viewTasks()
+            
+    
+
+
+
+    
