@@ -2,7 +2,6 @@
 ### Developed Summer 2022 by Blake Lein ###
 import json
 
-usernames = []
 toDoList = []
 
 
@@ -13,27 +12,20 @@ Good for you for staying organized and setting goals!
 
 def getAndStoreUsername():
     username = input("Please enter your username: ").lower()
-    if username not in usernames:
-        usernames.append(username)
     return username
     
 
-def loadList(username, toDoList):
+def loadList(username):
 
         load = input("Would you like to load a previous list? (Y/N) ").lower()
-        while load != 'y' or load != 'n':
+        while load != 'y' and load != 'n': # While loop to prevent any other kind of input
             load = input("I'm sorry, that is not an option. Please select Y or N. ").lower() 
-        if load == 'y':
-            print("Loading your list...")
-            if username not in usernames:
-                print("I'm sorry, we don't show that you have a file under that username.")
-                return
-            else:
-                filename = f'{username}.json'
-                with open(filename) as f:
-                    file = json.load(f)
-                    toDoList = file
-                    return toDoList
+        if load == 'y': #If yes, load the list that is attached to that username.
+            filename = f'{username}.json'
+            with open(filename) as f:
+                file = json.load(f)
+                toDoList = file
+                return toDoList
         elif load == 'n':
             return
 
@@ -64,20 +56,20 @@ def getOption(option):
 
 def addTask():
 # Adding an item
-        toDoDict = {}
-        item = input("What would you like to add? ")
-        priority = input('What priority level should I set this task to? '
-            '(1. High, 2. Normal, 3. Low) ')
-        if priority == '1':
-            priority = "high"
-        elif priority == '2':
-            priority = "normal"
-        elif priority == '3':
-            priority = "low"
+    toDoDict = {}
+    item = input("What would you like to add? ")
+    priority = input('What priority level should I set this task to? '
+        '(1. High, 2. Normal, 3. Low) ')
+    if priority == '1':
+        priority = "high"
+    elif priority == '2':
+        priority = "normal"
+    elif priority == '3':
+        priority = "low"
 
-        toDoDict[item.title()] = priority.title()   
-        # Add the input to the dictionary
-        toDoList.append(toDoDict)
+    toDoDict[item.title()] = priority.title()   
+    # Add the input to the dictionary
+    toDoList.append(toDoDict)
 
 def delTask():
     delete = int(input("Which number would you like to delete? "))
@@ -106,10 +98,11 @@ def saveAndQuit():
 choice = ""
 welcomeMessage()
 username = getAndStoreUsername()
-loadedList = loadList(username, toDoList)
+loadedList = loadList(username)
+showList(loadedList)
 
 while choice != 'q':
-    showList(loadedList)
+    showList(toDoList)
     choice = input('''
 What would you like to do?\n
 1. Add a task\t
