@@ -135,6 +135,9 @@ class Plurn:
     evacuation sequence. You have to press forward, and you may need that vest if pirates are involved.
                 ''')
                 self.player.equipment[2] = "kevlar vest"
+                self.player.maxHp += 5
+                self.player.currentHp = self.player.maxHp
+                self.player.lookAround3 = False
             else: 
                 print("You have already looked around the capsule.")
         if action == "2":
