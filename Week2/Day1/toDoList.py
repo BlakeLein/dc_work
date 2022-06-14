@@ -5,13 +5,15 @@ class ToDo:
         self.toDoList = []
 
     def welcomeMessage(self):
-        """"""
+        """Greet the user."""
         print('''
 Good for you for staying organized and setting goals!
     ''')
 
 
     def showList(self):
+        """Returns formatted To-Do List. Assigns task to 
+        number."""
         print("\n***********************")   
         print("Here is your To-Do List")
         print("***********************\n")   
@@ -28,6 +30,7 @@ Good for you for staying organized and setting goals!
             print("You currently have no items on your To-Do List.")
 
     def getOption(self):
+        """Get user option and direct to necessary action."""
         option = input('''
 What would you like to do?\n
 1. Add a task\t
@@ -43,6 +46,7 @@ What would you like to do?\n
 
 
     def addTask(self):
+        """Receives user task and adds to master To-Do list."""
     # Adding an item
         toDoDict = {}
         item = input("What would you like to add? ")
@@ -60,6 +64,7 @@ What would you like to do?\n
         self.toDoList.append(toDoDict)
 
     def delTask(self):
+        """Delete task based on position in list."""
         delete = int(input("Which number would you like to delete? "))
         delIndex = delete - 1
         taskToDelete = self.toDoList[delIndex]
@@ -67,6 +72,7 @@ What would you like to do?\n
         print(f"I just deleted {taskToDelete}.")
 
     def quit(self):
+        """Exits program after double-checking."""
         q = input("Are you sure you want to quit? Y/N ").lower()
         if q == 'y':
             print("See you next time!")
