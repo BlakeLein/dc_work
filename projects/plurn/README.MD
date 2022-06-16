@@ -14,8 +14,6 @@ Published June 2022
 
 [Email Me](blake.lein@gmail.com) / [GitHub](https://github.com/BlakeLein?tab=repositories)
 
----
-
 ## Running P.L.U.R.N.
 
 ---
