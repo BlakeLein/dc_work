@@ -26,7 +26,7 @@ class Character:
 
 class Plurn:
     def __init__(self):
-        self.player = Character("name", 5, 15, 20, 10, ['metal pipe'])
+        self.player = Character("name", 5, 15, 20, 10, [''], ['metal pipe'])
         self.grek = Character("Pirate Grek", 5, 15, 15, 0)
         self.commander = Character("Commander Matthew", 9, 20, 20, 0)
         self.scene1 = True
@@ -619,6 +619,7 @@ sign in. You don't have such credentials. The only way in is by force.
     Commander whips his head around and raises his blaster before you can react. You feel an impossibly hot pain
     in your chest as the world goes dark.
     ''')
+                    self.battle2 = True
                     self.battleTwo()
                     print('''
     You finish off the Commander with gusto. He didn't even have a name tag; he had no chance.
@@ -635,6 +636,7 @@ sign in. You don't have such credentials. The only way in is by force.
     The Commander raises his rifle and aims for your chest. You barrel-roll to the right and feel the hot light 
     flash inches from your left eye. You raise your weapon...
     ''')
+                self.battle2 = True
                 self.battleTwo()
                 print('''
     You finish off the Commander with gusto. He didn't even have a name tag; he had no chance.
