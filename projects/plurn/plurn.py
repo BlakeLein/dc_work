@@ -21,7 +21,17 @@ class Character:
         self.useItem2 = False
         self.useItem3 = False
 
-        
+    def resetFlags(self):
+        self.lookAround1 = False
+        self.lookAround2 = False
+        self.lookAround3 = False
+        self.lookAround4 = False
+        self.specialAction1 = False
+        self.specialAction2 = False
+        self.specialAction3 = False
+        self.useItem1 = False
+        self.useItem2 = False
+        self.useItem3 = False
 
 
 class Plurn:
@@ -54,18 +64,6 @@ class Plurn:
     Game Over. You lose.
     ''')
         sys.exit()
-
-    def resetFlags(self):
-        self.lookAround1 = False
-        self.lookAround2 = False
-        self.lookAround3 = False
-        self.lookAround4 = False
-        self.specialAction1 = False
-        self.specialAction2 = False
-        self.specialAction3 = False
-        self.useItem1 = False
-        self.useItem2 = False
-        self.useItem3 = False
 
     def rest(self):
         if self.player.currentHp < self.player.maxHp:
@@ -184,7 +182,7 @@ class Plurn:
     Now for the next problem...
     ''')
                 plurn.scene2 = True
-                self.resetFlags()
+                self.player.resetFlags()
                 plurn.battle1 = True
                 plurn.scene1 = False
 
@@ -553,7 +551,7 @@ sign in. You don't have such credentials. The only way in is by force.
     for you? Or someone else?
     ''')
             self.scene3 = True
-            self.resetFlags()
+            self.player.resetFlags()
             self.scene2 = False
         else: 
             print('''
