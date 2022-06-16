@@ -26,7 +26,7 @@ class Character:
 
 class Plurn:
     def __init__(self):
-        self.player = Character("name", 5, 15, 20, 10, 'metal pipe')
+        self.player = Character("name", 5, 15, 20, 10, ['metal pipe'])
         self.grek = Character("Pirate Grek", 5, 15, 15, 0)
         self.commander = Character("Commander Matthew", 9, 20, 20, 0)
         self.scene1 = True
