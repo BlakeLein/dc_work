@@ -26,7 +26,7 @@ class Character:
 
 class Plurn:
     def __init__(self):
-        self.player = Character("name", 5, 15, 20, 10)
+        self.player = Character("name", 5, 15, 20, 10, 'metal pipe')
         self.grek = Character("Pirate Grek", 5, 15, 15, 0)
         self.commander = Character("Commander Matthew", 9, 20, 20, 0)
         self.scene1 = True
@@ -552,6 +552,10 @@ sign in. You don't have such credentials. The only way in is by force.
     ''')
             self.scene3 = True
             self.scene2 = False
+        else: 
+            print('''
+    You have already looked around the capsule.
+    ''')
 
     def scene2SpecialAction(self):
         if self.player.specialAction1 == True:
