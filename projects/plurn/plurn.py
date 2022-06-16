@@ -1,4 +1,6 @@
 from random import randint
+from time import sleep
+import sys
 class Character:
     def __init__(self, name="", power=0, currentHp=0, maxHp=0, sneak=0, items=[], equipment=[]):
         self.name = name
@@ -24,8 +26,8 @@ class Character:
 
 class Plurn:
     def __init__(self):
-        self.player = Character("name", 5, 5, 20, 10)
-        self.grek = Character("Pirate Grek", 2, 15, 15, 0)
+        self.player = Character("name", 5, 15, 20, 10)
+        self.grek = Character("Pirate Grek", 5, 15, 15, 0)
         self.scene1 = True
         self.scene2 = False
         self.scene3 = False
@@ -49,9 +51,19 @@ class Plurn:
         print('''
     Game Over. You lose.
     ''')
-        self.scene1 = False
-        self.scene2 = False
-        self.scene3 = False
+        sys.exit()
+
+    def resetFlags(self):
+        self.lookAround1 = False
+        self.lookAround2 = False
+        self.lookAround3 = False
+        self.lookAround4 = False
+        self.specialAction1 = False
+        self.specialAction2 = False
+        self.specialAction3 = False
+        self.useItem1 = False
+        self.useItem2 = False
+        self.useItem3 = False
 
     def rest(self):
         if self.player.currentHp < self.player.maxHp:
@@ -82,7 +94,7 @@ class Plurn:
     Yes, you remember. Your name is {self.player.name}.
     You are a member of the P.L.U.R.N. Space Corps. 
     ''')
-    
+
     def scene1LookAround(self):
         if self.player.lookAround1 == False:
             print('''
@@ -115,7 +127,7 @@ class Plurn:
         elif self.player.lookAround3 == True:
             print('''
     You decide to take another glance around the pod with the lights back on. You find a pair of shoes that
-    look for comfortable than the ones you have on. You decide to put them on. 
+    look more comfortable than the ones you have on. You decide to put them on. 
     ''')
             self.player.equipment.append("soft shoes")
             self.player.sneak += 5
@@ -154,7 +166,7 @@ class Plurn:
     You close your eyes and wait a couple seconds. You mash the thrust button, and as the pod lurches forward.
     The P.L.U.R.N. pod sails past the Pirate ship - you were not even close...
     ''')
-                self.gameOVer()
+                self.gameOver()
                 self.scene1 = False
 
             else:
@@ -170,6 +182,7 @@ class Plurn:
     Now for the next problem...
     ''')
                 plurn.scene2 = True
+                self.resetFlags()
                 plurn.scene1 = False
 
         else: 
@@ -182,7 +195,8 @@ class Plurn:
             print('''
     As you float in the P.L.U.R.N. pod, you realize there is no hope for you while the systems remain offline.
     You go back to the computer to see if you can restore power. You know there is no way to guess the login
-    credentials, but you that every P.L.U.R.N. Corps computer has a secret back door: the riddle matrix.
+    credentials. You begin to cry, but then you remember that every P.L.U.R.N. Corps computer has a secret back 
+    door: the Riddle Matrix! Of course!
 
     You locate the matrix symbol at the bottom-right of the screen. The stakes couldn't be higher, but
     the circumstances couldn't be more dire. You click the symbol, and the screen goes black.
@@ -194,7 +208,7 @@ class Plurn:
             while choice != "1" and choice != "2":
                 choice = input('''
         You are walking down a path on your way to a funeral. You come up to an intersection where a goblin lay against
-        the sign post. "Please traveler" the goblin rasps. "Help me cure my wounds so I may return to my family."2
+        the sign post. "Please traveler" the goblin rasps. "Help me cure my wounds so I may return to my family."
 
         What do you you do?
         1. Help Goblin. He just wants to see his children again.
@@ -209,7 +223,7 @@ class Plurn:
     RIDDLE MATRIX DETECTS INTRUDER. SYSTEM ALERT. IMMEDIATE SELF-DESTRUCT SEQUENCE INITIALIZED.
     ''')
                     self.gameOver()
-                    self.scene1 = False
+                    
 
                 elif choice == "2":
                     print('''
@@ -274,7 +288,7 @@ class Plurn:
         if self.player.useItem1 == True:                
             print('''
 You float over to the computer and take a closer look. After about 10 minutes of recalling 
-your space training and trying not to electricute yourself, you manage to reattach the power
+your space training and trying not to electrocute yourself, you manage to reattach the power
 cell. The computer comes to life and the glow of the monitor stings your eyes.
 
 The computer displays the P.L.U.R.N. Space Corps logo along with the taunting motto - 
@@ -327,12 +341,20 @@ sign in. You don't have such credentials. The only way in is by force.
     ''')
     
     def battleOne(self):
-        while self.battle != True:
-            self.checkHealth()
+        while self.battle == True:
             self.b1PlayerAttack()
+            sleep(2)
             self.checkHealth()
-            self.b1EnemyAttack()
-            self.checkHealth()
+            sleep(2)
+            if self.battle == True:
+                sleep(2)
+                self.b1EnemyAttack()
+                sleep(2)
+                self.checkHealth()
+                sleep(2)
+        print('''
+    You finish off the Bausten Pirate thug, and it looks like no one heard or saw you. You should be sneaky...
+        ''')
 
     def b1PlayerAttack(self):
         attack = ''
@@ -376,15 +398,17 @@ sign in. You don't have such credentials. The only way in is by force.
             print('''
     The enemy takes a swing and hits you square in temple. Your vision goes black, and the
     world goes cold...
-    ''')
+    ''')    
             self.gameOver()
 
-        if self.grek.currentHp <= 0:
+        elif self.grek.currentHp <= 0:
             print(f'''
     You bash {self.grek.name} across the face and he falls lifeless.
     ''')
             self.battle = False
-            
+
+        else:
+            self.displayStats()      
         
     def b1EnemyAttack(self):
         damage = randint(1, self.grek.power)
@@ -394,22 +418,226 @@ sign in. You don't have such credentials. The only way in is by force.
     ''')
         self.player.currentHp -= damage
 
+    def sceneTwo(self):
+        action = input('''
+    What would you like to do?
+    1. Look Around.
+    2. Show Stats.
+    3. Special Action.
+    4. Use Item.
+    5. Rest.
+    >>>
+    ''')
+        while action != "1" and action != "2" and action != "3" and action != "4" and action != "5":
+            action = input('''
+    What would you like to do?
+    1. Look Around.
+    2. Show Stats.
+    3. Special Action.
+    4. Use Item.
+    5. Rest.
+    >>>
+    ''')
+        if action == "1":
+            self.scene2LookAround()
+
+        if action == "2":
+            self.displayStats()
+        
+        if action == "3":
+            self.scene2SpecialAction()
+
+        if action == "4":
+            self.scene2UseItem()
+
+        if action == "5":
+            self.rest()
+
+    def scene2LookAround(self):
+        if self.lookAround1 == False:
+            print('''
+    You walk over to the pirate and check his pulse. Dead. You notice his weapon was damaged beyond
+    in the battle. You do notice his key card in his satchel, and decide to take that...
+    ''')
+            self.player.items.append("pirate key card")
+            print('''
+    Now that you think of it, the pirate is generally the same size as you. You think it might be a good
+    idea to put on his clothes...maybe it will be a nice disguise?
+            ''')
+            disguise = ''
+            while disguise != '1' and disguise != '2':
+                disguise = input('''
+    Do you put on the pirate's outfit?
+        1. Yeah, duh.
+        2. No, that's gross.
+                ''')
+            if disguise == '1':
+                print('''
+    You take a couple minutes to put on the pirate's clothes and practice your best pirate voice. You've got this.
+                ''')
+                caught = randint(1, 5)
+                if caught == 3:
+                    print('''
+    As you are putting on the smelly garb, another pirate comes up behind you and clubs you on the head. Why
+    did you think it was a good idea to change outfits in the middle of an enemy ship?
+    ''')
+                    self.gameOver()
+                else:
+                    print('''
+    You successfully put on the pirate's clothes, and you look terrible! Perfect! Maybe this will
+    fool any other pirates you come across.
+    ''')
+                    self.player.sneak += 5
+            elif disguise == '2':
+                print('''
+    Why would you put on a discguise in the middle of an enemy ship? You carefully drag the pirate's body behind
+    a crate in a dark corner and leave him.
+    ''')
+            self.lookAround1 = True
+            self.lookAround2 = True
+        
+        elif self.lookAround2 == True:
+            print('''
+    You take a moment to survey the situation. You are standing alone in a docking bay with a destroyed ship in
+    one corner and a dead pirate in the other corner. For some strange reason, no one has come running to the
+    bay as a result of an escape pod crashing into it...
+    ''')
+            print('''
+    You know that a ship this size has a hyperdrive. Maybe you can get to the bridge, seal yourself in, and make
+    the jump to earth. From there you could fly to Plurnquarters and help bring these pirates to justice.
+    ''')
+
+            self.lookAround2 = False
+            self.specialAction1 = True
+            self.useItem1 = True
+
+    def scene2SpecialAction(self):
+        if self.specialAction1 == True:
+            print('''
+    You look into the crate obscurring the dead pirate and find a few blaster rifles. You have never been more elated
+    in your entire life. You grab one and throw the metal pipe across the room.
+    ''')
+            self.player.equipment.remove('metal pipe')
+            self.player.equipment.append('blaster rifle')
+            self.player.power += 3
+            self.specialAction1 = False
+
+        elif self.specialAction2 == True:
+            print('''
+    You poke your head through the now open door and swipe it side to side. On your left is a dead-end. On your right 
+    is a man staning a head taller than the average man with a large gun strapped to his back. He is talking to another
+    and you hear him referred to as 'Commander.'
+    ''')
+            print('''
+    So this is the one in charge. The one you have to worry about. You slink back and listen to them talk.
+    ''')
+            print('''
+    "The wreckage was here when we arrived my Lord. We picked up the debris and figured we could be the first to scavenge.
+    We didn't expect- "
+    ''')
+            print('''
+    "Of course you didn't expect them fool! They only arrived moments ago. Do you have any updates for me? What
+    happened to the one we picked up on the scanners?!"
+    ''')
+            print('''
+    "Still looking my lord. We have not seen it since for several minutes. We did scramble the crew, but many of 
+    them have given up.
+    ''')
+            print('''
+    You realize that something is wrong, but all you can think about is getting to the bridge. You study the Commander 
+    as he talks to his subordinant.
+    ''')
+            option = ''
+            while option != '1' and option != '2':
+                option = input('''
+    What would you like to do?
+        1. Attempt to sneak past the guard.
+        2. Raise your weapon and run in like a crazy person.
+    ''')
+            if option == '1':
+                print('''
+    You settle your equipment and carefully step out. You see another door 10 feet down the hall on the left side.
+    ''')
+                sneak = randint(1, 21)
+                if self.player.sneak >= sneak:
+                    print('''
+    You slowly put one foot in front of the other and make your way to the second door. You discreetly flash the key
+    card and re-enter the password. As the door hisses open you see the Commanders head start to turn, but not before
+    you are able to slam it shut and blast the panel. They won't be following you.
+    ''')
+                    self.specialAction2 = False
+                    self.lookAround4 = True
+                else:
+                    print('''
+    You slowly put one foot in front of the other and make your way to the second door. After a few steps, the
+    Commander whips his head around and raises his blaster before you can react. You feel an impossibly hot pain
+    in your chest as the world goes dark.
+    ''')
+                    self.gameOver()
+            elif option == '2':
+                print('''
+    You raise your weapon and scream. Your voice jumps to a higher octave than you expect it to. The grunt standing
+    next to the Commander screams even higher and runs away.
+    ''')
+                print('''
+    The Commander raises his rifle and aims for your chest. You barrel-roll to the right and feel the hot light 
+    flash inches from your left eye. You raise your weapon...
+    ''')
+                self.battleTwo()
+
+    def battleTwo(self):
+        pass
+
+    def scene2UseItem(self):
+        if self.useItem1 == True:
+            print('''
+    You locate the security door that leads to a hallway. At the side of the door is a key pad. You swipe the pirate's
+    key card and a message appears on the screen:
+    ''')
+            print('''
+            USER: Grek
+            RANK: Grunt
+            RATING: 3/10
+            
+            To proceed, please enter your password:
+    ''')
+
+            hack = ''
+            while hack != '1' and hack != '2':
+                hack = input('''
+                1. You type in 'password'
+                2. You type in '12345'
+''')
+            if hack == '1' or hack == '2':
+                print('''
+    You easily guess the fool's password and the door slides open with a cool hiss.
+    ''')
+            self.useItem1 = False
+            self.specialAction1 = False
+            self.specialAction2 = True
+
+
+
+
 
 # Create instance of game class
 plurn = Plurn()
 
 # Start Game
-plurn.openingSceneGetName()
+# plurn.openingSceneGetName()
 
 # Main Game Loops
-while plurn.scene1 == True:
-    plurn.sceneOne()
+########### Scene 1 ###########
+# while plurn.scene1 == True:
+#     plurn.sceneOne()
 
+########### Scene 2 ###########
+plurn.battleOne()
 while plurn.scene2 == True:
-    print("Here's scene 2!")
-    break
+    plurn.sceneTwo()
 
-while plurn.scene3 == True:
-    print("Here's scene 3!")
-    break
-2
+########### Scene 3 ###########
+# while plurn.scene3 == True:
+#     print("Here's scene 3!")
+#     break
+# 2
