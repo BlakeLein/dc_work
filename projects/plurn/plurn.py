@@ -345,8 +345,8 @@ sign in. You don't have such credentials. The only way in is by force.
 
     def sceneTwoOpen(self):
         print('''
-    You get to your feet in time to see two hulking Bausten Pirates burst through the door with electro-batons
-    crackling. You grab your metal rod and charge the first one.
+    You get to your feet in time to see a hulking Bausten Pirate burst through the door with an electro-baton
+    crackling. You grab your metal pipe and charge the first one.
     ''')
     
     def battleOne(self):
@@ -363,7 +363,7 @@ sign in. You don't have such credentials. The only way in is by force.
                 sleep(2)
         print('''
     You finish off the Bausten Pirate thug, and it looks like no one heard or saw you. You should be sneaky...
-        ''')
+    ''')
 
     def b1PlayerAttack(self):
         attack = ''
@@ -553,6 +553,7 @@ sign in. You don't have such credentials. The only way in is by force.
     for you? Or someone else?
     ''')
             self.scene3 = True
+            self.resetFlags()
             self.scene2 = False
         else: 
             print('''
