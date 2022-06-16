@@ -26,7 +26,7 @@ class Character:
 
 class Plurn:
     def __init__(self):
-        self.player = Character("name", 5, 15, 20, 10)
+        self.player = Character("name", 5, 1, 20, 10)
         self.grek = Character("Pirate Grek", 5, 15, 15, 0)
         self.commander = Character("Commander Matthew", 9, 20, 20, 0)
         self.scene1 = True
@@ -102,7 +102,7 @@ class Plurn:
             print('''
     You feel your way around the dark capsule. You recognize it as an escape pod. By the looks of the 
     registration number and P.L.U.R.N. Space Corps crest, you know you are in an escape pod for
-    your ship - the 'Plurning Star.' You clamber over to the view port and see a field of debris
+    your ship - the 'Plurning Star.' You clamber over to the viewport and see a field of debris
     amongst the stars. As some pieces rubble float across your capsule, you recognize the twisted metal
     as the meager remnants of your ship.
 
@@ -117,7 +117,7 @@ class Plurn:
 
         elif self.player.lookAround2 == True:
             print('''
-    Through the view port you see another ship come into view. It's too small to be a transport and
+    Through the viewport you see another ship come into view. It's too small to be a transport and
     by the looks of the large sonic blasters outfitted on the side, you know that this ship was
     built for one purpose - destruction. It's filthy and unkept, and on the sides above the rear
     thrusters, you see the blood-red sun surrounded by black flames. You recognize this as the logo
@@ -185,6 +185,7 @@ class Plurn:
     ''')
                 plurn.scene2 = True
                 self.resetFlags()
+                plurn.battle1 = True
                 plurn.scene1 = False
 
         else: 
@@ -279,6 +280,7 @@ class Plurn:
     launch you forward, you are dead in the water...
     ''')
                     proceed = 'y'
+                    self.player.specialAction2 = False
                     self.player.lookAround4 = True
 
         else:
