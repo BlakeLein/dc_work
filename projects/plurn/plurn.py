@@ -282,7 +282,9 @@ class Plurn:
                     self.player.lookAround4 = True
 
         else:
-            print("You're not sure what to do...")
+            print('''
+    You're not sure what to do...
+    ''')
 
     def scene1UseItem(self):
         if self.player.useItem1 == True:                
@@ -635,6 +637,11 @@ sign in. You don't have such credentials. The only way in is by force.
     ''')
                 self.player.specialAction2 = False
                 self.player.lookAround3 = True
+
+        else:
+            print('''
+    You're not sure what to do...
+    ''')
 
     def battleTwo(self):
         while self.battle2 == True:
