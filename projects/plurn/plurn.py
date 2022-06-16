@@ -46,18 +46,19 @@ class Plurn:
         self.battle2 = False
 
     def displayStats(self):
-        # for item in self.player.items:
-        #     formitems = print(item)
         print(f'''
-    |||| NAME: {self.player.name}
-    |||| RANK: P.L.U.R.N. Space Cadet
-    |||| <<Hit Points>>
-    |||| {self.player.currentHp} / {self.player.maxHp}
-    |||| <<Items>>                                   
-    |||| {self.player.items}
-    |||| <<Equipped Items>>
-    |||| {self.player.equipment}
-    ''')
+    || NAME: {self.player.name} |||| RANK: P.L.U.R.N. Space Cadet ||
+
+    <<Hit Points>>
+        {self.player.currentHp} / {self.player.maxHp}''')
+        print('''
+    <<Items>>''')                                   
+        for i in self.player.items:
+            print(f'        {i.title()}')
+        print('''
+    <<Equipment>>''')
+        for e in self.player.equipment:
+            print(f'        {e.title()}')
 
     def gameOver(self):
         print('''
