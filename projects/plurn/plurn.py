@@ -772,6 +772,7 @@ while plurn.scene1 == True:
     plurn.sceneOne()
 
 ########### Scene 2 ###########
+plurn.sceneTwoOpen()
 plurn.battleOne()
 while plurn.scene2 == True:
     plurn.sceneTwo()
