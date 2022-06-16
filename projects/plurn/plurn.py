@@ -4,21 +4,19 @@ from time import sleep
 import sys
 
 # Import Game Modules
-from plurnBattles import BattleOne
-from plurnBattles import BattleTwo
 from plurnCharacter import Character
-
-
-
 
 class Plurn:
     def __init__(self):
         self.player = Character("name", 5, 1, 20, 10)
+        self.grek = Character("Pirate Grek", 5, 15, 15, 0)
         self.commander = Character("Commander Matthew", 9, 20, 20, 0)
         self.scene1 = True
         self.scene2 = False
         self.scene3 = False
+        self.battle1 = False
         self.battle2 = False
+        
 
 
     def displayStats(self):
@@ -284,23 +282,12 @@ sign in. You don't have such credentials. The only way in is by force.
     ''')
 
     def sceneOne(self):
-        action = input('''
-    What would you like to do?
-    1. Look Around.
-    2. Show Stats.
-    3. Special Action.
-    4. Use Item.
-    5. Rest.
-    >>>
-    ''')
+        action = ''
         while action != "1" and action != "2" and action != "3" and action != "4" and action != "5":
             action = input('''
     What would you like to do?
-    1. Look Around.
-    2. Show Stats.
-    3. Special Action.
-    4. Use Item.
-    5. Rest.
+    1. Look Around.     3. Special Action.      5. Rest.
+    2. Show Stats.      4. Use Item.            6. Give up.
     >>>
     ''')
         if action == "1":
@@ -317,6 +304,17 @@ sign in. You don't have such credentials. The only way in is by force.
 
         if action == "5":
             self.rest()
+        
+        if action == "6":
+            confirm = ''
+            while confirm != '1' and confirm != '2':
+                print('''
+    Are you sure you want to give up?
+    ''')
+            if confirm == '1':
+                self.gameOver()
+            elif confirm == '2':
+                self.sceneOne()
 
     def sceneTwoOpen(self):
         print('''
@@ -324,26 +322,91 @@ sign in. You don't have such credentials. The only way in is by force.
     crackling. You grab your metal pipe and charge the first one.
     ''')
     
-    
+    def battleOne(self):
+        while self.battle1 == True:
+            self.b1PlayerAttack()
+            sleep(2)
+            self.b1CheckHealth()
+            sleep(2)
+            if self.battle1 == True:
+                sleep(2)
+                self.b1EnemyAttack()
+                sleep(2)
+                self.b1CheckHealth()
+                sleep(2)
+        print('''
+    You finish off the Bausten Pirate thug, and it looks like no one heard or saw you. You should be sneaky...
+    ''')
+
+    def b1PlayerAttack(self):
+        attack = ''
+        while attack != '1' and attack != '2' and attack != '3':
+            attack = input('''
+    Battle! What would you like to do?
+        1. Attack
+        2. Check Stats
+        3. Drop your weapon and give up...
+    ''')
+            if attack == '1':
+                damage = randint(1, self.player.power)
+                print(f'''
+    You swing your weapon with force at {self.grek.name}! You deal {damage} points
+    of damage!
+    ''')
+                self.grek.currentHp -= damage
+
+            elif attack == '2':
+                self.displayStats()
+                self.b1PlayerAttack()
+
+            elif attack == '3':
+                confirm = ''
+                while confirm != '1' and confirm != '2':
+                    confirm = input('''
+    Are you...sure...you want to do that?
+        1. Absolutely
+        2. Nevermind
+    ''')
+                    if confirm == '1':
+                        print('''
+    You lay down your weapon and the enemy overtakes you...
+    ''')
+                        p.gameOver()
+                    elif confirm == '2':
+                        self.b1PlayerAttack()
+
+    def b1CheckHealth(self):
+        if self.player.currentHp <= 0:
+            print('''
+    The enemy takes a swing and hits you square in temple. Your vision goes black, and the
+    world goes cold...
+    ''')    
+            self.gameOver()
+
+        elif self.grek.currentHp <= 0:
+            print(f'''
+    You bash {self.grek.name} across the face and he falls lifeless.
+    ''')
+            self.battle1 = False
+
+        else:
+            self.displayStats()      
+        
+    def b1EnemyAttack(self):
+        damage = randint(1, self.grek.power)
+        print(f'''
+    {self.grek.name} snarls and swings wildly at you. You take {damage} points
+    of damage!
+    ''')
+        self.player.currentHp -= damage
 
     def sceneTwo(self):
-        action = input('''
-    What would you like to do?
-    1. Look Around.
-    2. Show Stats.
-    3. Special Action.
-    4. Use Item.
-    5. Rest.
-    >>>
-    ''')
+        action = ''
         while action != "1" and action != "2" and action != "3" and action != "4" and action != "5":
             action = input('''
     What would you like to do?
-    1. Look Around.
-    2. Show Stats.
-    3. Special Action.
-    4. Use Item.
-    5. Rest.
+    1. Look Around.     3. Special Action.      5. Rest.
+    2. Show Stats.      4. Use Item.            6. Give up.
     >>>
     ''')
         if action == "1":
@@ -360,6 +423,17 @@ sign in. You don't have such credentials. The only way in is by force.
 
         if action == "5":
             self.rest()
+        
+        if action == "6":
+            confirm = ''
+            while confirm != '1' and confirm != '2':
+                print('''
+    Are you sure you want to give up?
+    ''')
+            if confirm == '1':
+                self.gameOver()
+            elif confirm == '2':
+                self.sceneTwo()
 
     def scene2LookAround(self):
         if self.player.lookAround1 == False:
@@ -659,23 +733,12 @@ sign in. You don't have such credentials. The only way in is by force.
             self.displayStats()  
 
     def sceneThree(self):
-        action = input('''
-    What would you like to do?
-    1. Look Around.
-    2. Show Stats.
-    3. Special Action.
-    4. Use Item.
-    5. Rest.
-    >>>
-    ''')
+        action = ''
         while action != "1" and action != "2" and action != "3" and action != "4" and action != "5":
             action = input('''
     What would you like to do?
-    1. Look Around.
-    2. Show Stats.
-    3. Special Action.
-    4. Use Item.
-    5. Rest.
+    1. Look Around.     3. Special Action.      5. Rest.
+    2. Show Stats.      4. Use Item.            6. Give up.
     >>>
     ''')
         if action == "1":
@@ -692,6 +755,17 @@ sign in. You don't have such credentials. The only way in is by force.
 
         if action == "5":
             self.rest()
+
+        if action == "6":
+            confirm = ''
+            while confirm != '1' and confirm != '2':
+                print('''
+    Are you sure you want to give up?
+    ''')
+            if confirm == '1':
+                self.gameOver()
+            elif confirm == '2':
+                self.sceneThree()
 
     def scene3LookAround(self):
         if self.player.lookAround1 == False:

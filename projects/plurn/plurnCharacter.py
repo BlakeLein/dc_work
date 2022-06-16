@@ -1,5 +1,3 @@
-
-
 class Character:
     def __init__(self, name="", power=0, currentHp=0, maxHp=0, sneak=0, items=[], equipment=[]):
         self.name = name

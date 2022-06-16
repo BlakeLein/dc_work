@@ -1,10 +1,11 @@
 from time import sleep
 from random import randint
 from plurnCharacter import Character
-from plurn import Plurn
+from plurn import Plurn as p
 
 class BattleOne:
-    def __init__(self):
+    def __init__(self)
+        self.player = player
         self.grek = Character("Pirate Grek", 5, 15, 15, 0)
         self.battle1 = True
     
@@ -35,7 +36,7 @@ class BattleOne:
         3. Drop your weapon and give up...
     ''')
             if attack == '1':
-                damage = randint(1, self.plurn.player.power)
+                damage = randint(1, self.player.power)
                 print(f'''
     You swing your weapon with force at {self.grek.name}! You deal {damage} points
     of damage!
@@ -43,7 +44,7 @@ class BattleOne:
                 self.grek.currentHp -= damage
 
             elif attack == '2':
-                self.displayStats()
+                p.displayStats()
                 self.b1PlayerAttack()
 
             elif attack == '3':
@@ -58,7 +59,7 @@ class BattleOne:
                         print('''
     You lay down your weapon and the enemy overtakes you...
     ''')
-                        self.gameOver()
+                        p.gameOver()
                     elif confirm == '2':
                         self.b1PlayerAttack()
 
@@ -68,7 +69,7 @@ class BattleOne:
     The enemy takes a swing and hits you square in temple. Your vision goes black, and the
     world goes cold...
     ''')    
-            self.gameOver()
+            p.gameOver()
 
         elif self.grek.currentHp <= 0:
             print(f'''
@@ -77,7 +78,7 @@ class BattleOne:
             self.battle1 = False
 
         else:
-            self.displayStats()      
+            p.displayStats()      
         
     def b1EnemyAttack(self):
         damage = randint(1, self.grek.power)
@@ -89,4 +90,6 @@ class BattleOne:
 
 
 class BattleTwo:
-    pass
+    def __init__(self):
+        self.commander = Character("Commander Matthew", 9, 20, 20, 0)
+        self.battle2 = False
