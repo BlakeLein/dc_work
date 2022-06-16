@@ -14,6 +14,8 @@ Published June 2022
 
 [Email Me](blake.lein@gmail.com) / [GitHub](https://github.com/BlakeLein?tab=repositories)
 
+[You can view an article I wrote about the making of this project here](https://medium.com/@blake.lein/p-l-u-r-n-ing-to-fly-3ab879e299a1)
+
 ## Running P.L.U.R.N.
 
 ---
@@ -91,5 +93,6 @@ Throughout the process of planning and coding, there are several things that I w
 - Creating a more 'open world' concept where players have more freedom to look around and discover new worlds.
 - Allowing players to have the ability to purchase and upgrade a number of items.
 - Allowing players to develop and foster relationships with other non-playable characters.
+- A settings module to make the game easily scalable for the desired level of difficulty.
 
 These developments and more are on my mind and may appear in a bigger, better P.L.U.R.N. sequel!
