@@ -26,13 +26,13 @@ class Character:
 
 class Plurn:
     def __init__(self):
-        self.player = Character("name", 5, 15, 20, 10, [''], ['metal pipe'])
+        self.player = Character("name", 5, 15, 20, 10)
         self.grek = Character("Pirate Grek", 5, 15, 15, 0)
         self.commander = Character("Commander Matthew", 9, 20, 20, 0)
         self.scene1 = True
-        self.scene2 = True
+        self.scene2 = False
         self.scene3 = False
-        self.battle1 = True
+        self.battle1 = False
         self.battle2 = False
 
     def displayStats(self):
@@ -554,7 +554,7 @@ sign in. You don't have such credentials. The only way in is by force.
             self.scene2 = False
         else: 
             print('''
-    You have already looked around the capsule.
+    You have already looked around.
     ''')
 
     def scene2SpecialAction(self):
@@ -761,15 +761,15 @@ sign in. You don't have such credentials. The only way in is by force.
 plurn = Plurn()
 
 # Start Game
-# plurn.openingSceneGetName()
+plurn.openingSceneGetName()
 
 # Main Game Loops
 ########### Scene 1 ###########
-# while plurn.scene1 == True:
-#     plurn.sceneOne()
+while plurn.scene1 == True:
+    plurn.sceneOne()
 
 ########### Scene 2 ###########
-# plurn.battleOne()
+plurn.battleOne()
 while plurn.scene2 == True:
     plurn.sceneTwo()
     
