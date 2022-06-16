@@ -757,6 +757,219 @@ sign in. You don't have such credentials. The only way in is by force.
         else:
             self.displayStats()  
 
+    def sceneThree(self):
+        action = input('''
+    What would you like to do?
+    1. Look Around.
+    2. Show Stats.
+    3. Special Action.
+    4. Use Item.
+    5. Rest.
+    >>>
+    ''')
+        while action != "1" and action != "2" and action != "3" and action != "4" and action != "5":
+            action = input('''
+    What would you like to do?
+    1. Look Around.
+    2. Show Stats.
+    3. Special Action.
+    4. Use Item.
+    5. Rest.
+    >>>
+    ''')
+        if action == "1":
+            self.scene3LookAround()
+
+        if action == "2":
+            self.displayStats()
+        
+        if action == "3":
+            self.scene3SpecialAction()
+
+        if action == "4":
+            self.scene3UseItem()
+
+        if action == "5":
+            self.rest()
+
+    def scene3LookAround(self):
+        if self.player.lookAround1 == False:
+            print('''
+    The ship's bridge room is quaint. There aren't a lot of bells and whistles, but you
+    feel confident enough to pilot this thing home. 
+    ''')
+            print('''
+    The room is in complete disarray. Seats are overturned, a dead pirate lays in the corner,
+    and there are sparks emitting from one of the computers. It is completely silent.
+    ''')
+            print('''
+    Where is everybody?
+    ''')
+            print('''
+    You see a computer at the center of the room in front of the large viewport.
+    ''')
+            self.player.lookAround1 = True
+            self.player.useItem1 = True
+
+        elif self.player.lookAround2 == True:
+            print('''
+    Oh yeah, the dead guy! You walk over to the dead Baustenian in the corner and rifle through
+    his pockets. You find another key card and hope it gives you full access.
+    ''')
+            self.player.items.append('officer key card')
+            print('''
+    As you prepare to leave the man, you feel something ice cold in his pockets. It startles you, but
+    you investigate further. From his front-right pocket you produce a small, metal sphere.
+    It's absolutely without blemish and sits in your hand about 2 inches in diameter. It's impossibly
+    smooth and feels like it's made of ice. Though it looks as if it could survive a super-nova blast
+    it weighs no more than a feather.
+    ''')
+            print('''
+    Amazed, you take it.
+    ''')
+            self.player.items.append('cool ball')
+            self.player.lookAround2 = False
+            self.player.specialAction1 = True
+
+        elif self.player.lookAround3 == True:
+            print('''
+    As you begin entering the coordinated for earth, something out of the corner of your eye flashes,
+    and you jolt your head up. By now you are an inch away from total insanity.
+    ''')
+            print('''
+    Through the dirty glass of the viewport, you see a massive abomination of an object.
+    ''')
+            print('''
+    Is it a ship?
+    ''')
+            print('''
+    Yes, it is... but there is no logic to its design. Its sharp edge and spikes set it apart 
+    from any ship you've seen or studied throughout your time in the C.O.R.P.S.
+    ''')
+            self.player.lookAround3 = False
+            self.player.specialAction2 = True
+
+
+    def scene3SpecialAction(self):
+        if self.player.specialAction1 == True:
+            print('''
+    You make your way over to the computer terminal with fresh credentials. You scan them and... 
+    ''')
+            sleep(3)
+
+            randomDeath = randint(1, 10)
+            live = randint(1, 10)
+            if randomDeath != live:
+                print('''
+    success! The navigational systems display, and it looks like the ship has enough integrity to
+    make the jump back to earth.
+    ''')        
+                self.player.specialAction1 = False
+                self.player.lookAround3 = True
+
+            else:
+                print('''
+    no! The computer is damaged beyond repair. There is no way to fix it. All hope is lost...
+    ''')
+                self.gameOver()
+        
+        elif self.player.specialAction2 == True:
+            print('''
+    As you scramble to finish entering the coordinates and priming the hyperdrive, you now
+    realize that the Pirates weren't worried about you. The real foe lie ahead of you. Perhaps
+    they are the ones responsible for destroying your ship.
+    ''')
+            print('''
+    Your mind has crossed the line of sanity. You are now screaming. Your panic falls
+    silent on the empty room; your only audience a corpse.
+    ''')
+            print('''
+    The last thing you hear is a subtle clicking noise behind you. You have just enough time to turn
+    and see a grotesque, scaled creature coiled around a locker on the far side of the room. In the
+    blink of an eye it crosses the space between you and lurches. Your vision goes dark.
+    ''')
+            self.player.specialAction2 = False
+            self.scene3 = False
+
+    def scene3UseItem(self):
+        if self.player.useItem1 == True:
+            print('''
+    You pull out your pirate key card and hope it works just one more time. You approach
+    the terminal and insert the card.
+    ''')
+            print('''
+    Welcome Grunt Grek.
+    ''')
+            print('''
+    The ship displays a few functional options, but you are barred from the navigation and
+    piloting functions.
+    ''')
+            self.player.useItem1 = False
+            self.player.lookAround2 = True
+
+    def closingScene(self):
+        sleep(2)
+        print('''
+    .....
+    ''')
+        sleep(2)
+        print('''
+    .....
+    ''')
+        sleep(2)
+        print('''
+    Your eyes open. You are badly injured.
+    ''')
+        sleep(4)
+        print('''
+    .....
+    ''')
+        sleep(2)
+        print('''
+    .....
+    ''')
+        sleep(2)
+        print('''
+        You are in your base clothes and bound by an organic substance in a dark room. You 
+        guess you are aboard the alien ship.
+    ''')
+        sleep(5)
+        print('''
+    .....
+    ''')
+        sleep(2)
+        print('''
+    .....
+    ''')
+        sleep(2)
+        print('''
+        You are tired and all out of hope. You no longer fear death.
+    ''')
+        sleep(4)
+        print('''
+    .....
+    ''')
+        sleep(2)
+        print('''
+    .....
+    ''')
+        sleep(2)
+        print('''
+    You slowly close your eyes and feel yourself slipping back into a deep sleep. As your body
+    slowly goes limp, you feel nothing but despair...
+    ''')
+        sleep(6)
+        print('''
+    .....
+    ''')
+        sleep(2)
+        print('''
+    .....
+    ''')
+        sleep(2)
+        print('''
+    ...and the icy presence of a metal sphere.
+    ''')
 
 # Create instance of game class
 plurn = Plurn()
@@ -777,7 +990,8 @@ while plurn.scene2 == True:
     
 
 ########### Scene 3 ###########
-# while plurn.scene3 == True:
-#     print("Here's scene 3!")
-#     break
-# 2
+while plurn.scene3 == True:
+    plurn.scene3()
+
+# End Game
+plurn.closingScene()
