@@ -35,9 +35,9 @@ class Plurn:
             print(f'        {e.title()}')
 
     def gameOver(self):
-        print('''
-    Game Over. You lose.
-    ''')
+        print("Game Over")
+        sleep(1)
+        print("You lose.")
         sys.exit()
 
     def rest(self):
@@ -53,11 +53,14 @@ class Plurn:
     ''')
 
     def openingSceneGetName(self):
-        print('''
-    Your eyes slowly open. You are weightless in a small capsule
-    floating in space. A faint light flashes. There is the faint glow
-    of the local sun coming through the small viewport.
-    ''')
+        print('Your eyes slowly open.')
+        sleep(1)
+        print('You are weightless in a small capsule floating in space')
+        sleep(1)
+        print('A faint light flashes.')
+        sleep(1)
+        print('There is the faint glow')
+        sleep(1)
 
         self.player.name = input('''
     Do you remember your name?
@@ -65,20 +68,25 @@ class Plurn:
     >>> 
     ''').title()
 
-        print(f'''
-    Yes, you remember. Your name is {self.player.name}.
-    You are a member of the P.L.U.R.N. Space Corps. 
-    ''')
+        print(f'Yes, you remember. Your name is {self.player.name}.')
+        print('You are a member of the P.L.U.R.N. Space Corps.')
+    
 
     def scene1LookAround(self):
         if self.player.lookAround1 == False:
+            sleep(1)
             print('''
     You feel your way around the dark capsule. You recognize it as an escape pod. By the looks of the 
     registration number and P.L.U.R.N. Space Corps crest, you know you are in an escape pod for
-    your ship - the 'Plurning Star.' You clamber over to the viewport and see a field of debris
-    amongst the stars. As some pieces rubble float across your capsule, you recognize the twisted metal
-    as the meager remnants of your ship.
-
+    your ship - the 'Plurning Star.'
+    ''')
+            sleep(3)
+            print('''
+    You clamber over to the viewport and see a field of debris amongst the stars. As some pieces rubble 
+    float across your capsule, you recognize the twisted metal as the meager remnants of your ship.
+    ''')
+            sleep(3)
+            print('''
     You notice in the capsule a thick metal rod, a computer with a blank screen, and a power cell 
     laying on the floor. You decide to loop the metal rod into your space suit's belt loop.
     ''')
@@ -114,7 +122,7 @@ class Plurn:
     ''')
             self.player.equipment.append("kevlar vest")
             self.player.maxHp += 5
-            self.player.currentHp = self.player.maxHp
+            self.player.currentHp += 5
             self.player.lookAround3 = False
             self.player.specialAction2 = True
 
@@ -371,7 +379,7 @@ sign in. You don't have such credentials. The only way in is by force.
                         print('''
     You lay down your weapon and the enemy overtakes you...
     ''')
-                        p.gameOver()
+                        self.gameOver()
                     elif confirm == '2':
                         self.b1PlayerAttack()
 
@@ -966,7 +974,7 @@ while plurn.scene2 == True:
 
 ########### Scene 3 ###########
 while plurn.scene3 == True:
-    plurn.scene3()
+    plurn.sceneThree()
 
 # End Game
 plurn.closingScene()
