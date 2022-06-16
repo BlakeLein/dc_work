@@ -54,13 +54,13 @@ class Plurn:
 
     def openingSceneGetName(self):
         print('Your eyes slowly open.')
-        sleep(1)
+        # sleep(1)
         print('You are weightless in a small capsule floating in space')
-        sleep(1)
+        # sleep(1)
         print('A faint light flashes.')
-        sleep(1)
+        # sleep(1)
         print('There is the faint glow')
-        sleep(1)
+        # sleep(1)
 
         self.player.name = input('''
     Do you remember your name?
@@ -69,23 +69,25 @@ class Plurn:
     ''').title()
 
         print(f'Yes, you remember. Your name is {self.player.name}.')
+        # sleep(1)
         print('You are a member of the P.L.U.R.N. Space Corps.')
+        # sleep(1)
     
 
     def scene1LookAround(self):
         if self.player.lookAround1 == False:
-            sleep(1)
+            # sleep(1)
             print('''
     You feel your way around the dark capsule. You recognize it as an escape pod. By the looks of the 
     registration number and P.L.U.R.N. Space Corps crest, you know you are in an escape pod for
     your ship - the 'Plurning Star.'
     ''')
-            sleep(3)
+            # sleep(3)
             print('''
     You clamber over to the viewport and see a field of debris amongst the stars. As some pieces rubble 
     float across your capsule, you recognize the twisted metal as the meager remnants of your ship.
     ''')
-            sleep(3)
+            # sleep(3)
             print('''
     You notice in the capsule a thick metal rod, a computer with a blank screen, and a power cell 
     laying on the floor. You decide to loop the metal rod into your space suit's belt loop.
