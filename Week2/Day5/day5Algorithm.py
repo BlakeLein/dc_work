@@ -10,7 +10,7 @@ def productList(list):
             else:
                 product *= list[x] # Update 'product' to the product of every other indexed value
         answerList.append(product) # Add the product to a new list.
-    print(answerList)
+    print(answerList) # Return the new list.
 
 
 
@@ -25,4 +25,4 @@ rightAnswer = [8, 40, 10, 20]
 ##### NOTES ######
 # Whenever you need to return something from a for loop it needs to be outside the loop. Product is a base number of 1 (lowest
 #   possible number to multiply by)
-# Using range(len(list)) allows us to manipulate the indices.
+# Using range(len(list)) allows us to manipulate the indices. You always compare two lists based on the indices, not the values.
