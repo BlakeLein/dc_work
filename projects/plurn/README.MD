@@ -46,7 +46,7 @@ Published June 2022
 
 2. Ensure that the plurn folder is saved to your computer. You can clone the repository to your Desktop by entering the following text in your command line:
 
-`gh repo clone BlakeLein/dc_work`
+`git clone https://github.com/BlakeLein/dc_work.git`
 
 3. Navigate to the plurn folder by typing:
 
