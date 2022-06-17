@@ -374,7 +374,7 @@ What would you like to do?
         if action == "6":
             confirm = ''
             while confirm != '1' and confirm != '2':
-                print('''
+                confirm = input('''
 Are you sure you want to give up?
 ''')
             if confirm == '1':
@@ -506,8 +506,7 @@ What would you like to do?
         if action == "6":
             confirm = ''
             while confirm != '1' and confirm != '2':
-                sleep(1)
-                print('''
+                confirm = input('''
 Are you sure you want to give up?
 ''')
             if confirm == '1':
@@ -886,7 +885,7 @@ What would you like to do?
             confirm = ''
             while confirm != '1' and confirm != '2':
                 sleep(1)
-                print('''
+                confirm = input('''
 Are you sure you want to give up?
 ''')
             if confirm == '1':

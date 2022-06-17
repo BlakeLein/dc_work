@@ -80,6 +80,8 @@ P.L.U.R.N. centers around an exciting narrative that you as the player are meant
 
 ### Winning the Game
 
+**While waiting for text to display, it is important that the player not press any keys prematurely! Please wait for the text to progress at its set pace!**
+
 They game ends when you reach the end of the story. Keep in mind that the story is predetermined, and although you have opportunities to make unique decisions, ultimately all paths lead to the same place.
 
 ---
