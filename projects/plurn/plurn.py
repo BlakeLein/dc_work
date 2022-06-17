@@ -8,9 +8,9 @@ from plurnCharacter import Character
 
 class Plurn:
     def __init__(self):
-        self.player = Character("name", 5, 1, 20, 10)
-        self.grek = Character("Pirate Grek", 5, 15, 15, 0)
-        self.commander = Character("Commander Matthew", 9, 23, 23, 0)
+        self.player = Character("name", "person", 5, 1, 20, 10)
+        self.grek = Character("Pirate Grek", "Grunt", 5, 15, 15, 0)
+        self.commander = Character("Commander Matthew", "Commander", 9, 23, 23, 0)
         self.scene1 = True
         self.scene2 = False
         self.scene3 = False
