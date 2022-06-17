@@ -68,13 +68,13 @@ Published June 2022
 
 ### Game Play
 
-P.L.U.R.N. is a game that takes user input to play out a story set in outer space. You are the main character, and it is up to you to find your way out of a tough situation! You progress the story of the game through prompted and unprompted actions.
+P.L.U.R.N. is a game that takes user input to play out a story set in outer space. You are the main character, and you progress the story of the game through prompted and unprompted actions. It is up to you to find your way out of a tough situation!
 
 ---
 
 ### Game Features
 
-P.L.U.R.N. centers around an exciting narrative that you as the player are meant to follow. As the story progresses, you will collect various items and equipment to help you along. You will encounter dangerous foes and have the opportunity to answer ridiculous questions. In some situations, surviving comes down to pure luck, so don't beat yourself up if you blow up for no reason!
+P.L.U.R.N. centers around an exciting narrative that you as the player are meant to follow. You begin the game by entering your name and choosing your unique class. As the story progresses, you will collect various items and equipment to help you along. You will encounter dangerous foes and have the opportunity to answer ridiculous questions. In some situations, surviving comes down to pure luck, so don't beat yourself up if you blow up for no reason!
 
 ---
 

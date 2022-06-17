@@ -10,7 +10,7 @@ class Plurn:
     def __init__(self):
         self.player = Character("name", 5, 1, 20, 10)
         self.grek = Character("Pirate Grek", 5, 15, 15, 0)
-        self.commander = Character("Commander Matthew", 9, 20, 20, 0)
+        self.commander = Character("Commander Matthew", 9, 23, 23, 0)
         self.scene1 = True
         self.scene2 = False
         self.scene3 = False
@@ -24,7 +24,7 @@ class Plurn:
 
     def displayStats(self):
         print(f'''
-    || NAME: {self.player.name} |||| RANK: P.L.U.R.N. Space Cadet ||
+    || NAME: {self.player.name} |||| RANK: {self.player.rank} ||
 
     <<Hit Points>>
         {self.player.currentHp} / {self.player.maxHp}''')
@@ -39,9 +39,9 @@ class Plurn:
 
     def gameOver(self):
         print("Game Over")
-        sleep(1)
+        # sleep(1)
         print("You lose.")
-        sleep(1)
+        # sleep(1)
         sys.exit()
 
     def rest(self):
@@ -51,7 +51,7 @@ You find a dark corner and sit for a while. You assess your wounds and do what
 you can to patch yourself up.
 ''')
             self.player.currentHp = self.player.maxHp
-            sleep(2)
+            # sleep(2)
 
         else:     
             print('''
@@ -60,43 +60,68 @@ You don't need to rest.
 
     def openingSceneGetName(self):
         print('Your eyes slowly open.')
-        sleep(2)
+        # sleep(2)
         print('You are weightless in a small capsule floating in space.')
-        sleep(2)
+        # sleep(2)
         print('A light flashes.')
-        sleep(2)
-        print('There is a faint glow.')
-        sleep(2)
+        # sleep(2)
+        print('There is a faint glow from the local sun.')
+        # sleep(2)
 
         self.player.name = input('''
 Do you remember your name?
-
 >>> 
     ''').title()
 
-        sleep(1)
+        # sleep(1)
         print(f'Yes, you remember. Your name is {self.player.name}.')
-        sleep(2)
+        # sleep(2)
         print('You are a member of the P.L.U.R.N. Space Corps.')
-        sleep(2)
+        # sleep(2)
+        rank = ''
+        while rank != '1' and rank != '2' and rank != '3':
+            rank = input('''
+Do you remember your rank?
     
+    1. Soldier (+ Attack, + Health, - Sneak)
+    2. Operative (+ Attack, - Health, + Sneak)
+    3. Medic (- Attack, + Health, + Sneak)
+>>>
+''')
+        if rank == '1':
+            self.player.rank = 'P.L.U.R.N. Corps Soldier'
+            self.player.power = 6
+            self.player.maxHp = 22
+            self.player.sneak = 3
+
+        elif rank == '2':
+            self.player.rank = 'P.L.U.R.N. Corps Operative'
+            self.player.power = 6
+            self.player.maxHp = 15
+            self.player.sneak = 10
+
+        elif rank == '3':
+            self.player.rank = 'P.L.U.R.N. Corps Medic'
+            self.player.power = 4
+            self.player.maxHp = 25
+            self.player.sneak = 10
 
     def scene1LookAround(self):
         if self.player.lookAround1 == False:
             print('''
-You feel your way around the dark capsule. You recognize it as an escape pod. By the looks of the 
+You feel your way around the dark capsule. It looks like an an escape pod. By the looks of the 
 registration number and P.L.U.R.N. Space Corps crest, you know you are in an escape pod for
 your ship - the 'Plurning Star.'
 ''')
             sleep(5)
             print('''
-You clamber over to the viewport and see a field of debris amongst the stars. As some pieces rubble 
+You clamber over to the viewport and see a field of debris amongst the stars. As some pieces of rubble 
 float across your capsule, you recognize the twisted metal as the meager remnants of your ship.
 ''')
             sleep(5)
             print('''
 You notice in the capsule a thick metal rod, a computer with a blank screen, and a power cell 
-laying on the floor. You decide to loop the metal rod into your space suit's belt loop.
+laying on the floor. You decide to grab the cell and loop the metal rod into your space suit's belt loop.
 ''')
             self.player.equipment.append("metal pipe")
             self.player.items.append('power cell')
@@ -135,7 +160,7 @@ both joined up, and now she's gone while you keep going.
 ''')
             sleep(4)
             print('''
-She managed to don a kevlar space vest during theevacuation sequence. You have to press forward, and you 
+She managed to don a kevlar space vest during the evacuation sequence. You have to press forward, and you 
 may need that vest if pirates are involved.
 ''')
             sleep(4)
@@ -161,7 +186,7 @@ the docking bay of the other ship.
             print('''
 You quickly make your way to the console and initialize the engine thrust sequence. You only have one shot.
 ''')
-            sleep(2)
+            # sleep(2)
             guess = 0
             while guess > 5 or guess < 1:
                 try:
@@ -172,7 +197,7 @@ You quickly make your way to the console and initialize the engine thrust sequen
                     print('Please type a number.')
             failure = randint(1, 5)
             if guess == failure:
-                sleep(1)
+                # sleep(1)
                 print('''
 You close your eyes and wait a couple seconds. You mash the thrust button, and as the pod lurches forward.
 The P.L.U.R.N. pod sails past the Pirate ship - you were not even close...
@@ -191,13 +216,13 @@ docking bay window.
 As the shuttle begins to rapidly spin, it makes it into the bay and slams into a panel on the wall. 
 The docking bay doors slam shut and the ship's artificial gravity takes hold. You fall to the floor and 
 the air is knocked from your lungs. Over the sound of oxygen rushing into the docking bay, you hear
-two men running toward your ship...
+a pirate running toward your ship...
 ''')
                 sleep(3)
                 print('''
 Now for the next problem...
 ''')
-                sleep(1)
+                # sleep(1)
                 plurn.scene2 = True
                 self.player.resetFlags()
                 plurn.battle1 = True
@@ -220,17 +245,17 @@ door:
             print('''
 The Riddle Matrix! Of course!
 ''')
-            sleep(2)
+            # sleep(2)
             print('''
 You locate the matrix symbol at the bottom-right of the screen. The stakes couldn't be higher, but
 the circumstances couldn't be more dire. You click the symbol, and the screen goes black.
 ''')
             
-            sleep(2)
+            # sleep(2)
             print('''
     Welcome to Plurn: The Riddles of Queelix! I will ask of you a riddle, and your answer will determine your fate.
     ''')
-            sleep(1)
+            # sleep(1)
             choice = ''
             while choice != "1" and choice != "2":
                 choice = input('''
@@ -242,20 +267,20 @@ the circumstances couldn't be more dire. You click the symbol, and the screen go
     2. Shoot Goblin.
     ''')
                 if choice == "1":
-                    sleep(1)
+                    # sleep(1)
                     print('''
     As you bend over to offer the goblin a helping hand, several more goblins spring forth and stab you to death.
     You were a fool to believe a goblin would ask you for help.
     ''')
-                    sleep(2)
+                    # sleep(2)
                     print('''
 RIDDLE MATRIX DETECTS INTRUDER. SYSTEM ALERT. IMMEDIATE SELF-DESTRUCT SEQUENCE INITIALIZED.
 ''')
-                    sleep(1)
+                    # sleep(1)
                     self.gameOver()
 
                 elif choice == "2":
-                    sleep(1)
+                    # sleep(1)
                     print('''
     Almost before the goblin can finish asking for help, you take your crossbow and give him one between
     the eyes. Everyone knows that goblins hate humans. Several other goblins scatter in a frenzied panic. You
@@ -283,10 +308,10 @@ You go over to the main terminal again. You see the options displayed across the
         3. Escape Pod Functions
     ''')
                 if choice2 == "1":
-                    sleep(1)
+                    # sleep(1)
                     print('''
     OCCUPANTS: 2
-    OXYGEN LEVELS: 46%
+    OXYGEN LEVELS: 8%
     LIFE SUPPORT STATUS: Stable
     FUEL LEVEL: 5%
     MANEUVERABILITY: Disabled
@@ -294,12 +319,12 @@ You go over to the main terminal again. You see the options displayed across the
     SIGNAL TO PLURNING STAR: ---
     ''')
                 if choice2 == "2":
-                    sleep(1)
+                    # sleep(1)
                     print('''
     NO LOGS TO DISPLAY.
     ''')
                 if choice2 == "3":
-                    sleep(1)
+                    # sleep(1)
                     print('''
     ESCAPE POD FUNCTIONS:
     - Self Destruct
@@ -355,23 +380,23 @@ What would you like to do?
 >>>
 ''')
         if action == "1":
-            sleep(1)
+            # sleep(1)
             self.scene1LookAround()
 
         if action == "2":
-            sleep(1)
+            # sleep(1)
             self.displayStats()
         
         if action == "3":
-            sleep(1)
+            # sleep(1)
             self.scene1SpecialAction()
 
         if action == "4":
-            sleep(1)
+            # sleep(1)
             self.scene1UseItem()
 
         if action == "5":
-            sleep(1)
+            # sleep(1)
             self.rest()
         
         if action == "6":
@@ -381,11 +406,11 @@ What would you like to do?
 Are you sure you want to give up?
 ''')
             if confirm == '1':
-                sleep(1)
+                # sleep(1)
                 self.gameOver()
 
             elif confirm == '2':
-                sleep(1)
+                # sleep(1)
                 self.sceneOne()
 
     def sceneTwoOpen(self):
@@ -397,16 +422,16 @@ crackling. You grab your metal pipe and charge the first one.
     def battleOne(self):
         while self.battle1 == True:
             self.b1PlayerAttack()
-            sleep(2)
+            # sleep(2)
             self.b1CheckHealth()
-            sleep(2)
+            # sleep(2)
             if self.battle1 == True:
-                sleep(2)
+                # sleep(2)
                 self.b1EnemyAttack()
-                sleep(2)
+                # sleep(2)
                 self.b1CheckHealth()
-                sleep(2)
-        sleep(1)
+                # sleep(2)
+        # sleep(1)
         print('''
 You finish off the Bausten Pirate thug, and it looks like no one heard or saw you. You should be sneaky...
 ''')
@@ -441,11 +466,11 @@ Are you...sure...you want to do that?
     2. Nevermind
 ''')
                     if confirm == '1':
-                        sleep(1)
+                        # sleep(1)
                         print('''
 You lay down your weapon and the enemy overtakes you...
 ''')
-                        sleep(1)
+                        # sleep(1)
                         self.gameOver()
 
                     elif confirm == '2':
@@ -457,7 +482,7 @@ You lay down your weapon and the enemy overtakes you...
 The enemy takes a swing and hits you square in temple. Your vision goes black, and the
 world goes cold...
 ''')    
-            sleep(1)
+            # sleep(1)
             self.gameOver()
 
         elif self.grek.currentHp <= 0:
@@ -487,23 +512,23 @@ What would you like to do?
 >>>
 ''')
         if action == "1":
-            sleep(1)
+            # sleep(1)
             self.scene2LookAround()
 
         if action == "2":
-            sleep(1)
+            # sleep(1)
             self.displayStats()
         
         if action == "3":
-            sleep(1)
+            # sleep(1)
             self.scene2SpecialAction()
 
         if action == "4":
-            sleep(1)
+            # sleep(1)
             self.scene2UseItem()
 
         if action == "5":
-            sleep(1)
+            # sleep(1)
             self.rest()
         
         if action == "6":
@@ -513,7 +538,7 @@ What would you like to do?
 Are you sure you want to give up?
 ''')
             if confirm == '1':
-                sleep(1)
+                # sleep(1)
                 self.gameOver()
 
             elif confirm == '2':
@@ -522,67 +547,67 @@ Are you sure you want to give up?
     def scene2LookAround(self):
         if self.player.lookAround1 == False:
             print('''
-    You walk over to the pirate and check his pulse. Dead. You notice his weapon was damaged beyond
-    in the battle. You do notice his key card in his satchel, and decide to take that...
-    ''')
+You walk over to the pirate and check his pulse. Dead. You notice his weapon was badly damaged
+in the battle. You do notice a key card in his satchel, and decide to take that...
+''')
             sleep(4)
             self.player.items.append("pirate key card")
             print('''
-    Now that you think of it, the pirate is generally the same size as you. You think it might be a good
-    idea to put on his clothes...maybe it will be a nice disguise?
-    ''')
+Now that you think of it, the pirate is generally the same size as you. You think it might be a good
+idea to put on his clothes...maybe it will be a nice disguise?
+''')
             sleep(3)
             disguise = ''
             while disguise != '1' and disguise != '2':
                 disguise = input('''
-    Do you put on the pirate's outfit?
-        1. Yeah, duh.
-        2. No, that's gross.
-    ''')
+Do you put on the pirate's outfit?
+    1. Yeah, duh.
+    2. No, that's gross.
+''')
             if disguise == '1':
-                sleep(1)
+                # sleep(1)
                 print('''
-    You take a couple minutes to put on the pirate's clothes and practice your best pirate voice. You've got this.
-    ''')
+You take a couple minutes to put on the pirate's clothes and practice your best pirate voice. You've got this.
+''')
                 caught = randint(1, 5)
                 if caught == 3:
-                    sleep(1)
+                    # sleep(1)
                     print('''
-    As you are putting on the smelly garb, another pirate comes up behind you and clubs you on the head. Why
-    did you think it was a good idea to change outfits in the middle of an enemy ship?
-    ''')
+As you are putting on the smelly garb, another pirate comes up behind you and clubs you on the head. Why
+did you think it was a good idea to change outfits in the middle of an enemy ship?
+''')
                     sleep(4)
                     self.gameOver()
                 
                 else:
                     print('''
-    You successfully put on the pirate's clothes, and you look terrible! Perfect! Maybe this will
-    fool any other pirates you come across.
-    ''')
+You successfully put on the pirate's clothes, and you look terrible! Perfect! Maybe this will
+fool any other pirates you come across.
+''')
                     sleep(4)
                     self.player.equipment.append('pirate clothes')
                     self.player.sneak += 5
             
             elif disguise == '2':
                 print('''
-    Why would you put on a discguise in the middle of an enemy ship? You carefully drag the pirate's body behind
-    a crate in a dark corner and leave him.
-    ''')
+Why would you put on a discguise in the middle of an enemy ship? You carefully drag the pirate's body behind
+a crate in a dark corner and leave him.
+''')
                 sleep(3)
             self.player.lookAround1 = True
             self.player.lookAround2 = True
         
         elif self.player.lookAround2 == True:
             print('''
-    You take a moment to survey the situation. You are standing alone in a docking bay with a destroyed ship in
-    one corner and a dead pirate in the other corner. For some strange reason, no one has come running to the
-    bay as a result of an escape pod crashing into it...
-    ''')
+You take a moment to survey the situation. You are standing alone in a docking bay with a destroyed ship in
+one corner and a dead pirate in the other corner. For some strange reason, no one has come running to the
+bay as a result of an escape pod crashing into it...
+''')
             sleep(5)
             print('''
-    You know that a ship this size has a hyperdrive. Maybe you can get to the bridge, seal yourself in, and make
-    the jump to earth. From there you could fly to Plurnquarters and help bring these pirates to justice.
-    ''')
+You know that a ship this size has a hyperdrive. Maybe you can get to the bridge, seal yourself in, and make
+the jump to earth. From there you could fly to Plurnquarters and help bring these pirates to justice.
+''')
             sleep(4)
             self.player.lookAround2 = False
             self.player.specialAction1 = True
@@ -590,9 +615,9 @@ Are you sure you want to give up?
 
         elif self.player.lookAround3 == True:
             print('''
-    You notice the Commander has a really neat helmet. Man that helmet looks neat. 'Mine!'
-    ''')
-            sleep(2)
+You notice the Commander has a really neat helmet. Man that helmet looks neat. 'Mine!'
+''')
+            # sleep(2)
             self.player.equipment.append('pirate helmet')
             self.player.currentHp += 5
             self.player.maxHp += 5
@@ -600,38 +625,38 @@ Are you sure you want to give up?
             self.player.lookAround4 = True
 
             print('''
-    You step over the Commander's helmetless corpse and make your way to another security door in the hallway.
-    You flash your key card and it snaps open.
-    ''')
+You step over the Commander's helmetless corpse and make your way to another security door in the hallway.
+You flash your key card and it snaps open.
+''')
 
         elif self.player.lookAround4 == True:
             print('''
-    You are standing in a small room with another door right in front of you. Based on your feel for the 
-    layout of this vessel, you know that you are lookin at the door to the bridge...
-    ''')
+You are standing in a small room with another door right in front of you. Based on your feel for the 
+layout of this vessel, you know that you are looking at the door to the bridge...
+''')
             sleep(4)
             print('''
-    Almost home.
-    ''')
-            sleep(1)
+Almost home.
+''')
+            # sleep(1)
             print('''
-    It's so quiet. You no longer hear the hustle and bustle of pirates scrambling to find you. Were they looking
-    for you? Or someone else?
-    ''')
+It's so quiet. You no longer hear the hustle and bustle of pirates scrambling to find you. Were they looking
+for you? Or someone else?
+''')
 
             sleep(4)
             print('''
-    You ready yourself with weapon drawn and creep toward the door.
-    ''')
-            sleep(1)
+You ready yourself with weapon drawn and creep toward the door.
+''')
+            # sleep(1)
             self.scene3 = True
             self.player.resetFlags()
             self.scene2 = False
 
         else: 
             print('''
-    You have already looked around.
-    ''')
+You have already looked around.
+''')
 
     def scene2SpecialAction(self):
         if self.player.specialAction1 == True:
@@ -647,7 +672,7 @@ in your entire life. You grab one and throw the metal pipe across the room.
         elif self.player.specialAction2 == True:
             print('''
 You poke your head through the now open door and swipe it side to side. On your left is a dead-end. On your right 
-is a man staning a head taller than the average man with a large gun strapped to his back. He is talking to another
+is a man standing a head taller than the average man with a large gun strapped to his back. He is talking to another
 and you hear him referred to as 'Commander.'
 ''')
             sleep(5)
@@ -661,8 +686,8 @@ We didn't expect- "
 ''')
             sleep(4)
             print('''
-"Of course you didn't expect them fool! They only arrived moments ago. Do you have any updates for me? What
-happened to the one we picked up on the scanners?!"
+"Of course you didn't expect them fool! Do you have any meaningful updates for me? What happened to the 
+one we picked up on the scanners?!"
 ''')
             sleep(4)
             print('''
@@ -675,7 +700,7 @@ You realize that something is wrong, but all you can think about is getting to t
 as he talks to his subordinant.
 ''')
             option = ''
-            sleep(1)
+            # sleep(1)
             while option != '1' and option != '2':
                 option = input('''
 What would you like to do?
@@ -683,16 +708,16 @@ What would you like to do?
     2. Raise your weapon and run in like a crazy person.
 ''')
             if option == '1':
-                sleep(1)
+                # sleep(1)
                 print('''
 You settle your equipment and carefully step out. You see another door 10 feet down the hall on the left side.
 ''')
-                sleep(1)
+                # sleep(1)
                 sneak = randint(1, 21)
                 if self.player.sneak >= sneak:
                     print('''
 You slowly put one foot in front of the other and make your way to the second door. You discreetly flash the key
-card and re-enter the password. As the door hisses open you see the Commanders head start to turn, but not before
+card and re-enter the password. As the door hisses open you see the Commander's head start to turn, but not before
 you are able to slam it shut and blast the panel. They won't be following you.
 ''')
                     sleep(5)
@@ -708,7 +733,7 @@ in your chest as the world goes dark.
                     sleep(5)
                     self.battle2 = True
                     self.battleTwo()
-                    sleep(1)
+                    # sleep(1)
                     print('''
 You finish off the Commander with gusto. He didn't even have a name tag; he had no chance.
 ''')
@@ -716,7 +741,7 @@ You finish off the Commander with gusto. He didn't even have a name tag; he had 
                     self.player.lookAround3 = True
 
             elif option == '2':
-                sleep(1)
+                # sleep(1)
                 print('''
 You raise your weapon and scream. Your voice jumps to a higher octave than you expect it to. The grunt standing
 next to the Commander screams even higher and runs away.
@@ -729,7 +754,7 @@ flash inches from your left eye. You raise your weapon...
                 sleep(4)
                 self.battle2 = True
                 self.battleTwo()
-                sleep(1)
+                # sleep(1)
                 print('''
 You finish off the Commander with gusto. He didn't even have a name tag; he had no chance.
 ''')
@@ -744,15 +769,15 @@ You're not sure what to do...
     def battleTwo(self):
         while self.battle2 == True:
             self.b2PlayerAttack()
-            sleep(2)
+            # sleep(2)
             self.b2CheckHealth()
-            sleep(1)
+            # sleep(1)
             if self.battle2 == True:
-                sleep(1)
+                # sleep(1)
                 self.b2EnemyAttack()
-                sleep(2)
+                # sleep(2)
                 self.b2CheckHealth()
-                sleep(1)
+                # sleep(1)
 
     def scene2UseItem(self):
         if self.player.useItem1 == True:
@@ -776,7 +801,7 @@ key card and a message appears on the screen:
             2. You type in '12345'
 ''')
             if hack == '1' or hack == '2':
-                sleep(1)
+                # sleep(1)
                 print('''
 You easily guess the fool's password and the door slides open with a cool hiss.
 ''')
@@ -819,11 +844,11 @@ Are you...sure...you want to do that?
     2. Nevermind
 ''')
                     if confirm == '1':
-                        sleep(1)
+                        # sleep(1)
                         print('''
 You lay down your weapon and the enemy overtakes you...
 ''')
-                        sleep(1)
+                        # sleep(1)
                         self.gameOver()
 
                     elif confirm == '2':
@@ -843,11 +868,11 @@ of damage!
 The enemy takes a swing and hits you square in temple. Your vision goes black, and the
 world goes cold...
 ''')    
-            sleep(1)
+            # sleep(1)
             self.gameOver()
 
         elif self.commander.currentHp <= 0:
-            sleep(1)
+            # sleep(1)
             print(f'''
 You bash {self.commander.name} across the face and he falls lifeless.
 ''')
@@ -866,33 +891,33 @@ What would you like to do?
 >>>
 ''')
         if action == "1":
-            sleep(1)
+            # sleep(1)
             self.scene3LookAround()
 
         if action == "2":
             self.displayStats()
         
         if action == "3":
-            sleep(1)
+            # sleep(1)
             self.scene3SpecialAction()
 
         if action == "4":
-            sleep(1)
+            # sleep(1)
             self.scene3UseItem()
 
         if action == "5":
-            sleep(1)
+            # sleep(1)
             self.rest()
 
         if action == "6":
             confirm = ''
             while confirm != '1' and confirm != '2':
-                sleep(1)
+                # sleep(1)
                 confirm = input('''
 Are you sure you want to give up?
 ''')
             if confirm == '1':
-                sleep(1)
+                # sleep(1)
                 self.gameOver()
 
             elif confirm == '2':
@@ -947,7 +972,7 @@ Amazed, you take it.
 
         elif self.player.lookAround3 == True:
             print('''
-As you begin entering the coordinated for earth, something out of the corner of your eye flashes,
+As you begin entering the coordinates for earth, something out of the corner of your eye flashes,
 and you jolt your head up. By now you are an inch away from total insanity.
 ''')
             sleep(4)
@@ -958,7 +983,7 @@ Through the dirty glass of the viewport, you see a massive abomination of an obj
             print('''
 Is it a ship?
 ''')
-            sleep(2)
+            # sleep(2)
             print('''
 Yes, it is... but there is no logic to its design. Its sharp edge and spikes set it apart 
 from any ship you've seen or studied throughout your time in the Corps.
@@ -992,7 +1017,7 @@ make the jump back to earth.
                 print('''
 No! The computer is damaged beyond repair. There is no way to fix it. All hope is lost...
 ''')
-                sleep(2)
+                # sleep(2)
                 self.gameOver()
         
         elif self.player.specialAction2 == True:
@@ -1031,7 +1056,7 @@ the terminal and insert the card.
             print('''
 Welcome Grunt Grek.
 ''')
-            sleep(2)
+            # sleep(2)
             print('''
 The ship displays a few functional options, but you are barred from the navigation and
 piloting functions.
@@ -1045,45 +1070,45 @@ You don't have any items worth using right now.
 ''')
 
     def closingScene(self):
-        sleep(2)
+        # sleep(2)
         print('.....')
-        sleep(2)
+        # sleep(2)
         print('.....')
-        sleep(2)
+        # sleep(2)
         print('''
 Your eyes open. You are badly injured.
 ''')
         sleep(4)
         print('.....')
-        sleep(2)
+        # sleep(2)
         print('.....')
-        sleep(2)
+        # sleep(2)
         print('''
 You are in your base clothes and bound by an organic substance in a dark room. You 
 guess you are aboard the alien ship.
 ''')
         sleep(5)
         print('.....')
-        sleep(2)
+        # sleep(2)
         print('.....')
-        sleep(2)
+        # sleep(2)
         print('''
 You are tired and all out of hope. You no longer fear death.
 ''')
         sleep(4)
         print('.....')
-        sleep(2)
+        # sleep(2)
         print('.....')
-        sleep(2)
+        # sleep(2)
         print('''
 You slowly close your eyes and feel yourself slipping back into a deep sleep. As your body
 slowly goes limp, you feel nothing but despair...
 ''')
         sleep(6)
         print('.....')
-        sleep(2)
+        # sleep(2)
         print('.....')
-        sleep(2)
+        # sleep(2)
         print('''
 ...and the icy presence of a metal sphere.
 ''')

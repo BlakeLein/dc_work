@@ -1,5 +1,5 @@
 class Character:
-    def __init__(self, name="", power=0, currentHp=0, maxHp=0, sneak=0, items=[], equipment=[]):
+    def __init__(self, name="", rank = 'person', power=0, currentHp=0, maxHp=0, sneak=0, items=[], equipment=[]):
         self.name = name
         self.power = power
         self.currentHp = currentHp
@@ -7,6 +7,7 @@ class Character:
         self.sneak = sneak
         self.items = items
         self.equipment = equipment
+        self.rank = rank
         self.lookAround1 = False
         self.lookAround2 = False
         self.lookAround3 = False
