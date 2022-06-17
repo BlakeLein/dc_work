@@ -164,9 +164,12 @@ You quickly make your way to the console and initialize the engine thrust sequen
             sleep(2)
             guess = 0
             while guess > 5 or guess < 1:
-                guess = int(input('''
+                try:
+                    guess = int(input('''
 (Pick a number between 1 and 5)
 '''))
+                except ValueError:
+                    print('Please type a number.')
             failure = randint(1, 5)
             if guess == failure:
                 sleep(1)
