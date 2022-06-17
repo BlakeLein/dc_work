@@ -91,18 +91,21 @@ Do you remember your rank?
         if rank == '1':
             self.player.rank = 'P.L.U.R.N. Corps Soldier'
             self.player.power = 6
+            self.player.currentHp = 1
             self.player.maxHp = 22
             self.player.sneak = 3
 
         elif rank == '2':
             self.player.rank = 'P.L.U.R.N. Corps Operative'
             self.player.power = 6
+            self.player.currentHp = 1
             self.player.maxHp = 15
             self.player.sneak = 10
 
         elif rank == '3':
             self.player.rank = 'P.L.U.R.N. Corps Medic'
             self.player.power = 4
+            self.player.currentHp = 1
             self.player.maxHp = 25
             self.player.sneak = 10
 
@@ -113,12 +116,12 @@ You feel your way around the dark capsule. It looks like an an escape pod. By th
 registration number and P.L.U.R.N. Space Corps crest, you know you are in an escape pod for
 your ship - the 'Plurning Star.'
 ''')
-            sleep(5)
+            # sleep(5)
             print('''
 You clamber over to the viewport and see a field of debris amongst the stars. As some pieces of rubble 
 float across your capsule, you recognize the twisted metal as the meager remnants of your ship.
 ''')
-            sleep(5)
+            # sleep(5)
             print('''
 You notice in the capsule a thick metal rod, a computer with a blank screen, and a power cell 
 laying on the floor. You decide to grab the cell and loop the metal rod into your space suit's belt loop.
@@ -136,12 +139,12 @@ by the looks of the large sonic blasters outfitted on the side, you know that th
 built for one purpose - destruction.
 ''')
 
-            sleep(4)
+            # sleep(4)
             print('''
 It's filthy and unkept, and on the sides above the rear thrusters, you see the blood-red sun surrounded 
 by black flames. You recognize this as the logo of the Bausten Pirate Syndicate.
 ''')
-            sleep(3)
+            # sleep(3)
             self.player.lookAround2 = False
             self.player.specialAction1 = True
 
@@ -150,7 +153,7 @@ by black flames. You recognize this as the logo of the Bausten Pirate Syndicate.
 You decide to take another glance around the pod with the lights back on. You find a pair of shoes that
 look more comfortable than the ones you have on. You decide to put them on. 
 ''')
-            sleep(4)
+            # sleep(4)
             self.player.equipment.append("soft shoes")
             self.player.sneak += 5
 
@@ -158,12 +161,12 @@ look more comfortable than the ones you have on. You decide to put them on.
 As you turn to your right, you see her lifeless body strapped to a seat. Pam. You've known her since you
 both joined up, and now she's gone while you keep going. 
 ''')
-            sleep(4)
+            # sleep(4)
             print('''
 She managed to don a kevlar space vest during the evacuation sequence. You have to press forward, and you 
 may need that vest if pirates are involved.
 ''')
-            sleep(4)
+            # sleep(4)
             self.player.equipment.append("kevlar vest")
             self.player.maxHp += 5
             self.player.currentHp += 5
@@ -176,13 +179,13 @@ Feeling hopeless you go to the viewport to take another look at the constellatio
 as a child. Your escape pod has enough oxygen for a few more hours, and then you'll slowly slip into a deep
 sleep you cannot wake up from.
 ''')
-            sleep(3)
+            # sleep(3)
             print('''
 Then you see it again. The Pirate ship is floating slowly aross your view, and you notice the docking bay is
 wide open. If you could time it perfectly, you could use what fuel remains in the pod to jetison into
 the docking bay of the other ship.
 ''')
-            sleep(4)
+            # sleep(4)
             print('''
 You quickly make your way to the console and initialize the engine thrust sequence. You only have one shot.
 ''')
@@ -211,14 +214,14 @@ You close your eyes and wait a couple seconds. You mash the thrust button, and a
 The P.L.U.R.N. pod looks as if it will continue into empty space, but narrowly hits the side of the
 docking bay window.
 ''')
-                sleep(4)
+                # sleep(4)
                 print('''
 As the shuttle begins to rapidly spin, it makes it into the bay and slams into a panel on the wall. 
 The docking bay doors slam shut and the ship's artificial gravity takes hold. You fall to the floor and 
 the air is knocked from your lungs. Over the sound of oxygen rushing into the docking bay, you hear
 a pirate running toward your ship...
 ''')
-                sleep(3)
+                # sleep(3)
                 print('''
 Now for the next problem...
 ''')
@@ -241,7 +244,7 @@ You go back to the computer to see if you can restore power. You know there is n
 credentials. You begin to cry, but then you remember that every P.L.U.R.N. Corps computer has a secret back 
 door: 
 ''')
-            sleep(3)
+            # sleep(3)
             print('''
 The Riddle Matrix! Of course!
 ''')
@@ -286,7 +289,7 @@ RIDDLE MATRIX DETECTS INTRUDER. SYSTEM ALERT. IMMEDIATE SELF-DESTRUCT SEQUENCE I
     the eyes. Everyone knows that goblins hate humans. Several other goblins scatter in a frenzied panic. You
     go ahead and shoot them too.
     ''')
-                    sleep(4)
+                    # sleep(4)
                     print('''
 The screen goes black for another moment and then fires back to life with a control module displayed. 
 The capsule comes to life. Lights are on and oxygen seeps into the cabin. You have full access 
@@ -332,7 +335,7 @@ You go over to the main terminal again. You see the options displayed across the
     - Jetison Fuel
     ''')
                     
-                    sleep(3)
+                    # sleep(3)
                     print('''
 You realize the escape pod has no way to steer. Other than a quick rear-engine thrust that will
 launch you forward, you are dead in the water...
@@ -354,13 +357,13 @@ your space training and trying not to electrocute yourself, you manage to reatta
 cell. The computer comes to life and the glow of the monitor stings your eyes.
 ''')
 
-            sleep(4)
+            # sleep(4)
             print('''
 The computer displays the P.L.U.R.N. Space Corps logo along with the taunting motto - 
 "A safer world for all mankind." Some motto. You see a login menu for a P.L.U.R.N. Officer to
 sign in. You don't have such credentials. The only way in is by force.
 ''')
-            sleep(4)
+            # sleep(4)
             self.player.items.remove('power cell')
             self.player.useItem1 = False
             self.player.lookAround2 = True
@@ -404,6 +407,8 @@ What would you like to do?
             while confirm != '1' and confirm != '2':
                 confirm = input('''
 Are you sure you want to give up?
+1. Yes
+2. No way!
 ''')
             if confirm == '1':
                 # sleep(1)
@@ -536,6 +541,8 @@ What would you like to do?
             while confirm != '1' and confirm != '2':
                 confirm = input('''
 Are you sure you want to give up?
+1. Yes
+2. No way!
 ''')
             if confirm == '1':
                 # sleep(1)
@@ -550,13 +557,13 @@ Are you sure you want to give up?
 You walk over to the pirate and check his pulse. Dead. You notice his weapon was badly damaged
 in the battle. You do notice a key card in his satchel, and decide to take that...
 ''')
-            sleep(4)
+            # sleep(4)
             self.player.items.append("pirate key card")
             print('''
 Now that you think of it, the pirate is generally the same size as you. You think it might be a good
 idea to put on his clothes...maybe it will be a nice disguise?
 ''')
-            sleep(3)
+            # sleep(3)
             disguise = ''
             while disguise != '1' and disguise != '2':
                 disguise = input('''
@@ -576,7 +583,7 @@ You take a couple minutes to put on the pirate's clothes and practice your best 
 As you are putting on the smelly garb, another pirate comes up behind you and clubs you on the head. Why
 did you think it was a good idea to change outfits in the middle of an enemy ship?
 ''')
-                    sleep(4)
+                    # sleep(4)
                     self.gameOver()
                 
                 else:
@@ -584,7 +591,7 @@ did you think it was a good idea to change outfits in the middle of an enemy shi
 You successfully put on the pirate's clothes, and you look terrible! Perfect! Maybe this will
 fool any other pirates you come across.
 ''')
-                    sleep(4)
+                    # sleep(4)
                     self.player.equipment.append('pirate clothes')
                     self.player.sneak += 5
             
@@ -593,7 +600,7 @@ fool any other pirates you come across.
 Why would you put on a discguise in the middle of an enemy ship? You carefully drag the pirate's body behind
 a crate in a dark corner and leave him.
 ''')
-                sleep(3)
+                # sleep(3)
             self.player.lookAround1 = True
             self.player.lookAround2 = True
         
@@ -603,12 +610,12 @@ You take a moment to survey the situation. You are standing alone in a docking b
 one corner and a dead pirate in the other corner. For some strange reason, no one has come running to the
 bay as a result of an escape pod crashing into it...
 ''')
-            sleep(5)
+            # sleep(5)
             print('''
 You know that a ship this size has a hyperdrive. Maybe you can get to the bridge, seal yourself in, and make
 the jump to earth. From there you could fly to Plurnquarters and help bring these pirates to justice.
 ''')
-            sleep(4)
+            # sleep(4)
             self.player.lookAround2 = False
             self.player.specialAction1 = True
             self.player.useItem1 = True
@@ -634,7 +641,7 @@ You flash your key card and it snaps open.
 You are standing in a small room with another door right in front of you. Based on your feel for the 
 layout of this vessel, you know that you are looking at the door to the bridge...
 ''')
-            sleep(4)
+            # sleep(4)
             print('''
 Almost home.
 ''')
@@ -644,7 +651,7 @@ It's so quiet. You no longer hear the hustle and bustle of pirates scrambling to
 for you? Or someone else?
 ''')
 
-            sleep(4)
+            # sleep(4)
             print('''
 You ready yourself with weapon drawn and creep toward the door.
 ''')
@@ -675,26 +682,26 @@ You poke your head through the now open door and swipe it side to side. On your 
 is a man standing a head taller than the average man with a large gun strapped to his back. He is talking to another
 and you hear him referred to as 'Commander.'
 ''')
-            sleep(5)
+            # sleep(5)
             print('''
 So this is the one in charge. The one you have to worry about. You slink back and listen to them talk.
 ''')
-            sleep(4)
+            # sleep(4)
             print('''
 "The wreckage was here when we arrived my Lord. We picked up the debris and figured we could be the first to scavenge.
 We didn't expect- "
 ''')
-            sleep(4)
+            # sleep(4)
             print('''
 "Of course you didn't expect them fool! Do you have any meaningful updates for me? What happened to the 
 one we picked up on the scanners?!"
 ''')
-            sleep(4)
+            # sleep(4)
             print('''
 "Still looking my lord. We have not seen it since for several minutes. We did scramble the crew, but many of 
 them have given up.
 ''')
-            sleep(4)
+            # sleep(4)
             print('''
 You realize that something is wrong, but all you can think about is getting to the bridge. You study the Commander 
 as he talks to his subordinant.
@@ -720,7 +727,7 @@ You slowly put one foot in front of the other and make your way to the second do
 card and re-enter the password. As the door hisses open you see the Commander's head start to turn, but not before
 you are able to slam it shut and blast the panel. They won't be following you.
 ''')
-                    sleep(5)
+                    # sleep(5)
                     self.player.specialAction2 = False
                     self.player.lookAround4 = True
 
@@ -730,7 +737,7 @@ You slowly put one foot in front of the other and make your way to the second do
 Commander whips his head around and raises his blaster before you can react. You feel an impossibly hot pain
 in your chest as the world goes dark.
 ''')
-                    sleep(5)
+                    # sleep(5)
                     self.battle2 = True
                     self.battleTwo()
                     # sleep(1)
@@ -746,12 +753,12 @@ You finish off the Commander with gusto. He didn't even have a name tag; he had 
 You raise your weapon and scream. Your voice jumps to a higher octave than you expect it to. The grunt standing
 next to the Commander screams even higher and runs away.
 ''')
-                sleep(4)
+                # sleep(4)
                 print('''
 The Commander raises his rifle and aims for your chest. You barrel-roll to the right and feel the hot light 
 flash inches from your left eye. You raise your weapon...
 ''')
-                sleep(4)
+                # sleep(4)
                 self.battle2 = True
                 self.battleTwo()
                 # sleep(1)
@@ -785,7 +792,7 @@ You're not sure what to do...
 You locate the security door that leads to a hallway. At the side of the door is a key pad. You swipe the pirate's
 key card and a message appears on the screen:
 ''')
-            sleep(3)
+            # sleep(3)
             print('''
         USER: Grek
         RANK: Grunt
@@ -915,6 +922,8 @@ What would you like to do?
                 # sleep(1)
                 confirm = input('''
 Are you sure you want to give up?
+1. Yes
+2. No way!
 ''')
             if confirm == '1':
                 # sleep(1)
@@ -929,16 +938,16 @@ Are you sure you want to give up?
 The ship's bridge room is quaint. There aren't a lot of bells and whistles, but you
 feel confident enough to pilot this thing home. 
 ''')
-            sleep(4)
+            # sleep(4)
             print('''
 The room is in complete disarray. Seats are overturned, a dead pirate lays in the corner,
 and there are sparks emitting from one of the computers. It is completely silent.
 ''')
-            sleep(4)
+            # sleep(4)
             print('''
 Where is everybody?
 ''')
-            sleep(3)
+            # sleep(3)
             print('''
 You see a computer at the center of the room in front of the large viewport.
 ''')
@@ -951,18 +960,18 @@ Oh yeah, the dead guy! You walk over to the dead Baustenian in the corner and ri
 his pockets. You find another key card and hope it gives you full access.
 ''')
             self.player.items.append('officer key card')
-            sleep(4)
+            # sleep(4)
             print('''
 As you prepare to leave the man, you feel something ice cold in his pockets. It startles you, but
 you investigate further. From his front-right pocket you produce a small, metal sphere.
 ''')
-            sleep(4)
+            # sleep(4)
             print('''
 It's absolutely without blemish and sits in your hand about 2 inches in diameter. It's impossibly
 smooth and feels like it's made of ice. Though it looks as if it could survive a super-nova blast
 it weighs no more than a feather.
 ''')
-            sleep(5)
+            # sleep(5)
             print('''
 Amazed, you take it.
 ''')
@@ -975,11 +984,11 @@ Amazed, you take it.
 As you begin entering the coordinates for earth, something out of the corner of your eye flashes,
 and you jolt your head up. By now you are an inch away from total insanity.
 ''')
-            sleep(4)
+            # sleep(4)
             print('''
 Through the dirty glass of the viewport, you see a massive abomination of an object.
 ''')
-            sleep(3)
+            # sleep(3)
             print('''
 Is it a ship?
 ''')
@@ -1001,7 +1010,7 @@ You have already looked around.
             print('''
 You make your way over to the computer terminal with fresh credentials. You scan them and... 
 ''')
-            sleep(3)
+            # sleep(3)
 
             randomDeath = randint(1, 10)
             live = randint(1, 10)
@@ -1026,18 +1035,18 @@ As you scramble to finish entering the coordinates and priming the hyperdrive, y
 realize that the Pirates weren't worried about you. The real foe lie ahead of you. Perhaps
 they are the ones responsible for destroying your ship.
 ''')
-            sleep(5)
+            # sleep(5)
             print('''
 Your mind has crossed the line of sanity. You are now screaming. Your panic falls
 silent on the empty room; your only audience a corpse.
 ''')
-            sleep(4)
+            # sleep(4)
             print('''
 The last thing you hear is a subtle clicking noise behind you. You have just enough time to turn
 and see a grotesque, scaled creature coiled around a locker on the far side of the room. In the
 blink of an eye it crosses the space between you and lurches. Your vision goes dark.
 ''')
-            sleep(3)
+            # sleep(3)
             self.player.specialAction2 = False
             self.scene3 = False
         
@@ -1052,7 +1061,7 @@ You're not sure what to do...
 You pull out your pirate key card and hope it works just one more time. You approach
 the terminal and insert the card.
 ''')
-            sleep(3)
+            # sleep(3)
             print('''
 Welcome Grunt Grek.
 ''')
