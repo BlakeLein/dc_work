@@ -46,7 +46,6 @@ class Plurn:
 
     def rest(self):
         if self.player.currentHp < self.player.maxHp:
-            sleep(1)
             print('''
 You find a dark corner and sit for a while. You assess your wounds and do what
 you can to patch yourself up.
@@ -66,7 +65,7 @@ You don't need to rest.
         sleep(2)
         print('A light flashes.')
         sleep(2)
-        print('There is the faint glow.')
+        print('There is a faint glow.')
         sleep(2)
 
         self.player.name = input('''
@@ -345,7 +344,7 @@ You don't have any items worth using right now.
 
     def sceneOne(self):
         action = ''
-        while action != "1" and action != "2" and action != "3" and action != "4" and action != "5":
+        while action != "1" and action != "2" and action != "3" and action != "4" and action != "5" and action != '6':
             action = input('''
 What would you like to do?
 1. Look Around.     3. Special Action.      5. Rest.
@@ -353,18 +352,23 @@ What would you like to do?
 >>>
 ''')
         if action == "1":
+            sleep(1)
             self.scene1LookAround()
 
         if action == "2":
+            sleep(1)
             self.displayStats()
         
         if action == "3":
+            sleep(1)
             self.scene1SpecialAction()
 
         if action == "4":
+            sleep(1)
             self.scene1UseItem()
 
         if action == "5":
+            sleep(1)
             self.rest()
         
         if action == "6":
@@ -472,7 +476,7 @@ of damage!
 
     def sceneTwo(self):
         action = ''
-        while action != "1" and action != "2" and action != "3" and action != "4" and action != "5":
+        while action != "1" and action != "2" and action != "3" and action != "4" and action != "5" and action != '6':
             action = input('''
 What would you like to do?
 1. Look Around.     3. Special Action.      5. Rest.
@@ -480,18 +484,23 @@ What would you like to do?
 >>>
 ''')
         if action == "1":
+            sleep(1)
             self.scene2LookAround()
 
         if action == "2":
+            sleep(1)
             self.displayStats()
         
         if action == "3":
+            sleep(1)
             self.scene2SpecialAction()
 
         if action == "4":
+            sleep(1)
             self.scene2UseItem()
 
         if action == "5":
+            sleep(1)
             self.rest()
         
         if action == "6":
@@ -772,7 +781,7 @@ You easily guess the fool's password and the door slides open with a cool hiss.
             self.player.useItem1 = False
             self.player.specialAction1 = False
             self.player.specialAction2 = True
-            
+
         else:
             print('''
 You don't have any items worth using right now.
@@ -847,7 +856,7 @@ You bash {self.commander.name} across the face and he falls lifeless.
 
     def sceneThree(self):
         action = ''
-        while action != "1" and action != "2" and action != "3" and action != "4" and action != "5":
+        while action != "1" and action != "2" and action != "3" and action != "4" and action != "5" and action != '6':
             action = input('''
 What would you like to do?
 1. Look Around.     3. Special Action.      5. Rest.
@@ -855,18 +864,22 @@ What would you like to do?
 >>>
 ''')
         if action == "1":
+            sleep(1)
             self.scene3LookAround()
 
         if action == "2":
             self.displayStats()
         
         if action == "3":
+            sleep(1)
             self.scene3SpecialAction()
 
         if action == "4":
+            sleep(1)
             self.scene3UseItem()
 
         if action == "5":
+            sleep(1)
             self.rest()
 
         if action == "6":
