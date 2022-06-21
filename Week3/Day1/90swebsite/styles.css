@@ -1,0 +1,30 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: orange;
+}
+
+.urlContainer {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: greenyellow;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.articleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+article {
+  padding: 10px;
+  margin: 10px;
+  background: aqua;
+}

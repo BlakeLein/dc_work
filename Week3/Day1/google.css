@@ -1,0 +1,36 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: black;
+}
+
+#navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.rowLeft {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.rowRight {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#navbar {
+  display: flex;
+}
