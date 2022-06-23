@@ -1,0 +1,22 @@
+.main-container {
+  height: 800px;
+  width: 800px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: solid 5px black;
+}
+
+.light {
+  width: 100px;
+  height: 100px;
+  background-color: tan;
+  border: 20px black;
+}
+
+.dark {
+  width: 100px;
+  height: 100px;
+  background-color: brown;
+  border: 20px black;
+}

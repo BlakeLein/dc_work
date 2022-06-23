@@ -15,22 +15,31 @@ body {
 .rowLeft {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .rowRight {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 20px;
 }
 
-#logo {
+.logo {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 500px;
 }
 
 #navbar {
   display: flex;
+}
+
+.searchbar {
+  border-radius: 10px;
+  height: auto;
+  width: 500px;
 }
