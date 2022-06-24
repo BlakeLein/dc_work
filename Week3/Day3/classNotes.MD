@@ -51,3 +51,15 @@
   ```
   - Then assign the 'gridx' to each element you want to apply it to as a variable!
     - Ex: `grid-area: grid1` in the class applied to each individual element.
+
+## Bootstrap
+
+- A type of CSS framework
+- Ability to import premade frameworks for designed web items.
+- Ideal to create layout and then import bootstap items
+- **The downside is not being able to modify the items you import from bootstap.**
+
+### Using Bootstrap
+
+- Import bootstrap from the website and putting it in a link tag in your document.
+- From there, you can import links from the website and put them in the div elements that you create for layout purposes.

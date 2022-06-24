@@ -1,0 +1,57 @@
+.small-container {
+  display: grid;
+  grid-template-columns: 50px 50px 50px;
+  grid-template-rows: auto;
+}
+
+.item {
+  border: solid 3px black;
+  height: 50px;
+}
+
+.blog-container {
+  display: grid;
+  width: 800px;
+  height: auto;
+  grid-template-areas:
+    "head head head"
+    "art art link"
+    "foot foot foot";
+}
+
+.header {
+  grid-area: head;
+  background-color: #bcc1cc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-links {
+  display: flex;
+  justify-content: space-around;
+  gap: 5px;
+  align-items: center;
+}
+
+.main {
+  grid-area: art;
+}
+
+.side {
+  grid-area: link;
+}
+
+.footer {
+  grid-area: foot;
+  background-color: #bcc1cc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
