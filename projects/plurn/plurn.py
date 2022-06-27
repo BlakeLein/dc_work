@@ -22,7 +22,7 @@ class Plurn:
         self.scene1 = True
         self.scene2 = False
         self.scene3 = False
-        self.battle = False
+        self.battleFlag = False
 
         # Variables to control order of game play
         self.lookAround1 = False
@@ -300,7 +300,7 @@ Now for the next problem...
 
                 self.scene2 = True
                 self.resetFlags()
-                self.battle = True
+                self.battleFlag = True
                 self.scene1 = False
 
         else: 
@@ -661,8 +661,8 @@ Commander whips his head around and raises his blaster before you can react. You
 in your chest as the world goes dark.
 ''')
     
-                    self.battle = True
-                    self.battleTwo()
+                    self.battleFlag = True
+                    self.battle(Character("Commander Matthew", "Commander", 10, 20, 20, 100))
     
                     cprint('''
 You finish off the Commander with gusto. He didn't even have a name tag; he had no chance.
@@ -682,8 +682,8 @@ The Commander raises his rifle and aims for your chest. You barrel-roll to the r
 flash inches from your left eye. You raise your weapon...
 ''')
 
-                self.battle2 = True
-                self.battleTwo()
+                self.battleFlag = True
+                self.battle(Character("Commander Matthew", "Commander", 10, 20, 20, 100))
 
                 cprint('''
 You finish off the Commander with gusto. He didn't even have a name tag; he had no chance.
@@ -908,10 +908,10 @@ You don't have any items worth using right now.
 
     def battle(self, enemy):
         """Main actions for Battle 1"""
-        while self.battle == True:
+        while self.battleFlag == True:
             self.playerAttack(enemy)
             self.checkHealth(enemy)
-            if self.battle == True:
+            if self.battleFlag == True:
                 self.enemyAttack(enemy)
                 self.checkHealth(enemy)
         cprint('''
@@ -972,7 +972,7 @@ world goes cold...
             cprint(f'''
 You bash {enemy.name} across the face and he falls lifeless.
 ''')
-            self.battle = False
+            self.battleFlag = False
 
         else:
             self.displayStats()      
@@ -986,6 +986,8 @@ of damage!
 ''')
         self.player.currentHp -= damage
 
+
+
     def battleTwo(self):
         """Main actions for Battle 2"""
         while self.battle2 == True:
@@ -994,8 +996,6 @@ of damage!
             if self.battle2 == True:
                 self.b2EnemyAttack()
                 self.b2CheckHealth()
-
-
 
     def b2PlayerAttack(self):
         """Controls all player attacks in battle 1"""
@@ -1077,9 +1077,8 @@ plurn = Plurn()
 #     plurn.sceneOne()
 
 ########### Scene 2 ###########
-enemy1 = Character("Grek", "Grunt", 7, 16, 16, 5)
 plurn.sceneTwoOpen()
-plurn.battle(enemy1)
+plurn.battle(Character("Grek", "Grunt", 7, 16, 16, 5))
 while plurn.scene2 == True:
     plurn.sceneTwo()
     

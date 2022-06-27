@@ -113,24 +113,27 @@
 // }
 // printSquare(6);
 
-let listOfReservations = [];
-const makeReservation = (vipStatus, timeSlot) => {
-  if (vipStatus == 4 || vipStatus == 5) {
-    let customer = {};
-    customer[vipstatus] = timeSlot;
-    listOfReservations.push(customer);
-  } else if (vipStatus == 2 || vipStatus == 3) {
-    let customer = {};
-    customer[vipstatus] = timeSlot;
-    listOfReservations.push(customer);
-  } else if ((vipStatus = 1)) {
-    let customer = {};
-    customer[vipstatus] = timeSlot;
-    listOfReservations.push(customer);
-  }
-};
+// // Creating a reservation list where VIP status gets the highest priority.
 
-makeReservation(4, "7:30 PM");
-makeReservation(1, "5:30 PM");
-makeReservation(3, "4:30 PM");
-console.log(listOfReservations);
+// // Create empty list
+// let listOfReservations = [];
+
+// // Function to add customers to list
+// const makeReservation = (vipStatus, timeSlot) => {
+//   let customer = {
+//     status: vipStatus,
+//     time: timeSlot,
+//   };
+//   listOfReservations.push(customer);
+// };
+
+// // Adding info to the reservations
+// makeReservation(4, "7:30 PM");
+// makeReservation(1, "5:30 PM");
+// makeReservation(3, "4:30 PM");
+
+// // Sort the list from highest status to lowest status
+// listOfReservations.sort((a, b) => b.status - a.status);
+
+// // Log the organized list.
+// console.log(listOfReservations);
