@@ -4,6 +4,7 @@ from random import randint
 from time import sleep
 from cprint import cprint
 
+
 # Import Other Game Modules
 from plurnCharacter import Character
 from colors import Colors
@@ -12,11 +13,6 @@ class Plurn:
     """Main class for Plurn 1"""
     def __init__(self):
         self.player = Character("name", "person", 1, 1, 1, 1)
-        self.enemy1 = Character("Enemy1", "Grunt", 5, 5, 5, 5)
-        self.enemy2 = Character("Enemy2", "Grunt", 5, 5, 5, 5)
-        self.enemy3 = Character("Enemy3", "Grunt", 5, 5, 5, 5)
-        self.enemy4 = Character("Enemy4", "Grunt", 5, 5, 5, 5)
-        self.boss = Character("Boss", "Commander", 5, 5, 5, 5)
         
         # Variables to control scenes
         self.scene1 = True
@@ -89,12 +85,17 @@ You don't need to rest.
 
     def openingSceneGetName(self):
         """Opening narrative, get name, and get class"""
+        
+        cprint('Welcome to Plurn. Developed in June 2022 by Blake Lein.')
+        cprint('Advance the game with the enter button')
+        input('(Press enter to continue...)')
+        print('*******************************************************************************')
         cprint('Your eyes slowly open.')
         cprint('You are weightless in a small capsule floating in space.')
         cprint('A light flashes.')
         cprint('There is a faint glow from the local sun.')
-
-        cprint('Do you remember your name?')
+        
+        print('Do you remember your name?')
         self.player.name = input('''
 >>> 
     ''').title()
@@ -103,7 +104,7 @@ You don't need to rest.
         cprint('You are a member of the P.L.U.R.N. Space Corps.')
         rank = ''
         while rank != '1' and rank != '2' and rank != '3':
-            cprint('Do you remember your rank?')
+            print('Do you remember your rank?')
             rank = input('''
     1. Soldier (+ Attack, + Health, - Sneak)
     2. Operative (+ Attack, - Health, + Sneak)
