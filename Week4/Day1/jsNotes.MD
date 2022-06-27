@@ -13,6 +13,10 @@
 - You can run JS in VS code using the "node.js" program. Type 'node filename.js' and run the file (like python)
 - You can run javascript in any browser DevTools console.
 
+### Cool points
+
+- console.log() will print the material. console.table() will print the material in a table - GREAT for a dictionary!
+
 ### Most common data types:
 
 - Strings
@@ -20,7 +24,7 @@
 - Booleans
 - Dates Ex: 'new Date(10, 21, 2015)'
 - Null (nothing)
-- Array (List in python)
+- Array (List in python) **Arrays are considered 'objects' in JS!**
 - Object (dictionary in python)
 - Function (same as python)
 
@@ -33,6 +37,14 @@ Two ways to do this:
    - Ex: console.log(`Hello ${name}`)
    - MUST use back ticks. MUST use $ before each {}
 
+### Three variables
+
+- Var variables: Can be changed; have a global accessibility. This can be unintentionally dangerous!
+- Let variables: Can be changed; only exist in the block it was created in (block scope).
+- Const variables: CANNOT be changed; only exist in the block it was created in (block scope). Not for for loops.
+  - You can change an array even if it's assigned to a const variable, as long as you don't change it's data TYPE.
+  - Strings cannot be updated, even if you do not change data types.
+
 ### Dynamic Variables
 
 - In JS (unlike many other languages) you can reassign a variable a different data type. This is not always best practice.
@@ -42,6 +54,27 @@ Two ways to do this:
 var name = "Jane";
 name = false;
 ```
+
+### Value Types
+
+- Strings
+- Numbers
+- Booleans
+- 'undefined'
+- 'null'
+- NaN
+  - This is a number type, but not a number you can use. Returns NaN when you perform an operation between numbers and non-numbers
+- Arrays
+- Objects
+- Classes
+
+Falsey values:
+
+- false
+- Empty strings
+- null
+- undefined
+- NaN
 
 ### Operators
 
@@ -134,6 +167,7 @@ for (i = 0; i < 10; i++) {
 ```
 
 - Set the counter variable (i), while i is less than 10, then increment i one value. The code block iterates as these parameters allow.
+- The index variable can be accessed outside of the loop as a variable.
 - Think:
 
 1. Define counter!
@@ -151,3 +185,27 @@ do this code
 x++ //Increment x to avoid infinite loop
 }
 ```
+
+### Arrays(Lists)
+
+- Add an item to an array with '.push()'; you can add multiple values separated by a comma.
+  - .push() does not work on objects.
+  - .push() returns the LENGTH of the array; if you console log the .push function, it will return the number of items in the array.
+- .pop() will take the last item out of an array
+  - .pop() returns the last item of the list, not the length of the list.
+- .splice() adds or removes items to an array.
+  - .splice(2, 0, "item1", "item2")
+    - At index 2, add these two items.
+  - .splice(2, 2)
+    - At index two, remove two items.
+    - Don't need to specify items when removing.
+
+### Objects (Dictionaries)
+
+- Use dot notation to refer to items in an object. Dot notation is only used with objects.
+- You could also use brackets
+
+  - console.log(object.name)
+  - console.log(object["name"])
+
+- You can use the built-in JS functions Object.keys() or Object.values() to access keys and values
