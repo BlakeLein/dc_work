@@ -19,9 +19,10 @@ class Plurn:
         self.boss = Character("Boss", "Commander", 5, 5, 5, 5)
         
         # Variables to control scenes
-        
-        self.battle1 = False
-        self.battle2 = False
+        self.scene1 = True
+        self.scene2 = False
+        self.scene3 = False
+        self.battle = False
 
         # Variables to control order of game play
         self.lookAround1 = False
@@ -147,11 +148,6 @@ slowly goes limp, you feel nothing but despair...
         cprint('''
 ...and the icy presence of a metal sphere.
 ''')
-
-
-class SceneOne:
-    def __init__(self):
-        self.scene1 = True
         
     def sceneOne(self):
         """Main actions for Scene 1"""
@@ -167,7 +163,7 @@ What would you like to do?
             self.scene1LookAround()
 
         if action == "2":
-            Plurn.displayStats()
+            self.displayStats()
         
         if action == "3":
             self.scene1SpecialAction()
@@ -176,7 +172,7 @@ What would you like to do?
             self.scene1UseItem()
 
         if action == "5":
-            Plurn.rest()
+            self.rest()
         
         if action == "6":
             confirm = ''
@@ -188,7 +184,7 @@ Are you sure you want to give up?
 ''')
             if confirm == '1':
 
-                Plurn.gameOver()
+                self.gameOver()
 
             elif confirm == '2':
 
@@ -196,11 +192,11 @@ Are you sure you want to give up?
 
     def scene1LookAround(self):
         """Controls order of all 'look around' actions in scene 1."""
-        if Plurn.lookAround1 == False:
+        if self.lookAround1 == False:
             cprint('''
 You feel your way around the dark capsule. It looks like an an escape pod. By the looks of the 
 registration number and P.L.U.R.N. Space Corps crest, you know you are in an escape pod for
-your ship - the 'Plurning Star.'
+your ship - the 'selfing Star.'
 ''')
             cprint('''
 You clamber over to the viewport and see a field of debris amongst the stars. As some pieces of rubble 
@@ -210,13 +206,13 @@ float across your capsule, you recognize the twisted metal as the meager remnant
 You notice in the capsule a thick metal rod, a computer with a blank screen, and a power cell 
 laying on the floor. You decide to grab the cell and loop the metal rod into your space suit's belt loop.
 ''')
-            Plurn.player.equipment.append("metal pipe")
-            Plurn.player.items.append('power cell')
-            Plurn.player.power += 2
-            Plurn.lookAround1 = True
-            Plurn.useItem1 = True
+            self.player.equipment.append("metal pipe")
+            self.player.items.append('power cell')
+            self.player.power += 2
+            self.lookAround1 = True
+            self.useItem1 = True
 
-        elif Plurn.lookAround2 == True:
+        elif self.lookAround2 == True:
             cprint('''
 Through the viewport you see another ship come into view. It's too small to be a transport and
 by the looks of the large sonic blasters outfitted on the side, you know that this ship was
@@ -227,16 +223,16 @@ built for one purpose - destruction.
 It's filthy and unkept, and on the sides above the rear thrusters, you see the blood-red sun surrounded 
 by black flames. You recognize this as the logo of the Bausten Pirate Syndicate.
 ''')
-            Plurn.lookAround2 = False
-            Plurn.specialAction1 = True
+            self.lookAround2 = False
+            self.specialAction1 = True
 
-        elif Plurn.lookAround3 == True:
+        elif self.lookAround3 == True:
             cprint('''
 You decide to take another glance around the pod with the lights back on. You find a pair of shoes that
 look more comfortable than the ones you have on. You decide to put them on. 
 ''')
-            Plurn.player.equipment.append("soft shoes")
-            Plurn.player.sneak += 5
+            self.player.equipment.append("soft shoes")
+            self.player.sneak += 5
 
             cprint('''
 As you turn to your right, you see her lifeless body strapped to a seat. Pam. You've known her since you
@@ -246,13 +242,13 @@ both joined up, and now she's gone while you keep going.
 She managed to don a kevlar space vest during the evacuation sequence. You have to press forward, and you 
 may need that vest if pirates are involved.
 ''')
-            Plurn.player.equipment.append("kevlar vest")
-            Plurn.player.maxHp += 5
-            Plurn.player.currentHp += 5
-            Plurn.lookAround3 = False
-            Plurn.specialAction2 = True
+            self.player.equipment.append("kevlar vest")
+            self.player.maxHp += 5
+            self.player.currentHp += 5
+            self.lookAround3 = False
+            self.specialAction2 = True
 
-        elif Plurn.lookAround4 == True:
+        elif self.lookAround4 == True:
             cprint('''
 Feeling hopeless you go to the viewport to take another look at the constellations you used to dream about
 as a child. Your escape pod has enough oxygen for a few more hours, and then you'll slowly slip into a deep
@@ -281,7 +277,7 @@ You quickly make your way to the console and initialize the engine thrust sequen
 You close your eyes and wait a couple seconds. You mash the thrust button, and as the pod lurches forward.
 The P.L.U.R.N. pod sails past the Pirate ship - you were not even close...
 ''')
-                Plurn.gameOver()
+                self.gameOver()
                 
 
             else:
@@ -302,9 +298,9 @@ a pirate running toward your ship...
 Now for the next problem...
 ''')
 
-                SceneTwo.scene2 = True
-                Plurn.resetFlags()
-                plurn.battle1 = True
+                self.scene2 = True
+                self.resetFlags()
+                self.battle1 = True
                 self.scene1 = False
 
         else: 
@@ -314,7 +310,7 @@ You have already looked around the capsule.
 
     def scene1SpecialAction(self):
         """Controls order of all 'special actions' in scene 1.."""
-        if Plurn.specialAction1 == True:
+        if self.specialAction1 == True:
             cprint('''
 As you float in the P.L.U.R.N. pod, you realize there is no hope for you while the systems remain offline.
 You go back to the computer to see if you can restore power. You know there is no way to guess the login
@@ -353,7 +349,7 @@ the circumstances couldn't be more dire. You click the symbol, and the screen go
 RIDDLE MATRIX DETECTS INTRUDER. SYSTEM ALERT. IMMEDIATE SELF-DESTRUCT SEQUENCE INITIALIZED.
 ''')
     
-                    Plurn.gameOver()
+                    self.gameOver()
 
                 elif choice == "2":
     
@@ -368,10 +364,10 @@ The screen goes black for another moment and then fires back to life with a cont
 The capsule comes to life. Lights are on and oxygen seeps into the cabin. You have full access 
 to the pod's systems.
 ''')
-                    Plurn.specialAction1 = False
-                    Plurn.lookAround3 = True
+                    self.specialAction1 = False
+                    self.lookAround3 = True
 
-        elif Plurn.specialAction2 == True:
+        elif self.specialAction2 == True:
             cprint('''
 You go over to the main terminal again. You see the options displayed across the screen.
 ''')
@@ -414,8 +410,8 @@ You realize the escape pod has no way to steer. Other than a quick rear-engine t
 launch you forward, you are dead in the water...
 ''')
                     proceed = 'y'
-                    Plurn.specialAction2 = False
-                    Plurn.lookAround4 = True
+                    self.specialAction2 = False
+                    self.lookAround4 = True
 
         else:
             cprint('''
@@ -424,7 +420,7 @@ You're not sure what to do...
 
     def scene1UseItem(self):
         """Controls order of all 'usse item' actions in scene 1."""
-        if Plurn.useItem1 == True:                
+        if self.useItem1 == True:                
             cprint('''
 You float over to the computer and take a closer look. After about 10 minutes of recalling 
 your space training and trying not to electrocute yourself, you manage to reattach the power
@@ -436,18 +432,14 @@ The computer displays the P.L.U.R.N. Space Corps logo along with the taunting mo
 "A safer world for all mankind." Some motto. You see a login menu for a P.L.U.R.N. Officer to
 sign in. You don't have such credentials. The only way in is by force.
 ''')
-            Plurn.player.items.remove('power cell')
-            Plurn.useItem1 = False
-            Plurn.lookAround2 = True
+            self.player.items.remove('power cell')
+            self.useItem1 = False
+            self.lookAround2 = True
 
         else:
             cprint('''
 You don't have any items worth using right now.
 ''')
-
-class SceneTwo:
-    def __init__(self):
-        self.scene2 = False
 
     def sceneTwoOpen(self):
         """Transitions from Scene 1 to Scene 2"""
@@ -470,7 +462,7 @@ What would you like to do?
             self.scene2LookAround()
 
         if action == "2":
-            Plurn.displayStats()
+            self.displayStats()
         
         if action == "3":
             self.scene2SpecialAction()
@@ -479,7 +471,7 @@ What would you like to do?
             self.scene2UseItem()
 
         if action == "5":
-            Plurn.rest()
+            self.rest()
         
         if action == "6":
             confirm = ''
@@ -491,19 +483,19 @@ Are you sure you want to give up?
 ''')
             if confirm == '1':
 
-                Plurn.gameOver()
+                self.gameOver()
 
             elif confirm == '2':
                 self.sceneTwo()
 
     def scene2LookAround(self):
         """Controls order of all 'look around' actions in scene 2."""
-        if Plurn.lookAround1 == False:
+        if self.lookAround1 == False:
             cprint('''
 You walk over to the pirate and check his pulse. Dead. You notice his weapon was badly damaged
 in the battle. You do notice a key card in his satchel, and decide to take that...
 ''')
-            Plurn.player.items.append("pirate key card")
+            self.player.items.append("pirate key card")
             cprint('''
 Now that you think of it, the pirate is generally the same size as you. You think it might be a good
 idea to put on his clothes...maybe it will be a nice disguise?
@@ -527,7 +519,7 @@ As you are putting on the smelly garb, another pirate comes up behind you and cl
 did you think it was a good idea to change outfits in the middle of an enemy ship?
 ''')
     
-                    Plurn.gameOver()
+                    self.gameOver()
                 
                 else:
                     cprint('''
@@ -535,8 +527,8 @@ You successfully put on the pirate's clothes, and you look terrible! Perfect! Ma
 fool any other pirates you come across.
 ''')
     
-                    Plurn.player.equipment.append('pirate clothes')
-                    Plurn.player.sneak += 5
+                    self.player.equipment.append('pirate clothes')
+                    self.player.sneak += 5
             
             elif disguise == '2':
                 cprint('''
@@ -544,10 +536,10 @@ Why would you put on a discguise in the middle of an enemy ship? You carefully d
 a crate in a dark corner and leave him.
 ''')
 
-            Plurn.lookAround1 = True
-            Plurn.lookAround2 = True
+            self.lookAround1 = True
+            self.lookAround2 = True
         
-        elif Plurn.lookAround2 == True:
+        elif self.lookAround2 == True:
             cprint('''
 You take a moment to survey the situation. You are standing alone in a docking bay with a destroyed ship in
 one corner and a dead pirate in the other corner. For some strange reason, no one has come running to the
@@ -557,26 +549,26 @@ bay as a result of an escape pod crashing into it...
 You know that a ship this size has a hyperdrive. Maybe you can get to the bridge, seal yourself in, and make
 the jump to earth. From there you could fly to Plurnquarters and help bring these pirates to justice.
 ''')
-            Plurn.lookAround2 = False
-            Plurn.specialAction1 = True
-            Plurn.useItem1 = True
+            self.lookAround2 = False
+            self.specialAction1 = True
+            self.useItem1 = True
 
-        elif Plurn.player.lookAround3 == True:
+        elif self.player.lookAround3 == True:
             cprint('''
 You notice the Commander has a really neat helmet. Man that helmet looks neat. 'Mine!'
 ''')
-            Plurn.player.equipment.append('pirate helmet')
-            Plurn.player.currentHp += 5
-            Plurn.player.maxHp += 5
-            Plurn.lookAround3 = False
-            Plurn.lookAround4 = True
+            self.player.equipment.append('pirate helmet')
+            self.player.currentHp += 5
+            self.player.maxHp += 5
+            self.lookAround3 = False
+            self.lookAround4 = True
 
             cprint('''
 You step over the Commander's helmetless corpse and make your way to another security door in the hallway.
 You flash your key card and it snaps open.
 ''')
 
-        elif Plurn.lookAround4 == True:
+        elif self.lookAround4 == True:
             cprint('''
 You are standing in a small room with another door right in front of you. Based on your feel for the 
 layout of this vessel, you know that you are looking at the door to the bridge...
@@ -593,8 +585,8 @@ for you? Or someone else?
 You ready yourself with weapon drawn and creep toward the door.
 ''')
             self.scene3 = True
-            Plurn.resetFlags()
-            SceneTwo.scene2 = False
+            self.resetFlags()
+            self.scene2 = False
 
         else: 
             cprint('''
@@ -603,17 +595,17 @@ You have already looked around.
 
     def scene2SpecialAction(self):
         """Controls order of all 'special actions' in scene 2."""
-        if Plurn.specialAction1 == True:
+        if self.specialAction1 == True:
             cprint('''
 You look into the crate obscurring the dead pirate and find a few blaster rifles. You have never been more elated
 in your entire life. You grab one and throw the metal pipe across the room.
 ''')
-            Plurn.player.equipment.remove('metal pipe')
-            Plurn.player.equipment.append('blaster rifle')
-            Plurn.player.power += 3
-            Plurn.specialAction1 = False
+            self.player.equipment.remove('metal pipe')
+            self.player.equipment.append('blaster rifle')
+            self.player.power += 3
+            self.specialAction1 = False
 
-        elif Plurn.specialAction2 == True:
+        elif self.specialAction2 == True:
             cprint('''
 You poke your head through the now open door and swipe it side to side. On your left is a dead-end. On your right 
 is a man standing a head taller than the average man with a large gun strapped to his back. He is talking to another
@@ -652,15 +644,15 @@ You settle your equipment and carefully step out. You see another door 10 feet d
 ''')
 
                 sneak = randint(1, 21)
-                if Plurn.player.sneak >= sneak:
+                if self.player.sneak >= sneak:
                     cprint('''
 You slowly put one foot in front of the other and make your way to the second door. You discreetly flash the key
 card and re-enter the password. As the door hisses open you see the Commander's head start to turn, but not before
 you are able to slam it shut and blast the panel. They won't be following you.
 ''')
     
-                    Plurn.specialAction2 = False
-                    Plurn.lookAround4 = True
+                    self.specialAction2 = False
+                    self.lookAround4 = True
 
                 else:
                     cprint('''
@@ -669,14 +661,14 @@ Commander whips his head around and raises his blaster before you can react. You
 in your chest as the world goes dark.
 ''')
     
-                    Plurn.battle2 = True
+                    self.battle2 = True
                     self.battleTwo()
     
                     cprint('''
 You finish off the Commander with gusto. He didn't even have a name tag; he had no chance.
 ''')
-                    Plurn.specialAction2 = False
-                    Plurn.lookAround3 = True
+                    self.specialAction2 = False
+                    self.lookAround3 = True
 
             elif option == '2':
 
@@ -690,14 +682,14 @@ The Commander raises his rifle and aims for your chest. You barrel-roll to the r
 flash inches from your left eye. You raise your weapon...
 ''')
 
-                Plurn.battle2 = True
-                Plurn.battleTwo()
+                self.battle2 = True
+                self.battleTwo()
 
                 cprint('''
 You finish off the Commander with gusto. He didn't even have a name tag; he had no chance.
 ''')
-                Plurn.specialAction2 = False
-                Plurn.lookAround3 = True
+                self.specialAction2 = False
+                self.lookAround3 = True
 
         else:
             cprint('''
@@ -706,7 +698,7 @@ You're not sure what to do...
 
     def scene2UseItem(self):
         """Controls order of all 'use item' actions in scene 2."""
-        if Plurn.useItem1 == True:
+        if self.useItem1 == True:
             cprint('''
 You locate the security door that leads to a hallway. At the side of the door is a key pad. You swipe the pirate's
 key card and a message appears on the screen:
@@ -730,18 +722,14 @@ key card and a message appears on the screen:
                 cprint('''
 You easily guess the fool's password and the door slides open with a cool hiss.
 ''')
-            Plurn.useItem1 = False
-            Plurn.specialAction1 = False
-            Plurn.specialAction2 = True
+            self.useItem1 = False
+            self.specialAction1 = False
+            self.specialAction2 = True
 
         else:
             cprint('''
 You don't have any items worth using right now.
 ''')
-
-class sceneThree:
-    def __init__(self):
-        self.scene3 = False
 
     def sceneThree(self):
         """Main actions for Scene 1"""
@@ -757,7 +745,7 @@ What would you like to do?
             self.scene3LookAround()
 
         if action == "2":
-            Plurn.displayStats()
+            self.displayStats()
         
         if action == "3":
             self.scene3SpecialAction()
@@ -766,7 +754,7 @@ What would you like to do?
             self.scene3UseItem()
 
         if action == "5":
-            Plurn.rest()
+            self.rest()
 
         if action == "6":
             confirm = ''
@@ -779,14 +767,14 @@ Are you sure you want to give up?
 ''')
             if confirm == '1':
 
-                Plurn.gameOver()
+                self.gameOver()
 
             elif confirm == '2':
                 self.sceneThree()
 
     def scene3LookAround(self):
         """Controls order of all 'look around' actions in scene 3."""
-        if Plurn.lookAround1 == False:
+        if self.lookAround1 == False:
             cprint('''
 The ship's bridge room is quaint. There aren't a lot of bells and whistles, but you
 feel confident enough to pilot this thing home. 
@@ -801,15 +789,15 @@ Where is everybody?
             cprint('''
 You see a computer at the center of the room in front of the large viewport.
 ''')
-            Plurn.lookAround1 = True
-            Plurn.useItem1 = True
+            self.lookAround1 = True
+            self.useItem1 = True
 
-        elif Plurn.lookAround2 == True:
+        elif self.lookAround2 == True:
             cprint('''
 Oh yeah, the dead guy! You walk over to the dead Baustenian in the corner and rifle through
 his pockets. You find another key card and hope it gives you full access.
 ''')
-            Plurn.player.items.append('officer key card')
+            self.player.items.append('officer key card')
             cprint('''
 As you prepare to leave the man, you feel something ice cold in his pockets. It startles you, but
 you investigate further. From his front-right pocket you produce a small, metal sphere.
@@ -822,11 +810,11 @@ it weighs no more than a feather.
             cprint('''
 Amazed, you take it.
 ''')
-            Plurn.player.items.append('cool ball')
-            Plurn.lookAround2 = False
-            Plurn.specialAction1 = True
+            self.player.items.append('cool ball')
+            self.lookAround2 = False
+            self.specialAction1 = True
 
-        elif Plurn.lookAround3 == True:
+        elif self.lookAround3 == True:
             cprint('''
 As you begin entering the coordinates for earth, something out of the corner of your eye flashes,
 and you jolt your head up. By now you are an inch away from total insanity.
@@ -841,8 +829,8 @@ Is it a ship?
 Yes, it is... but there is no logic to its design. Its sharp edge and spikes set it apart 
 from any ship you've seen or studied throughout your time in the Corps.
 ''')
-            Plurn.lookAround3 = False
-            Plurn.specialAction2 = True
+            self.lookAround3 = False
+            self.specialAction2 = True
 
         else: 
             cprint('''
@@ -851,7 +839,7 @@ You have already looked around.
 
     def scene3SpecialAction(self):
         """Controls order of all 'special actions' in scene 3."""
-        if Plurn.specialAction1 == True:
+        if self.specialAction1 == True:
             cprint('''
 You make your way over to the computer terminal with fresh credentials. You scan them and... 
 ''')
@@ -863,8 +851,8 @@ You make your way over to the computer terminal with fresh credentials. You scan
 Success! The navigational systems display, and it looks like the ship has enough integrity to
 make the jump back to earth.
 ''')        
-                Plurn.specialAction1 = False
-                Plurn.lookAround3 = True
+                self.specialAction1 = False
+                self.lookAround3 = True
 
             else:
                 cprint('''
@@ -873,7 +861,7 @@ No! The computer is damaged beyond repair. There is no way to fix it. All hope i
 
                 self.gameOver()
         
-        elif Plurn.specialAction2 == True:
+        elif self.specialAction2 == True:
             cprint('''
 As you scramble to finish entering the coordinates and priming the hyperdrive, you now
 realize that the Pirates weren't worried about you. The real foe lie ahead of you. Perhaps
@@ -888,7 +876,7 @@ The last thing you hear is a subtle clicking noise behind you. You have just eno
 and see a grotesque, scaled creature coiled around a locker on the far side of the room. In the
 blink of an eye it crosses the space between you and lurches. Your vision goes dark.
 ''')
-            Plurn.specialAction2 = False
+            self.specialAction2 = False
             self.scene3 = False
         
         else:
@@ -898,7 +886,7 @@ You're not sure what to do...
 
     def scene3UseItem(self):
         """Controls order of all 'use item' actions in scene 3."""
-        if Plurn.useItem1 == True:
+        if self.useItem1 == True:
             cprint('''
 You pull out your pirate key card and hope it works just one more time. You approach
 the terminal and insert the card.
@@ -910,158 +898,68 @@ Welcome Grunt Grek.
 The ship displays a few functional options, but you are barred from the navigation and
 piloting functions.
 ''')
-            Plurn.useItem1 = False
-            Plurn.lookAround2 = True
+            self.useItem1 = False
+            self.lookAround2 = True
         
         else:
             cprint('''
 You don't have any items worth using right now.
 ''')
 
-
-
-def battleOne(self):
-    """Main actions for Battle 1"""
-    while self.battle1 == True:
-        self.b1PlayerAttack()
-        self.b1CheckHealth()
-        if self.battle1 == True:
-            self.b1EnemyAttack()
-            self.b1CheckHealth()
-    cprint('''
+    def battleOne(self):
+        """Main actions for Battle 1"""
+        while self.battle == True:
+            self.playerAttack()
+            self.checkHealth()
+            if self.battle == True:
+                self.b1EnemyAttack()
+                self.b1CheckHealth()
+        cprint('''
 You finish off the Bausten Pirate thug, and it looks like no one heard or saw you. You should be sneaky...
 ''')
 
-def b1PlayerAttack(self):
-    """Controls all player attacks in battle 1"""
-    attack = ''
-    while attack != '1' and attack != '2' and attack != '3':
-        attack = input('''
+    def playerAttack(self, enemy):
+        """Controls all player attacks in battle 1"""
+        attack = ''
+        while attack != '1' and attack != '2' and attack != '3':
+            attack = input('''
 Battle! What would you like to do?
 1. Attack
 2. Check Stats
 3. Drop your weapon and give up...
 ''')
-        if attack == '1':
-            damage = randint(1, Plurn.player.power)
-            cprint(f'''
-You swing your weapon with force at {self.grek.name}! You deal {damage} points
+            if attack == '1':
+                damage = randint(1, self.player.power)
+                cprint(f'''
+You swing your weapon with force at {enemy.name}! You deal {damage} points
 of damage!
 ''')
-            self.grek.currentHp -= damage
+                enemy.currentHp -= damage
 
-        elif attack == '2':
-            self.displayStats()
-            self.b1PlayerAttack()
+            elif attack == '2':
+                self.displayStats()
+                self.playerAttack()
 
-        elif attack == '3':
-            confirm = ''
-            while confirm != '1' and confirm != '2':
-                confirm = input('''
+            elif attack == '3':
+                confirm = ''
+                while confirm != '1' and confirm != '2':
+                    confirm = input('''
 Are you...sure...you want to do that?
 1. Absolutely
 2. Nevermind
 ''')
-                if confirm == '1':
-    
-                    cprint('''
+                    if confirm == '1':
+        
+                        cprint('''
 You lay down your weapon and the enemy overtakes you...
 ''')
-    
-                    self.gameOver()
+        
+                        self.gameOver()
 
-                elif confirm == '2':
-                    self.b1PlayerAttack()
+                    elif confirm == '2':
+                        self.playerAttack()
 
-def b1CheckHealth(self):
-    """Check's health in battle and who is alive."""
-    if self.player.currentHp <= 0:
-        cprint('''
-The enemy takes a swing and hits you square in temple. Your vision goes black, and the
-world goes cold...
-''')    
-        self.gameOver()
-
-    elif self.grek.currentHp <= 0:
-        cprint(f'''
-You bash {self.grek.name} across the face and he falls lifeless.
-''')
-        self.battle1 = False
-
-    else:
-        self.displayStats()      
-    
-def b1EnemyAttack(self):
-    """Controls all player attacks in battle 1"""
-    damage = randint(1, self.grek.power)
-    cprint(f'''
-{self.grek.name} snarls and swings wildly at you. You take {damage} points
-of damage!
-''')
-    self.player.currentHp -= damage
-
-def battleTwo(self):
-    """Main actions for Battle 2"""
-    while self.battle2 == True:
-        self.b2PlayerAttack()
-        self.b2CheckHealth()
-        if self.battle2 == True:
-            self.b2EnemyAttack()
-            self.b2CheckHealth()
-
-
-
-def b2PlayerAttack(self):
-    """Controls all player attacks in battle 1"""
-    attack = ''
-    while attack != '1' and attack != '2' and attack != '3':
-        attack = input('''
-Battle! What would you like to do?
-1. Attack
-2. Check Stats
-3. Drop your weapon and give up...
-''')
-        if attack == '1':
-            damage = randint(1, self.player.power)
-            cprint(f'''
-You swing your weapon with force at {self.commander.name}! You deal {damage} points
-of damage!
-''')
-            self.commander.currentHp -= damage
-
-        elif attack == '2':
-            self.displayStats()
-            self.b2PlayerAttack()
-
-        elif attack == '3':
-            confirm = ''
-            while confirm != '1' and confirm != '2':
-                confirm = input('''
-Are you...sure...you want to do that?
-1. Absolutely
-2. Nevermind
-''')
-                if confirm == '1':
-    
-                    cprint('''
-You lay down your weapon and the enemy overtakes you...
-''')
-    
-                    self.gameOver()
-
-                elif confirm == '2':
-                    self.b2PlayerAttack()
-
-def b2EnemyAttack(self):
-    """Controls all player attacks in battle 1"""
-    damage = randint(1, self.commander.power)
-    cprint(f'''
-{self.commander.name} snarls and swings wildly at you. You take {damage} points
-of damage!
-''')
-    self.player.currentHp -= damage
-
-def b2CheckHealth(self):
+    def b1CheckHealth(self, enemy):
         """Check's health in battle and who is alive."""
         if self.player.currentHp <= 0:
             cprint('''
@@ -1070,39 +968,124 @@ world goes cold...
 ''')    
             self.gameOver()
 
-        elif self.commander.currentHp <= 0:
+        elif enemy.currentHp <= 0:
             cprint(f'''
-You bash {self.commander.name} across the face and he falls lifeless.
+You bash {enemy.name} across the face and he falls lifeless.
 ''')
-            self.battle2 = False
+            self.battle = False
 
         else:
-            self.displayStats()  
+            self.displayStats()      
+    
+    def enemyAttack(self, enemy):
+        """Controls all player attacks in battle 1"""
+        damage = randint(1, enemy.power)
+        cprint(f'''
+{enemy.name} snarls and swings wildly at you. You take {damage} points
+of damage!
+''')
+        self.player.currentHp -= damage
+
+    def battleTwo(self):
+        """Main actions for Battle 2"""
+        while self.battle2 == True:
+            self.b2PlayerAttack()
+            self.b2CheckHealth()
+            if self.battle2 == True:
+                self.b2EnemyAttack()
+                self.b2CheckHealth()
+
+
+
+    def b2PlayerAttack(self):
+        """Controls all player attacks in battle 1"""
+        attack = ''
+        while attack != '1' and attack != '2' and attack != '3':
+            attack = input('''
+Battle! What would you like to do?
+1. Attack
+2. Check Stats
+3. Drop your weapon and give up...
+''')
+            if attack == '1':
+                damage = randint(1, self.player.power)
+                cprint(f'''
+You swing your weapon with force at {self.commander.name}! You deal {damage} points
+of damage!
+''')
+                self.commander.currentHp -= damage
+
+            elif attack == '2':
+                self.displayStats()
+                self.b2PlayerAttack()
+
+            elif attack == '3':
+                confirm = ''
+                while confirm != '1' and confirm != '2':
+                    confirm = input('''
+Are you...sure...you want to do that?
+1. Absolutely
+2. Nevermind
+''')
+                    if confirm == '1':
+        
+                        cprint('''
+You lay down your weapon and the enemy overtakes you...
+''')
+        
+                        self.gameOver()
+
+                    elif confirm == '2':
+                        self.b2PlayerAttack()
+
+    def b2EnemyAttack(self):
+        """Controls all player attacks in battle 1"""
+        damage = randint(1, self.commander.power)
+        cprint(f'''
+{self.commander.name} snarls and swings wildly at you. You take {damage} points
+of damage!
+''')
+        self.player.currentHp -= damage
+
+    def b2CheckHealth(self):
+            """Check's health in battle and who is alive."""
+            if self.player.currentHp <= 0:
+                cprint('''
+The enemy takes a swing and hits you square in temple. Your vision goes black, and the
+world goes cold...
+''')    
+                self.gameOver()
+
+            elif self.commander.currentHp <= 0:
+                cprint(f'''
+You bash {self.commander.name} across the face and he falls lifeless.
+''')
+                self.battle2 = False
+
+            else:
+                self.displayStats()  
 
 # Create instances of classes
 plurn = Plurn()
-s1 = SceneOne()
-s2 = SceneTwo()
-s3= sceneThree()
 
 # Start Game
 plurn.openingSceneGetName()
 
 # Main Game Loops
 ########### Scene 1 ###########
-while s1.scene1 == True:
-    s1.sceneOne()
+while plurn.scene1 == True:
+    plurn.sceneOne()
 
 ########### Scene 2 ###########
-s2.sceneTwoOpen()
+plurn.sceneTwoOpen()
 plurn.battleOne()
-while s2.scene2 == True:
-    s2.sceneTwo()
+while plurn.scene2 == True:
+    plurn.sceneTwo()
     
 
 ########### Scene 3 ###########
-while s3.scene3 == True:
-    s3.sceneThree()
+while plurn.scene3 == True:
+    plurn.sceneThree()
 
 # End Game
 plurn.closingScene()
