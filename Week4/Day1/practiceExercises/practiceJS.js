@@ -32,16 +32,16 @@
 // console.log(tipAmount(20, "good"));
 
 // New Way
-const tipAmount = (bill) => {
-  if (bill >= 100) {
-    return bill + bill * 0.3;
-  } else if (bill >= 50) {
-    return bill + bill * 0.25;
-  } else if (bill < 50) {
-    return bill + bill * 0.2;
-  }
-};
-console.log(tipAmount(100));
+// const tipAmount = (bill) => {
+//   if (bill >= 100) {
+//     return bill + bill * 0.3;
+//   } else if (bill >= 50) {
+//     return bill + bill * 0.25;
+//   } else if (bill < 50) {
+//     return bill + bill * 0.2;
+//   }
+// };
+// console.log(tipAmount(100).toFixed(2)); // .toFixed(#) gives it a value to the nearest " # " decimal place.
 
 //Exercise 3
 // Write a function totalAmount that takes the same arguments as tipAmount except it returns the total as the tip amount plus the bill amount. This function may make use of tipAmount as a sub-task
@@ -112,3 +112,25 @@ console.log(tipAmount(100));
 //   }
 // }
 // printSquare(6);
+
+let listOfReservations = [];
+const makeReservation = (vipStatus, timeSlot) => {
+  if (vipStatus == 4 || vipStatus == 5) {
+    let customer = {};
+    customer[vipstatus] = timeSlot;
+    listOfReservations.push(customer);
+  } else if (vipStatus == 2 || vipStatus == 3) {
+    let customer = {};
+    customer[vipstatus] = timeSlot;
+    listOfReservations.push(customer);
+  } else if ((vipStatus = 1)) {
+    let customer = {};
+    customer[vipstatus] = timeSlot;
+    listOfReservations.push(customer);
+  }
+};
+
+makeReservation(4, "7:30 PM");
+makeReservation(1, "5:30 PM");
+makeReservation(3, "4:30 PM");
+console.log(listOfReservations);

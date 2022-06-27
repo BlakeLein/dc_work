@@ -300,7 +300,7 @@ Now for the next problem...
 
                 self.scene2 = True
                 self.resetFlags()
-                self.battle1 = True
+                self.battle = True
                 self.scene1 = False
 
         else: 
@@ -661,7 +661,7 @@ Commander whips his head around and raises his blaster before you can react. You
 in your chest as the world goes dark.
 ''')
     
-                    self.battle2 = True
+                    self.battle = True
                     self.battleTwo()
     
                     cprint('''
@@ -1060,7 +1060,7 @@ world goes cold...
                 cprint(f'''
 You bash {self.commander.name} across the face and he falls lifeless.
 ''')
-                self.battle2 = False
+                self.battle = False
 
             else:
                 self.displayStats()  
