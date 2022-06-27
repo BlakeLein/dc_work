@@ -987,101 +987,22 @@ of damage!
         self.player.currentHp -= damage
 
 
-
-    def battleTwo(self):
-        """Main actions for Battle 2"""
-        while self.battle2 == True:
-            self.b2PlayerAttack()
-            self.b2CheckHealth()
-            if self.battle2 == True:
-                self.b2EnemyAttack()
-                self.b2CheckHealth()
-
-    def b2PlayerAttack(self):
-        """Controls all player attacks in battle 1"""
-        attack = ''
-        while attack != '1' and attack != '2' and attack != '3':
-            attack = input('''
-Battle! What would you like to do?
-1. Attack
-2. Check Stats
-3. Drop your weapon and give up...
-''')
-            if attack == '1':
-                damage = randint(1, self.player.power)
-                cprint(f'''
-You swing your weapon with force at {self.commander.name}! You deal {damage} points
-of damage!
-''')
-                self.commander.currentHp -= damage
-
-            elif attack == '2':
-                self.displayStats()
-                self.b2PlayerAttack()
-
-            elif attack == '3':
-                confirm = ''
-                while confirm != '1' and confirm != '2':
-                    confirm = input('''
-Are you...sure...you want to do that?
-1. Absolutely
-2. Nevermind
-''')
-                    if confirm == '1':
-        
-                        cprint('''
-You lay down your weapon and the enemy overtakes you...
-''')
-        
-                        self.gameOver()
-
-                    elif confirm == '2':
-                        self.b2PlayerAttack()
-
-    def b2EnemyAttack(self):
-        """Controls all player attacks in battle 1"""
-        damage = randint(1, self.commander.power)
-        cprint(f'''
-{self.commander.name} snarls and swings wildly at you. You take {damage} points
-of damage!
-''')
-        self.player.currentHp -= damage
-
-    def b2CheckHealth(self):
-            """Check's health in battle and who is alive."""
-            if self.player.currentHp <= 0:
-                cprint('''
-The enemy takes a swing and hits you square in temple. Your vision goes black, and the
-world goes cold...
-''')    
-                self.gameOver()
-
-            elif self.commander.currentHp <= 0:
-                cprint(f'''
-You bash {self.commander.name} across the face and he falls lifeless.
-''')
-                self.battle = False
-
-            else:
-                self.displayStats()  
-
 # Create instances of classes
 plurn = Plurn()
 
-# # Start Game
-# plurn.openingSceneGetName()
+# Start Game
+plurn.openingSceneGetName()
 
-# # Main Game Loops
-# ########### Scene 1 ###########
-# while plurn.scene1 == True:
-#     plurn.sceneOne()
+# Main Game Loops
+########### Scene 1 ###########
+while plurn.scene1 == True:
+    plurn.sceneOne()
 
 ########### Scene 2 ###########
 plurn.sceneTwoOpen()
 plurn.battle(Character("Grek", "Grunt", 7, 16, 16, 5))
 while plurn.scene2 == True:
     plurn.sceneTwo()
-    
 
 ########### Scene 3 ###########
 while plurn.scene3 == True:
