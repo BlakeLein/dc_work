@@ -906,14 +906,14 @@ piloting functions.
 You don't have any items worth using right now.
 ''')
 
-    def battleOne(self):
+    def battle(self, enemy):
         """Main actions for Battle 1"""
         while self.battle == True:
-            self.playerAttack()
-            self.checkHealth()
+            self.playerAttack(enemy)
+            self.checkHealth(enemy)
             if self.battle == True:
-                self.b1EnemyAttack()
-                self.b1CheckHealth()
+                self.enemyAttack(enemy)
+                self.checkHealth(enemy)
         cprint('''
 You finish off the Bausten Pirate thug, and it looks like no one heard or saw you. You should be sneaky...
 ''')
@@ -959,7 +959,7 @@ You lay down your weapon and the enemy overtakes you...
                     elif confirm == '2':
                         self.playerAttack()
 
-    def b1CheckHealth(self, enemy):
+    def checkHealth(self, enemy):
         """Check's health in battle and who is alive."""
         if self.player.currentHp <= 0:
             cprint('''
@@ -1068,17 +1068,18 @@ You bash {self.commander.name} across the face and he falls lifeless.
 # Create instances of classes
 plurn = Plurn()
 
-# Start Game
-plurn.openingSceneGetName()
+# # Start Game
+# plurn.openingSceneGetName()
 
-# Main Game Loops
-########### Scene 1 ###########
-while plurn.scene1 == True:
-    plurn.sceneOne()
+# # Main Game Loops
+# ########### Scene 1 ###########
+# while plurn.scene1 == True:
+#     plurn.sceneOne()
 
 ########### Scene 2 ###########
+enemy1 = Character("Grek", "Grunt", 7, 16, 16, 5)
 plurn.sceneTwoOpen()
-plurn.battleOne()
+plurn.battle(enemy1)
 while plurn.scene2 == True:
     plurn.sceneTwo()
     

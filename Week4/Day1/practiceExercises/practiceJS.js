@@ -32,16 +32,16 @@
 // console.log(tipAmount(20, "good"));
 
 // New Way
-// const tipAmount = (bill, service) => {
-//   if (service === "good") {
-//     return bill + bill * 0.2;
-//   } else if (service === "fair") {
-//     return bill + bill * 0.15;
-//   } else if (service === "bad") {
-//     return bill + bill * 0.1;
-//   }
-// };
-// console.log(tipAmount(20, "good"));
+const tipAmount = (bill) => {
+  if (bill >= 100) {
+    return bill + bill * 0.3;
+  } else if (bill >= 50) {
+    return bill + bill * 0.25;
+  } else if (bill < 50) {
+    return bill + bill * 0.2;
+  }
+};
+console.log(tipAmount(100));
 
 //Exercise 3
 // Write a function totalAmount that takes the same arguments as tipAmount except it returns the total as the tip amount plus the bill amount. This function may make use of tipAmount as a sub-task
