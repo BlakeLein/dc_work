@@ -1,1 +1,42 @@
+body {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+}
 
+.container {
+  width: 1000px;
+  min-height: 100vh;
+  display: grid;
+}
+
+.row {
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(12, auto);
+  grid-template-rows: auto;
+}
+
+.white {
+  background-color: white;
+}
+
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}
+.tan {
+  background-color: #fef7e2;
+}
+.brown {
+  background-color: brown;
+}
+.black {
+  background-color: black;
+}
+
+.gold {
+  background-color: gold;
+}

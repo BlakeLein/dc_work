@@ -1,0 +1,105 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.main-container {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 5px;
+  /* border: solid 3px black; */
+  display: grid;
+  grid-template-areas:
+    "one one one one"
+    "one one one one"
+    "two three four four"
+    "two five five six"
+    "two seven eight nine"
+    "two ten ten ten";
+  gap: 10px;
+}
+
+.c1 {
+  /* border: solid 3px black; */
+  padding: 5px;
+  grid-area: one;
+  background-color: gold;
+  font-size: 30px;
+  color: white;
+}
+
+.c2 {
+  /* border: solid 3px black; */
+  padding: 5px;
+  grid-area: two;
+  background-color: gold;
+  font-size: 30px;
+  color: white;
+}
+.c3 {
+  /* border: solid 3px black; */
+  padding: 5px;
+  grid-area: three;
+  background-color: gold;
+  font-size: 30px;
+  color: white;
+}
+.c4 {
+  /* border: solid 3px black; */
+  padding: 5px;
+  grid-area: four;
+  background-color: gold;
+  font-size: 30px;
+  color: white;
+}
+.c5 {
+  /* border: solid 3px black; */
+  padding: 5px;
+  grid-area: five;
+  background-color: gold;
+  font-size: 30px;
+  color: white;
+}
+.c6 {
+  /* border: solid 3px black; */
+  padding: 5px;
+  grid-area: six;
+  background-color: gold;
+  font-size: 30px;
+  color: white;
+}
+.c7 {
+  /* border: solid 3px black; */
+  padding: 5px;
+  grid-area: seven;
+  background-color: gold;
+  font-size: 30px;
+  color: white;
+}
+.c8 {
+  /* border: solid 3px black; */
+  padding: 5px;
+  grid-area: eight;
+  background-color: gold;
+  font-size: 30px;
+  color: white;
+}
+.c9 {
+  /* border: solid 3px black; */
+  padding: 5px;
+  grid-area: nine;
+  background-color: gold;
+  font-size: 30px;
+  color: white;
+}
+.c10 {
+  /* border: solid 3px black; */
+  padding: 5px;
+  grid-area: ten;
+  background-color: gold;
+  font-size: 30px;
+  color: white;
+}

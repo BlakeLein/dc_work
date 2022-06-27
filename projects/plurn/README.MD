@@ -74,7 +74,14 @@ P.L.U.R.N. is a game that takes user input to play out a story set in outer spac
 
 ### Game Features
 
-P.L.U.R.N. centers around an exciting narrative that you as the player are meant to follow. You begin the game by entering your name and choosing your unique class. As the story progresses, you will collect various items and equipment to help you along. You will encounter dangerous foes and have the opportunity to answer ridiculous questions. In some situations, surviving comes down to pure luck, so don't beat yourself up if you blow up for no reason!
+P.L.U.R.N. centers around an exciting narrative that you as the player are meant to follow. Here are some of the game's features:
+
+- Scrolling and color text to make the terminal gaming experience more exciting! ('cprint' function developed by David Boren)
+- Ability to choose a unique class
+- Ability to collect various items and equipment to help you along
+- Engage in combat with dangerous foes
+- Ridiculous choices that have (probably) deadly consequences!
+- Surviving on... dumb luck.
 
 ---
 
@@ -92,7 +99,7 @@ This game has been a blast to work on! This game represents one of the first tim
 
 Throughout the process of planning and coding, there are several things that I would like to alter and implement as I progress:
 
-- Creating a more 'open world' concept where players have more freedom to look around and discover new worlds.
+- Creating a more 'open world' concept where players have more freedom to look around and discover new worlds in whatever order they wish.
 - Allowing players to have the ability to purchase and upgrade a number of items.
 - Allowing players to develop and foster relationships with other non-playable characters.
 - A settings module to make the game easily scalable for the desired level of difficulty.
