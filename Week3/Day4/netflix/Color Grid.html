@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://127.0.0.1:63662/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Grid</title>
+    
+  <link defer="" rel="stylesheet" href="./Color Grid_files/styles.css"></head>
+  <body>
+    <section class="container">
+      <div id="one"><button id="button1">What Color Am I?</button></div>
+      <div id="two"><button id="button2">What Color Am I?</button></div>
+      <div id="three"><button id="button3">What Color Am I?</button></div>
+      <div id="four"><button id="button4">What Color Am I?</button></div>
+      <div id="five"><button id="button5">What Color Am I?</button></div>
+      <div id="six"><button id="button6">What Color Am I?</button></div>
+      <div id="seven"><button id="button7">What Color Am I?</button></div>
+      <div id="eight"><button id="button8">What Color Am I?</button></div>
+      <div id="nine"><button id="button9">What Color Am I?</button></div>
+      <div id="ten"><button id="button10">What Color Am I?</button></div>
+      <div id="eleven"><button id="button11">What Color Am I?</button></div>
+      <div id="twelve"><button id="button12">What Color Am I?</button></div>
+      <div id="thirteen"><button id="button13">What Color Am I?</button></div>
+      <div id="fourteen"><button id="button14">What Color Am I?</button></div>
+      <div id="fifteen"><button id="button15">What Color Am I?</button></div>
+      <div id="sixteen"><button id="button16">What Color Am I?</button></div>
+    </section>
+    <script src="./Color Grid_files/app.js"></script>
+  <!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>

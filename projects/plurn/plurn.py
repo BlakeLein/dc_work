@@ -7,7 +7,7 @@ from cprint import cprint
 
 # Import Other Game Modules
 from plurnCharacter import Character
-from colors import Colors
+from colors import Colors as c
 
 class Plurn:
     """Main class for Plurn 1"""
@@ -50,18 +50,18 @@ class Plurn:
         """Quickly display the players stats in a
             neat format."""
         print(f'''
-    || NAME: {self.player.name} |||| RANK: {self.player.rank} ||
+    || NAME: {c.BLUE}{self.player.name}{c.END} |||| RANK: {self.player.rank} ||
 
     <<Hit Points>>
-        {self.player.currentHp} / {self.player.maxHp}''')
+        {c.RED}{self.player.currentHp} / {self.player.maxHp}{c.END}''')
         print('''
     <<Items>>''')                                   
         for i in self.player.items:
-            print(f'        {i.title()}')
+            print(f'{c.GREEN}        {i.title()}{c.END}')
         print('''
     <<Equipment>>''')
         for e in self.player.equipment:
-            print(f'        {e.title()}')
+            print(f'{c.PURPLE}        {e.title()}{c.END}')
 
     def rest(self):
         """Heal player if health below max"""
@@ -86,9 +86,9 @@ You don't need to rest.
     def openingSceneGetName(self):
         """Opening narrative, get name, and get class"""
         
-        cprint('Welcome to Plurn. Developed in June 2022 by Blake Lein.')
-        cprint('Advance the game with the enter button')
-        input('(Press enter to continue...)')
+        cprint('Welcome to Plurn. Developed in June 2022 by Blake Lein. (Press Enter)')
+        cprint('Please make sure your terminal is in full screen mode.')
+        cprint('Advance the game with the enter button. ')
         print('*******************************************************************************')
         cprint('Your eyes slowly open.')
         cprint('You are weightless in a small capsule floating in space.')
@@ -100,25 +100,25 @@ You don't need to rest.
 >>> 
     ''').title()
 
-        cprint(f'Yes, you remember. Your name is {self.player.name}.')
+        cprint(f'Yes, you remember. Your name is {c.BLUE}{self.player.name}{c.END}.')
         cprint('You are a member of the P.L.U.R.N. Space Corps.')
         rank = ''
         while rank != '1' and rank != '2' and rank != '3':
             print('Do you remember your rank?')
-            rank = input('''
-    1. Soldier (+ Attack, + Health, - Sneak)
-    2. Operative (+ Attack, - Health, + Sneak)
-    3. Medic (- Attack, + Health, + Sneak)
+            rank = input(f'''
+    1. {c.BROWN}Soldier (+ Attack, + Health, - Sneak){c.END}
+    2. {c.YELLOW}Operative (+ Attack, - Health, + Sneak){c.END}
+    3. {c.RED}Medic (- Attack, + Health, + Sneak){c.END}
 >>>
 ''')
         if rank == '1':
-            self.player = Character(f"{self.player.name}", 'P.L.U.R.N. Corps Soldier', 6, 1, 22, 3)
+            self.player = Character(f"{self.player.name}", f"{c.BROWN}P.L.U.R.N. Corps Soldier{c.END}", 6, 1, 22, 3)
 
         elif rank == '2':
-            self.player = Character(f"{self.player.name}", 'P.L.U.R.N. Corps Operative', 6, 1, 15, 10)
+            self.player = Character(f"{self.player.name}", f"{c.YELLOW}P.L.U.R.N. Corps Operative{c.END}", 6, 1, 15, 10)
 
         elif rank == '3':
-            self.player = Character(f"{self.player.name}", 'P.L.U.R.N. Corps Medic', 4, 1, 25, 10)
+            self.player = Character(f"{self.player.name}", f"{c.RED}P.L.U.R.N. Corps Medic{c.END}", 4, 1, 25, 10)
 
     def closingScene(self):
         """Final narration"""
@@ -355,10 +355,10 @@ RIDDLE MATRIX DETECTS INTRUDER. SYSTEM ALERT. IMMEDIATE SELF-DESTRUCT SEQUENCE I
                 elif choice == "2":
     
                     cprint('''
-    Almost before the goblin can finish asking for help, you take your crossbow and give him one between
-    the eyes. Everyone knows that goblins hate humans. Several other goblins scatter in a frenzied panic. You
-    go ahead and shoot them too.
-    ''')
+Almost before the goblin can finish asking for help, you take your crossbow and give him one between
+the eyes. Everyone knows that goblins hate humans. Several other goblins scatter in a frenzied panic. You
+go ahead and shoot them too.
+''')
     
                     cprint('''
 The screen goes black for another moment and then fires back to life with a control module displayed. 
@@ -554,7 +554,7 @@ the jump to earth. From there you could fly to Plurnquarters and help bring thes
             self.specialAction1 = True
             self.useItem1 = True
 
-        elif self.player.lookAround3 == True:
+        elif self.lookAround3 == True:
             cprint('''
 You notice the Commander has a really neat helmet. Man that helmet looks neat. 'Mine!'
 ''')
