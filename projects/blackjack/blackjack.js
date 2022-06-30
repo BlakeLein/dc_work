@@ -8,6 +8,7 @@ window.addEventListener("DOMContentLoaded", function () {
   const standButton = document.getElementById("stand-button"); // Grab the deal button
   const playerPoints = document.getElementById("player-points"); // Grab the player's points section
   const dealerPoints = document.getElementById("dealer-points"); // Grab the dealer's points section
+  const messageZone = document.getElementById("messages"); // Grab the message box.
 
   // Arrays for Deck Creation and Storage
   const deck = []; // Empty Deck to add cards to when we make a deck
@@ -22,8 +23,9 @@ window.addEventListener("DOMContentLoaded", function () {
   let playerCount = 0;
   let dealerCount = 0;
 
-  // Flag to control deal button
-  let hasDealt = false;
+  // Flags to control buttons
+  let canDeal = true;
+  let canHit = false;
 
   // Function to shuffle the deck
   const shuffle = (arr) => {
@@ -95,6 +97,21 @@ window.addEventListener("DOMContentLoaded", function () {
     return dealerCount;
   };
 
+  const checkForBust = () => {
+    if (playerCount === 21) {
+      messageZone.innerText = "Twenty-One. You win!";
+    }
+    if (dealerCount === 21) {
+      messageZone.innerHTML = "Dealer wins...";
+    }
+    if (playerCount > 21) {
+      messageZone.innerHTML = "You bust! Dealer Wins!";
+    }
+    if (dealerCount > 21) {
+      messageZone.innerHTML = "Dealer Wins!";
+    }
+  };
+
   // Button Functions
   // Deal Cards
   const deal = () => {
@@ -106,13 +123,14 @@ window.addEventListener("DOMContentLoaded", function () {
 
   // Deal cards when the deal button is hit.
   dealButton.addEventListener("click", () => {
-    if (hasDealt === false) {
+    if (canDeal === true) {
       deal();
       playerRender(playerCards);
       dealerRender(dealerCards);
       playerPoints.innerText = calculatePlayerPoints(playerCards);
       dealerPoints.innerText = calculateDealerPoints(dealerCards);
-      hasDealt = true;
+      canDeal = false;
+      canHit = true;
     }
   });
 
@@ -128,11 +146,14 @@ window.addEventListener("DOMContentLoaded", function () {
   hitButton.addEventListener("click", () => {
     playerHand.innerHTML = null;
     dealerHand.innerHTML = null;
-    hit();
-    playerRender(playerCards);
-    dealerRender(dealerCards);
-    playerPoints.innerText = calculatePlayerPoints(playerCards);
-    dealerPoints.innerText = calculateDealerPoints(dealerCards);
+    if (canHit === true) {
+      hit();
+      playerRender(playerCards);
+      dealerRender(dealerCards);
+      playerPoints.innerText = calculatePlayerPoints(playerCards);
+      dealerPoints.innerText = calculateDealerPoints(dealerCards);
+      checkForBust();
+    }
   });
 
   // Main Game Functions
