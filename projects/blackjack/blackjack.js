@@ -1,6 +1,7 @@
 window.addEventListener("DOMContentLoaded", function () {
   // Execute after page load
   // Grabbing HTML Elements
+  const wholeBody = document.querySelector("body"); // Grab the entire body.y
   const dealerHand = document.getElementById("dealer-hand"); // Grab the dealer's hand
   const playerHand = document.getElementById("player-hand"); // Grab the player's hand
   const dealButton = document.getElementById("deal-button"); // Grab the deal button
@@ -24,8 +25,9 @@ window.addEventListener("DOMContentLoaded", function () {
   let dealerCount = 0;
 
   // Flags to control buttons
-  let canDeal = true;
-  let canHit = false;
+  dealButton.disabled = false;
+  hitButton.disabled = true;
+  standButton.disabled = true;
 
   // Function to shuffle the deck
   const shuffle = (arr) => {
@@ -100,16 +102,30 @@ window.addEventListener("DOMContentLoaded", function () {
   const checkForBust = () => {
     if (playerCount === 21) {
       messageZone.innerText = "Twenty-One. You win!";
-    }
-    if (dealerCount === 21) {
+      gameOver();
+    } else if (dealerCount === 21) {
       messageZone.innerHTML = "Dealer wins...";
-    }
-    if (playerCount > 21) {
+      gameOver();
+    } else if (playerCount > 21) {
       messageZone.innerHTML = "You bust! Dealer Wins!";
+      gameOver();
+    } else if (dealerCount > 21) {
+      messageZone.innerHTML = "Dealer Busts! You win!";
+      gameOver();
+    } else if (dealerCount > playerCount) {
+      messageZone.innerText = "Dealer wins!";
+      gameOver();
     }
-    if (dealerCount > 21) {
-      messageZone.innerHTML = "Dealer Wins!";
-    }
+  };
+
+  const gameOver = () => {
+    const playAgain = document.createElement("button");
+    playAgain.classList = "play-again";
+    playAgain.innerText = "Good Game! Play Again?";
+    wholeBody.append(playAgain);
+    hitButton.disabled = true;
+    standButton.disabled = true;
+    playAgain.addEventListener("click", () => this.location.reload());
   };
 
   // Button Functions
@@ -121,36 +137,42 @@ window.addEventListener("DOMContentLoaded", function () {
     dealerCards.push(getNewCard());
   };
 
-  // Deal cards when the deal button is hit.
+  // Handles the events of clicking the deal button.
   dealButton.addEventListener("click", () => {
-    if (canDeal === true) {
-      deal();
-      playerRender(playerCards);
-      dealerRender(dealerCards);
-      playerPoints.innerText = calculatePlayerPoints(playerCards);
-      dealerPoints.innerText = calculateDealerPoints(dealerCards);
-      canDeal = false;
-      canHit = true;
-    }
+    deal();
+    playerRender(playerCards);
+    dealerRender(dealerCards);
+    playerPoints.innerText = calculatePlayerPoints(playerCards);
+    dealerPoints.innerText = calculateDealerPoints(dealerCards);
+    dealButton.disabled = true;
+    standButton.disabled = false;
+    hitButton.disabled = false;
   });
 
   // Function to add a card when hit is pressed
-  const hit = () => {
-    playerCards.push(getNewCard());
-    if (dealerCount <= 16) {
-      dealerCards.push(getNewCard());
-    }
+  const hit = (hand) => {
+    hand.push(getNewCard());
   };
 
-  // Add a new card when the hit button is pressed
+  // Handles the events of clicking the hit button.
   hitButton.addEventListener("click", () => {
     playerHand.innerHTML = null;
     dealerHand.innerHTML = null;
-    if (canHit === true) {
-      hit();
-      playerRender(playerCards);
+    hit(playerCards);
+    playerRender(playerCards);
+    dealerRender(dealerCards);
+    playerPoints.innerText = calculatePlayerPoints(playerCards);
+    dealerPoints.innerText = calculateDealerPoints(dealerCards);
+    checkForBust();
+  });
+
+  // Handles the events of clicking the stand button.
+  standButton.addEventListener("click", () => {
+    hitButton.disabled = true;
+    while (dealerCount < 17 || dealerCount <= playerCount) {
+      dealerHand.innerHTML = null;
+      hit(dealerCards);
       dealerRender(dealerCards);
-      playerPoints.innerText = calculatePlayerPoints(playerCards);
       dealerPoints.innerText = calculateDealerPoints(dealerCards);
       checkForBust();
     }

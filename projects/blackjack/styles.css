@@ -5,6 +5,9 @@ body {
 }
 
 body * {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
   box-sizing: inherit;
 }
 
@@ -102,4 +105,9 @@ button[type="reset"] {
 button[type="reset"]:hover {
   background: rgb(150, 7, 7);
   box-shadow: 0px 0px 10px 5px rgba(150, 7, 7, 0.63);
+}
+
+.play-again {
+  text-align: center;
+  margin-left: 44%;
 }
