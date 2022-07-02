@@ -9,12 +9,13 @@
   </head>
   <body>
     <h1>Blackjack!</h1>
-    <div class="message-box" id="messages">Press Deal to Play!</div>
+    <div class="message-box" id="messages">Place a Bet and Deal to Play!</div>
     <div class="table">
       <div class="player">
         <label class="player-name"
           >Dealer:
           <span id="dealer-points" class="points"></span>
+          <span id="dealer-games" class="player-points"></span>
         </label>
         <div id="dealer-hand" class="hand">
           <!-- Dealer Hand -->
@@ -24,6 +25,8 @@
         <label class="player-name"
           >Player:
           <span id="player-points" class="points"></span>
+          <span id="player-games" class="player-points"></span>
+          <span id="player-bet" class="player-points"></span>
         </label>
         <div id="player-hand" class="hand">
           <!-- Player Hand -->
@@ -35,5 +38,6 @@
         <button id="stand-button" type="button">Stand</button>
       </div>
     </div>
+    <div id="lower-zone"></div>
   </body>
 </html>

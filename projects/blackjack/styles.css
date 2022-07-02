@@ -47,6 +47,12 @@ h1 {
   display: block;
   font-size: 16px;
   margin-bottom: 8px;
+  margin-right: 100px;
+}
+
+.player-points {
+  font-style: italic;
+  margin-left: 100px;
 }
 
 .points {
@@ -68,6 +74,23 @@ h1 {
 .buttons {
   display: flex;
   justify-content: center;
+}
+
+.bet-menu {
+  text-align: center;
+  font-size: 18px;
+  border: 0;
+}
+select {
+  text-align: center;
+  margin: 10px;
+  font-size: 18px;
+  border: 0;
+  padding: 10px 16px;
+  border-radius: 10px;
+  color: rgb(189, 229, 255);
+  background: rgb(0, 98, 163);
+  margin-left: 47%;
 }
 
 button {
@@ -109,5 +132,5 @@ button[type="reset"]:hover {
 
 .play-again {
   text-align: center;
-  margin-left: 44%;
+  margin-left: 45%;
 }

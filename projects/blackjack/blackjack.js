@@ -10,19 +10,31 @@ window.addEventListener("DOMContentLoaded", function () {
   const playerPoints = document.getElementById("player-points"); // Grab the player's points section
   const dealerPoints = document.getElementById("dealer-points"); // Grab the dealer's points section
   const messageZone = document.getElementById("messages"); // Grab the message box.
+  const lowerZone = document.getElementById("lower-zone"); // Grab the play again zone
+  const playerGames = document.getElementById("player-games"); // Grab zone for player games won
+  const dealerGames = document.getElementById("dealer-games"); // Grab zone for dealer games won
+  const playerMoneyZone = document.getElementById("player-bet"); // Grab zone to display player money
 
   // Arrays for Deck Creation and Storage
-  const deck = []; // Empty Deck to add cards to when we make a deck
+  let deck = []; // Empty Deck to add cards to when we make a deck
   const suits = ["hearts", "spades", "clubs", "diamonds"]; // List of possible suits
   const ranks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]; // List of possible ranks (1 is Ace moving up)
 
   // Arrays for Hands
-  const dealerCards = [];
-  const playerCards = [];
+  let dealerCards = [];
+  let playerCards = [];
 
   // Player and Dealer Scores
   let playerCount = 0;
   let dealerCount = 0;
+
+  // Player and Dealer Games Won Count
+  let playerGamesWon = 0;
+  let dealerGamesWon = 0;
+
+  // Player Money for Betting
+  let playerMoney = 5000;
+  let playerBet = 0;
 
   // Flags to control buttons
   dealButton.disabled = false;
@@ -99,33 +111,128 @@ window.addEventListener("DOMContentLoaded", function () {
     return dealerCount;
   };
 
-  const checkForBust = () => {
+  const checkPlayerBust = () => {
     if (playerCount === 21) {
       messageZone.innerText = "Twenty-One. You win!";
+      playerMoney += parseInt(playerBet) * 2;
       gameOver();
-    } else if (dealerCount === 21) {
-      messageZone.innerHTML = "Dealer wins...";
-      gameOver();
+      playerGamesWon += 1;
     } else if (playerCount > 21) {
-      messageZone.innerHTML = "You bust! Dealer Wins!";
-      gameOver();
-    } else if (dealerCount > 21) {
-      messageZone.innerHTML = "Dealer Busts! You win!";
-      gameOver();
-    } else if (dealerCount > playerCount) {
-      messageZone.innerText = "Dealer wins!";
+      messageZone.innerText = "You bust! Dealer Wins!";
+      dealerGamesWon += 1;
       gameOver();
     }
+  };
+
+  // Function to show bet menu on the screen
+  const getBet = () => {
+    dealButton.disabled = true;
+
+    // Create and render bet prompt
+    const playerBetMessage = document.createElement("p");
+    playerBetMessage.classList = "bet-menu";
+    playerBetMessage.innerText = "How Much Would You Like to Bet?";
+    lowerZone.append(playerBetMessage);
+
+    // Create and render bet options
+    let playerBetOptions = document.createElement("select");
+    const option50 = document.createElement("option");
+    option50.innerText = "50";
+    option50.value = 50;
+    const option100 = document.createElement("option");
+    option100.innerText = "100";
+    option100.value = 100;
+    const option500 = document.createElement("option");
+    option500.innerText = "500";
+    option500.value = 500;
+    playerBetOptions.append(option50, option100, option500);
+    lowerZone.append(playerBetOptions);
+
+    // Receive the player's bet
+    playerBetOptions.addEventListener("change", () => {
+      playerBet = playerBetOptions.value;
+      playerMoney -= parseInt(playerBet);
+      playerMoneyZone.innerHTML = `Money: ${playerMoney}`;
+      playerBetOptions.disabled = true;
+      dealButton.disabled = false;
+    });
+  };
+
+  const checkDealerBust = () => {
+    if (dealerCount === 21) {
+      messageZone.innerText = "Twenty-One. Dealer wins!";
+      dealerGamesWon += 1;
+      gameOver();
+    } else if (dealerCount > 21) {
+      messageZone.innerText = "Dealer busts! You Win!";
+      playerGamesWon += 1;
+      playerMoney += parseInt(playerBet) * 2;
+      gameOver();
+    } else if (dealerCount < playerCount) {
+      messageZone.innerText = "You win!";
+      playerGamesWon += 1;
+      playerMoney += parseInt(playerBet) * 2;
+      gameOver();
+    } else if (playerCount < dealerCount) {
+      messageZone.innerText = "Dealer wins!";
+      dealerGamesWon += 1;
+      gameOver();
+    } else {
+      messageZone.innerText = "Tie Game!";
+      gameOver();
+    }
+  };
+
+  const resetGame = () => {
+    // Take away play again button
+    lowerZone.innerHTML = null;
+
+    //Clear the message zone
+    messageZone.innerHTML = null;
+
+    // Set scores to zero
+    playerCount = 0;
+    dealerCount = 0;
+
+    // Take scores off board
+    playerPoints.innerHTML = null;
+    dealerPoints.innerHTML = null;
+
+    // Empty hands
+    playerCards = [];
+    dealerCards = [];
+
+    // Take hands off the board
+    playerHand.innerHTML = null;
+    dealerHand.innerHTML = null;
+
+    // Reset Deck
+    deck = [];
+
+    // Reset Player's Bet to zero
+    playerBet = 0;
+
+    // Make a New Deck
+    makeDeck();
+
+    // Get a new bet from the player
+    getBet();
+
+    // Display updated scores and money
+    playerGames.innerHTML = `Games Won: ${playerGamesWon}`;
+    dealerGames.innerHTML = `Games Won: ${dealerGamesWon}`;
+    playerMoneyZone.innerHTML = `Money: ${playerMoney}`;
   };
 
   const gameOver = () => {
     const playAgain = document.createElement("button");
     playAgain.classList = "play-again";
     playAgain.innerText = "Good Game! Play Again?";
-    wholeBody.append(playAgain);
+    lowerZone.append(playAgain);
     hitButton.disabled = true;
     standButton.disabled = true;
-    playAgain.addEventListener("click", () => this.location.reload());
+    dealButton.disabled = true;
+    playAgain.addEventListener("click", () => resetGame());
   };
 
   // Button Functions
@@ -139,6 +246,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
   // Handles the events of clicking the deal button.
   dealButton.addEventListener("click", () => {
+    lowerZone.innerHTML = null;
     deal();
     playerRender(playerCards);
     dealerRender(dealerCards);
@@ -163,21 +271,25 @@ window.addEventListener("DOMContentLoaded", function () {
     dealerRender(dealerCards);
     playerPoints.innerText = calculatePlayerPoints(playerCards);
     dealerPoints.innerText = calculateDealerPoints(dealerCards);
-    checkForBust();
+    checkPlayerBust();
   });
 
   // Handles the events of clicking the stand button.
   standButton.addEventListener("click", () => {
     hitButton.disabled = true;
-    while (dealerCount < 17 || dealerCount <= playerCount) {
+    while (dealerCount < 17) {
       dealerHand.innerHTML = null;
       hit(dealerCards);
       dealerRender(dealerCards);
       dealerPoints.innerText = calculateDealerPoints(dealerCards);
-      checkForBust();
     }
+    checkDealerBust();
   });
 
-  // Main Game Functions
+  // Game Start
   makeDeck();
+  playerGames.innerHTML = `Games Won: ${playerGamesWon}`;
+  dealerGames.innerHTML = `Games Won: ${dealerGamesWon}`;
+  playerMoneyZone.innerHTML = `Money: ${playerMoney}`;
+  getBet();
 });
