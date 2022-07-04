@@ -143,6 +143,16 @@ window.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  const checkDealerAce = (points, hand) => {
+    if (points > 17) {
+      hand.forEach((ele) => {
+        if (ele.rank === 11) {
+          ele.pointValue = 1;
+        }
+      });
+    }
+  };
+
   const revealDealerHand = () => {
     dealerHand.innerHTML = null;
     dealerPoints.innerText = calculateDealerPoints(dealerCards);
@@ -342,7 +352,7 @@ window.addEventListener("DOMContentLoaded", function () {
       dealerHand.innerHTML = null;
       hit(dealerCards);
       dealerRender(dealerCards);
-      checkAce(calculateDealerPoints(dealerCards), dealerCards);
+      checkDealerAce(calculateDealerPoints(dealerCards), dealerCards);
       dealerPoints.innerText = calculateDealerPoints(dealerCards);
     }
     checkDealerBust();
