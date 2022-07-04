@@ -96,11 +96,11 @@ window.addEventListener("DOMContentLoaded", function () {
   const renderFaceDownDeal = (arr) => {
     dealerHand.append(getCardImage(arr[0]));
     for (let i = 1; i < arr.length; i++) {
-      dealerHand.append(faceDownCardImage(arr[i]));
+      dealerHand.append(getFaceDownCardImage(arr[i]));
     }
   };
 
-  const faceDownCardImage = (card) => {
+  const getFaceDownCardImage = (card) => {
     let faceDownImage = document.createElement("img");
     faceDownImage.src = "./images/cardBack.png";
     return faceDownImage;
@@ -143,21 +143,22 @@ window.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  const revealDealerHand = () => {
+    dealerHand.innerHTML = null;
+    dealerPoints.innerText = calculateDealerPoints(dealerCards);
+    dealerRender(dealerCards);
+  };
   // Check to see if the player busts while hitting
   const checkPlayerBust = () => {
     if (playerCount === 21) {
       messageZone.innerText = "Twenty-One. You win!";
-      dealerHand.innerHTML = null;
-      dealerPoints.innerText = calculateDealerPoints(dealerCards);
-      dealerRender(dealerCards);
+      revealDealerHand();
       playerMoney += parseInt(playerBet) * 2;
-      gameOver();
       playerGamesWon += 1;
+      gameOver();
     } else if (playerCount > 21) {
       messageZone.innerText = "You bust! Dealer Wins!";
-      dealerHand.innerHTML = null;
-      dealerPoints.innerText = calculateDealerPoints(dealerCards);
-      dealerRender(dealerCards);
+      revealDealerHand();
       dealerGamesWon += 1;
       gameOver();
     }
@@ -167,42 +168,38 @@ window.addEventListener("DOMContentLoaded", function () {
   const checkDealerBust = () => {
     if (dealerCount === 21) {
       messageZone.innerText = "Twenty-One. Dealer wins!";
-      dealerHand.innerHTML = null;
-      dealerPoints.innerText = calculateDealerPoints(dealerCards);
-      dealerRender(dealerCards);
+      revealDealerHand();
       dealerGamesWon += 1;
       gameOver();
     } else if (dealerCount > 21) {
       messageZone.innerText = "Dealer busts! You Win!";
-      dealerHand.innerHTML = null;
-      dealerPoints.innerText = calculateDealerPoints(dealerCards);
-      dealerRender(dealerCards);
+      revealDealerHand();
       playerGamesWon += 1;
       playerMoney += parseInt(playerBet) * 2;
       gameOver();
     } else if (dealerCount < playerCount) {
       messageZone.innerText = "You win!";
-      dealerHand.innerHTML = null;
-      dealerPoints.innerText = calculateDealerPoints(dealerCards);
-      dealerRender(dealerCards);
+      revealDealerHand();
       playerGamesWon += 1;
       playerMoney += parseInt(playerBet) * 2;
       gameOver();
     } else if (playerCount < dealerCount) {
       messageZone.innerText = "Dealer wins!";
-      dealerHand.innerHTML = null;
-      dealerPoints.innerText = calculateDealerPoints(dealerCards);
-      dealerRender(dealerCards);
+      revealDealerHand();
       dealerGamesWon += 1;
       gameOver();
     } else {
       messageZone.innerText = "Tie Game!";
-      dealerHand.innerHTML = null;
-      dealerPoints.innerText = calculateDealerPoints(dealerCards);
-      dealerRender(dealerCards);
+      revealDealerHand();
       playerMoney += parseInt(playerBet);
       gameOver();
     }
+  };
+
+  const showStats = () => {
+    playerGames.innerHTML = `Games Won: ${playerGamesWon}`;
+    dealerGames.innerHTML = `Games Won: ${dealerGamesWon}`;
+    playerMoneyZone.innerHTML = `Money: ${playerMoney}`;
   };
 
   // Function to handle betting
@@ -262,7 +259,7 @@ window.addEventListener("DOMContentLoaded", function () {
     //Clear the message zone
     messageZone.innerHTML = null;
 
-    // Set scores to zero
+    // Set round scores to zero
     playerCount = 0;
     dealerCount = 0;
 
@@ -274,7 +271,7 @@ window.addEventListener("DOMContentLoaded", function () {
     playerCards = [];
     dealerCards = [];
 
-    // Take hands off the board
+    // Take cards off the board
     playerHand.innerHTML = null;
     dealerHand.innerHTML = null;
 
@@ -291,9 +288,7 @@ window.addEventListener("DOMContentLoaded", function () {
     getBet();
 
     // Display updated scores and money
-    playerGames.innerHTML = `Games Won: ${playerGamesWon}`;
-    dealerGames.innerHTML = `Games Won: ${dealerGamesWon}`;
-    playerMoneyZone.innerHTML = `Money: ${playerMoney}`;
+    showStats();
   };
 
   // Deal Cards
@@ -355,8 +350,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
   // Game Start
   makeDeck();
-  playerGames.innerHTML = `Games Won: ${playerGamesWon}`;
-  dealerGames.innerHTML = `Games Won: ${dealerGamesWon}`;
-  playerMoneyZone.innerHTML = `Money: ${playerMoney}`;
+  showStats();
   getBet();
 });
