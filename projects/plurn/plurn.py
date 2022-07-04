@@ -9,6 +9,7 @@ from cprint import cprint
 from plurnCharacter import Character
 from colors import Colors as c
 
+
 class Plurn:
     """Main class for Plurn 1"""
     def __init__(self):
@@ -73,32 +74,31 @@ you can to patch yourself up.
             self.player.currentHp = self.player.maxHp
 
         else:     
-            cprint('''
-You don't need to rest.
+            cprint(f'''
+{c.ITALIC}{c.DARK_GRAY}You don't need to rest.{c.END}
 ''')
 
     def gameOver(self):
         """End the game."""
-        cprint("Game Over")
-        cprint("You lose.")
+        cprint(f"{c.ITALIC}{c.DARK_GRAY}Game Over.{c.END}")
+        cprint(f"{c.ITALIC}{c.DARK_GRAY}You lose.{c.END}")
         sys.exit()
 
     def openingSceneGetName(self):
         """Opening narrative, get name, and get class"""
         
-        cprint('Welcome to Plurn. Developed in June 2022 by Blake Lein. (Press Enter)')
+        cprint(f'{c.ITALIC}{c.DARK_GRAY}Welcome to Plurn. Developed in June 2022 by Blake Lein. (Press Enter)')
         cprint('Please make sure your terminal is in full screen mode.')
-        cprint('Advance the game with the enter button. ')
-        print('*******************************************************************************')
+        cprint(f'Advance the game with the enter button.{c.END}')
+        print(f'{c.BLUE}*******************************************************************************{c.END}')
         cprint('Your eyes slowly open.')
         cprint('You are weightless in a small capsule floating in space.')
         cprint('A light flashes.')
         cprint('There is a faint glow from the local sun.')
         
-        print('Do you remember your name?')
-        self.player.name = input('''
->>> 
-    ''').title()
+        cprint(f'{c.ITALIC}{c.DARK_GRAY}Do you remember your name?{c.END}')
+        self.player.name = input(f'''
+{c.DARK_GRAY}>>>{c.END} ''').title()
 
         cprint(f'Yes, you remember. Your name is {c.BLUE}{self.player.name}{c.END}.')
         cprint('You are a member of the P.L.U.R.N. Space Corps.')
@@ -106,13 +106,13 @@ You don't need to rest.
         while rank != '1' and rank != '2' and rank != '3':
             print('Do you remember your rank?')
             rank = input(f'''
-    1. {c.BROWN}Soldier (+ Attack, + Health, - Sneak){c.END}
+    1. {c.CYAN}Soldier (+ Attack, + Health, - Sneak){c.END}
     2. {c.YELLOW}Operative (+ Attack, - Health, + Sneak){c.END}
     3. {c.RED}Medic (- Attack, + Health, + Sneak){c.END}
 >>>
 ''')
         if rank == '1':
-            self.player = Character(f"{self.player.name}", f"{c.BROWN}P.L.U.R.N. Corps Soldier{c.END}", 6, 1, 22, 3)
+            self.player = Character(f"{self.player.name}", f"{c.CYAN}P.L.U.R.N. Corps Soldier{c.END}", 6, 1, 22, 3)
 
         elif rank == '2':
             self.player = Character(f"{self.player.name}", f"{c.YELLOW}P.L.U.R.N. Corps Operative{c.END}", 6, 1, 15, 10)
@@ -122,7 +122,7 @@ You don't need to rest.
 
     def closingScene(self):
         """Final narration"""
-        cprint('.....')
+        cprint(f'{c.ITALIC}{c.FAINT}.....')
         cprint('.....')
         cprint('''
 Your eyes open. You are badly injured.
@@ -178,10 +178,10 @@ What would you like to do?
         if action == "6":
             confirm = ''
             while confirm != '1' and confirm != '2':
-                confirm = input('''
-Are you sure you want to give up?
-1. Yes
-2. No way!
+                confirm = input(f'''
+{c.ITALIC}{c.DARK_GRAY}Are you sure you want to give up?
+1. {c.RED}Yes
+{c.DARK_GRAY}2. {c.GREEN}No way! Keep Playing!{c.END}
 ''')
             if confirm == '1':
 
@@ -197,7 +197,7 @@ Are you sure you want to give up?
             cprint('''
 You feel your way around the dark capsule. It looks like an an escape pod. By the looks of the 
 registration number and P.L.U.R.N. Space Corps crest, you know you are in an escape pod for
-your ship - the 'selfing Star.'
+your ship - the 'Plurning Star.'
 ''')
             cprint('''
 You clamber over to the viewport and see a field of debris amongst the stars. As some pieces of rubble 
@@ -230,14 +230,14 @@ by black flames. You recognize this as the logo of the Bausten Pirate Syndicate.
         elif self.lookAround3 == True:
             cprint('''
 You decide to take another glance around the pod with the lights back on. You find a pair of shoes that
-look more comfortable than the ones you have on. You decide to put them on. 
+look more comfortable than the ones you have on. You decide to put them on.
 ''')
             self.player.equipment.append("soft shoes")
             self.player.sneak += 5
 
             cprint('''
 As you turn to your right, you see her lifeless body strapped to a seat. Pam. You've known her since you
-both joined up, and now she's gone while you keep going. 
+both joined up, and now she's gone while you keep going.
 ''')
             cprint('''
 She managed to don a kevlar space vest during the evacuation sequence. You have to press forward, and you 
@@ -266,11 +266,11 @@ You quickly make your way to the console and initialize the engine thrust sequen
             guess = 0
             while guess > 5 or guess < 1:
                 try:
-                    guess = int(input('''
-(Pick a number between 1 and 5)
+                    guess = int(input(f'''
+{c.ITALIC}{c.DARK_GRAY}(Pick a number between 1 and 5){c.END}
 '''))
                 except ValueError:
-                    cprint('Please type a number.')
+                    cprint(f'{c.DARK_GRAY}Please type a number.{c.END}')
             failure = randint(1, 5)
             if guess == failure:
 
@@ -295,8 +295,8 @@ the air is knocked from your lungs. Over the sound of oxygen rushing into the do
 a pirate running toward your ship...
 ''')
 
-                cprint('''
-Now for the next problem...
+                cprint(f'''
+{c.ITALIC}Now for the next problem...{c.END}
 ''')
 
                 self.scene2 = True
@@ -305,8 +305,8 @@ Now for the next problem...
                 self.scene1 = False
 
         else: 
-            cprint('''
-You have already looked around the capsule.
+            cprint(f'''
+{c.ITALIC}{c.DARK_GRAY}You have already looked around the capsule.{c.END}
 ''')
 
     def scene1SpecialAction(self):
@@ -316,48 +316,49 @@ You have already looked around the capsule.
 As you float in the P.L.U.R.N. pod, you realize there is no hope for you while the systems remain offline.
 You go back to the computer to see if you can restore power. You know there is no way to guess the login
 credentials. You begin to cry, but then you remember that every P.L.U.R.N. Corps computer has a secret back 
-door: 
+door:
 ''')
-            cprint('''
-The Riddle Matrix! Of course!
+            cprint(f'''
+{c.BOLD}{c.ITALIC}The Riddle Matrix! Of course!{c.END}
 ''')
             cprint('''
 You locate the matrix symbol at the bottom-right of the screen. The stakes couldn't be higher, but
 the circumstances couldn't be more dire. You click the symbol, and the screen goes black.
 ''')
             
-            cprint('''
-    Welcome to Plurn: The Riddles of Queelix! I will ask of you a riddle, and your answer will determine your fate.
+            cprint(f'''
+    {c.ITALIC}{c.DARK_GRAY}Welcome to Plurn: The Riddles of Queelix! I will ask of you a riddle, and your answer will determine your fate.
+    ''')
+            cprint(f'''
+    {c.ITALIC}{c.DARK_GRAY}You are walking down a path on your way to a funeral. You come up to an intersection where a goblin lay against
+    the sign post. "Please traveler" the goblin rasps. "Help me cure my wounds so I may return to my family."
     ''')
             choice = ''
             while choice != "1" and choice != "2":
-                choice = input('''
-    You are walking down a path on your way to a funeral. You come up to an intersection where a goblin lay against
-    the sign post. "Please traveler" the goblin rasps. "Help me cure my wounds so I may return to my family."
-
+                choice = input(f'''
     What do you you do?
-    1. Help Goblin. He just wants to see his children again.
-    2. Shoot Goblin.
+    1. {c.GREEN}Help Goblin. He just wants to see his children again.
+    {c.ITALIC}{c.DARK_GRAY}2. {c.RED}Shoot Goblin.{c.END}
     ''')
                 if choice == "1":
     
-                    cprint('''
-    As you bend over to offer the goblin a helping hand, several more goblins spring forth and stab you to death.
-    You were a fool to believe a goblin would ask you for help.
+                    cprint(f'''
+    {c.ITALIC}{c.DARK_GRAY}As you bend over to offer the goblin a helping hand, several more goblins spring forth and stab you to death.
+    You were a fool to believe a goblin would ask you for help.{c.END}
     ''')
     
-                    cprint('''
-RIDDLE MATRIX DETECTS INTRUDER. SYSTEM ALERT. IMMEDIATE SELF-DESTRUCT SEQUENCE INITIALIZED.
+                    cprint(f'''
+{c.ITALIC}{c.BOLD}{c.RED}RIDDLE MATRIX DETECTS INTRUDER. SYSTEM ALERT. IMMEDIATE SELF-DESTRUCT SEQUENCE INITIALIZED.{c.END}
 ''')
     
                     self.gameOver()
 
                 elif choice == "2":
     
-                    cprint('''
-Almost before the goblin can finish asking for help, you take your crossbow and give him one between
-the eyes. Everyone knows that goblins hate humans. Several other goblins scatter in a frenzied panic. You
-go ahead and shoot them too.
+                    cprint(f'''
+    {c.ITALIC}{c.DARK_GRAY}Almost before the goblin can finish asking for help, you take your crossbow and give him one between
+    the eyes. Everyone knows that goblins hate humans. Several other goblins scatter in a frenzied panic. You
+    go ahead and shoot them too.{c.END}
 ''')
     
                     cprint('''
@@ -374,35 +375,35 @@ You go over to the main terminal again. You see the options displayed across the
 ''')
             proceed = ''
             while proceed != 'y':
-                choice2 = input('''
-    What option do you select?
+                choice2 = input(f'''
+    {c.ITALIC}{c.DARK_GRAY}What option do you select?
         1. Escape Pod Diagnostics
         2. Escape Pod Logs
-        3. Escape Pod Functions
+        3. Escape Pod Functions{c.END}
     ''')
                 if choice2 == "1":
     
-                    cprint('''
-    OCCUPANTS: 2
-    OXYGEN LEVELS: 8%
-    LIFE SUPPORT STATUS: Stable
-    FUEL LEVEL: 5%
-    MANEUVERABILITY: Disabled
-    HYDERDRIVE: Decomissioned
-    SIGNAL TO PLURNING STAR: ---
+                    cprint(f'''
+    OCCUPANTS: {c.DARK_GRAY}2{c.END}
+    OXYGEN LEVELS: {c.RED}8%{c.END}
+    LIFE SUPPORT STATUS: {c.GREEN}Stable{c.END}
+    FUEL LEVEL: {c.RED}5%{c.END}
+    MANEUVERABILITY: {c.DARK_GRAY}Disabled{c.END}
+    HYDERDRIVE: {c.DARK_GRAY}Decomissioned{c.END}
+    SIGNAL TO PLURNING STAR: {c.DARK_GRAY}---{c.END}
     ''')
                 if choice2 == "2":
     
-                    cprint('''
-    NO LOGS TO DISPLAY.
+                    cprint(f'''
+    {c.DARK_GRAY}NO LOGS TO DISPLAY.{c.END}
     ''')
                 if choice2 == "3":
     
-                    cprint('''
-    ESCAPE POD FUNCTIONS:
+                    cprint(f'''
+    {c.ITALIC}{c.DARK_GRAY}ESCAPE POD FUNCTIONS:
     - Self Destruct
     - Engine Thrust
-    - Jetison Fuel
+    - Jetison Fuel{c.END}
     ''')
                     
     
@@ -415,8 +416,8 @@ launch you forward, you are dead in the water...
                     self.lookAround4 = True
 
         else:
-            cprint('''
-You're not sure what to do...
+            cprint(f'''
+{c.ITALIC}{c.DARK_GRAY}You're not sure what to do...{c.END}
 ''')
 
     def scene1UseItem(self):
@@ -438,15 +439,15 @@ sign in. You don't have such credentials. The only way in is by force.
             self.lookAround2 = True
 
         else:
-            cprint('''
-You don't have any items worth using right now.
+            cprint(f'''
+{c.ITALIC}{c.DARK_GRAY}You don't have any items worth using right now.{c.END}
 ''')
 
     def sceneTwoOpen(self):
         """Transitions from Scene 1 to Scene 2"""
         cprint('''
 You get to your feet in time to see a hulking Bausten Pirate burst through the door with an electro-baton
-crackling. You grab your metal pipe and charge the first one.
+crackling. You grab your metal pipe and charge!
 ''')
 
     def sceneTwo(self):
@@ -477,10 +478,10 @@ What would you like to do?
         if action == "6":
             confirm = ''
             while confirm != '1' and confirm != '2':
-                confirm = input('''
-Are you sure you want to give up?
-1. Yes
-2. No way!
+                confirm = input(f'''
+{c.ITALIC}{c.DARK_GRAY}Are you sure you want to give up?
+1. {c.RED}Yes
+{c.DARK_GRAY}2. {c.GREEN}No way! Keep Playing!{c.END}
 ''')
             if confirm == '1':
 
@@ -503,10 +504,10 @@ idea to put on his clothes...maybe it will be a nice disguise?
 ''')
             disguise = ''
             while disguise != '1' and disguise != '2':
-                disguise = input('''
-Do you put on the pirate's outfit?
-    1. Yeah, duh.
-    2. No, that's gross.
+                disguise = input(f'''
+{c.ITALIC}{c.DARK_GRAY}Do you put on the pirate's outfit?
+    1. {c.GREEN}Yeah, duh.
+    {c.ITALIC}{c.DARK_GRAY}2. {c.RED}No, that's gross.{c.END}
 ''')
             if disguise == '1':
                 cprint('''
@@ -556,7 +557,7 @@ the jump to earth. From there you could fly to Plurnquarters and help bring thes
 
         elif self.lookAround3 == True:
             cprint('''
-You notice the Commander has a really neat helmet. Man that helmet looks neat. 'Mine!'
+You notice the Commander has a really neat helmet. Man that helmet looks neat. Mine!
 ''')
             self.player.equipment.append('pirate helmet')
             self.player.currentHp += 5
@@ -590,8 +591,8 @@ You ready yourself with weapon drawn and creep toward the door.
             self.scene2 = False
 
         else: 
-            cprint('''
-You have already looked around.
+            cprint(f'''
+{c.ITALIC}{c.DARK_GRAY}You have already looked around.{c.END}
 ''')
 
     def scene2SpecialAction(self):
@@ -633,10 +634,10 @@ as he talks to his subordinant.
 ''')
             option = ''
             while option != '1' and option != '2':
-                option = input('''
-What would you like to do?
-    1. Attempt to sneak past the guard.
-    2. Raise your weapon and run in like a crazy person.
+                option = input(f'''
+{c.ITALIC}{c.DARK_GRAY}What would you like to do?
+    1. {c.GREEN}Attempt to sneak past the guard.
+    {c.ITALIC}{c.DARK_GRAY}2. {c.RED}Raise your weapon and run in like a crazy person.{c.END}
 ''')
             if option == '1':
 
@@ -663,11 +664,12 @@ in your chest as the world goes dark.
 ''')
     
                     self.battleFlag = True
-                    self.battle(Character("Commander Matthew", "Commander", 10, 20, 20, 100))
+                    self.battle(Character(f"{c.LIGHT_RED}Commander Matthew{c.END}", "Commander", 10, 20, 20, 100))
     
                     cprint('''
 You finish off the Commander with gusto. He didn't even have a name tag; he had no chance.
 ''')
+
                     self.specialAction2 = False
                     self.lookAround3 = True
 
@@ -684,7 +686,7 @@ flash inches from your left eye. You raise your weapon...
 ''')
 
                 self.battleFlag = True
-                self.battle(Character("Commander Matthew", "Commander", 10, 20, 20, 100))
+                self.battle(Character(f"{c.LIGHT_RED}Commander Matthew{c.END}", "Commander", 10, 20, 20, 100))
 
                 cprint('''
 You finish off the Commander with gusto. He didn't even have a name tag; he had no chance.
@@ -693,8 +695,8 @@ You finish off the Commander with gusto. He didn't even have a name tag; he had 
                 self.lookAround3 = True
 
         else:
-            cprint('''
-You're not sure what to do...
+            cprint(f'''
+{c.ITALIC}{c.DARK_GRAY}You're not sure what to do...{c.END}
 ''')
 
     def scene2UseItem(self):
@@ -704,19 +706,19 @@ You're not sure what to do...
 You locate the security door that leads to a hallway. At the side of the door is a key pad. You swipe the pirate's
 key card and a message appears on the screen:
 ''')
-            cprint('''
-        USER: Grek
-        RANK: Grunt
-        RATING: 3/10
+            cprint(f'''
+        USER: {c.YELLOW}Grek{c.END}
+        RANK: {c.DARK_GRAY}Grunt{c.END}
+        RATING: {c.RED}3 / 10{c.END}
         
         To proceed, please enter your password:
 ''')
 
             hack = ''
             while hack != '1' and hack != '2':
-                hack = input('''
-            1. You type in 'password'
-            2. You type in '12345'
+                hack = input(f'''
+            {c.ITALIC}{c.DARK_GRAY}1. You type in 'password'
+            2. You type in '12345'{c.END}
 ''')
             if hack == '1' or hack == '2':
 
@@ -728,8 +730,8 @@ You easily guess the fool's password and the door slides open with a cool hiss.
             self.specialAction2 = True
 
         else:
-            cprint('''
-You don't have any items worth using right now.
+            cprint(f'''
+{c.ITALIC}{c.DARK_GRAY}You don't have any items worth using right now.{c.END}
 ''')
 
     def sceneThree(self):
@@ -761,10 +763,10 @@ What would you like to do?
             confirm = ''
             while confirm != '1' and confirm != '2':
 
-                confirm = input('''
-Are you sure you want to give up?
-1. Yes
-2. No way!
+                confirm = input(f'''
+{c.ITALIC}{c.DARK_GRAY}Are you sure you want to give up?
+1. {c.RED}Yes
+{c.DARK_GRAY}2. {c.GREEN}No way! Keep Playing!{c.END}
 ''')
             if confirm == '1':
 
@@ -803,10 +805,10 @@ his pockets. You find another key card and hope it gives you full access.
 As you prepare to leave the man, you feel something ice cold in his pockets. It startles you, but
 you investigate further. From his front-right pocket you produce a small, metal sphere.
 ''')
-            cprint('''
-It's absolutely without blemish and sits in your hand about 2 inches in diameter. It's impossibly
+            cprint(f'''
+{c.ITALIC}It's absolutely without blemish and sits in your hand about 2 inches in diameter. It's impossibly
 smooth and feels like it's made of ice. Though it looks as if it could survive a super-nova blast
-it weighs no more than a feather.
+it weighs no more than a feather.{c.END}
 ''')
             cprint('''
 Amazed, you take it.
@@ -834,8 +836,8 @@ from any ship you've seen or studied throughout your time in the Corps.
             self.specialAction2 = True
 
         else: 
-            cprint('''
-You have already looked around.
+            cprint(f'''
+{c.ITALIC}{c.DARK_GRAY}You have already looked around.{c.END}
 ''')
 
     def scene3SpecialAction(self):
@@ -848,16 +850,16 @@ You make your way over to the computer terminal with fresh credentials. You scan
             randomDeath = randint(1, 10)
             live = randint(1, 10)
             if randomDeath != live:
-                cprint('''
-Success! The navigational systems display, and it looks like the ship has enough integrity to
+                cprint(f'''
+{c.ITALIC}Success!{c.END} The navigational systems display, and it looks like the ship has enough integrity to
 make the jump back to earth.
 ''')        
                 self.specialAction1 = False
                 self.lookAround3 = True
 
             else:
-                cprint('''
-No! The computer is damaged beyond repair. There is no way to fix it. All hope is lost...
+                cprint(f'''
+{c.ITALIC}No!{c.END} The computer is damaged beyond repair. There is no way to fix it. All hope is lost...
 ''')
 
                 self.gameOver()
@@ -881,8 +883,8 @@ blink of an eye it crosses the space between you and lurches. Your vision goes d
             self.scene3 = False
         
         else:
-            cprint('''
-You're not sure what to do...
+            cprint(f'''
+{c.ITALIC}{c.DARK_GRAY}You're not sure what to do...{c.END}
 ''')
 
     def scene3UseItem(self):
@@ -892,8 +894,8 @@ You're not sure what to do...
 You pull out your pirate key card and hope it works just one more time. You approach
 the terminal and insert the card.
 ''')
-            cprint('''
-Welcome Grunt Grek.
+            cprint(f'''
+{c.ITALIC}{c.DARK_GRAY}Welcome Grunt Grek.{c.END}
 ''')
             cprint('''
 The ship displays a few functional options, but you are barred from the navigation and
@@ -903,8 +905,8 @@ piloting functions.
             self.lookAround2 = True
         
         else:
-            cprint('''
-You don't have any items worth using right now.
+            cprint(f'''
+{c.ITALIC}{c.DARK_GRAY}You don't have any items worth using right now.{c.END}
 ''')
 
     def battle(self, enemy):
@@ -923,49 +925,48 @@ You finish off the Bausten Pirate thug, and it looks like no one heard or saw yo
         """Controls all player attacks in battle 1"""
         attack = ''
         while attack != '1' and attack != '2' and attack != '3':
-            attack = input('''
-Battle! What would you like to do?
-1. Attack
-2. Check Stats
-3. Drop your weapon and give up...
+            attack = input(f'''
+{c.BOLD}{c.ITALIC}{c.RED}Battle!{c.END} What would you like to do?
+1. {c.GREEN}Attack{c.END}
+2. {c.YELLOW}Check Stats{c.END}
+3. {c.RED}Drop your weapon and give up...{c.END}
 ''')
             if attack == '1':
                 damage = randint(1, self.player.power)
                 cprint(f'''
-You swing your weapon with force at {enemy.name}! You deal {damage} points
-of damage!
+{c.ITALIC}{c.DARK_GRAY}You swing your weapon with force at {enemy.name}! You deal {c.RED}{damage} points {c.DARK_GRAY}of damage!{c.END}
 ''')
                 enemy.currentHp -= damage
 
-            elif attack == '2':
+            if attack == '2':
                 self.displayStats()
-                self.playerAttack()
+                self.playerAttack(enemy)
 
-            elif attack == '3':
+            if attack == '3':
                 confirm = ''
                 while confirm != '1' and confirm != '2':
-                    confirm = input('''
-Are you...sure...you want to do that?
-1. Absolutely
-2. Nevermind
+                    confirm = input(f'''
+{c.ITALIC}{c.DARK_GRAY}Are you...sure...you want to do that?
+1. {c.RED}Absolutely
+{c.DARK_GRAY}2. {c.GREEN}Nevermind{c.END}
 ''')
                     if confirm == '1':
         
-                        cprint('''
-You lay down your weapon and the enemy overtakes you...
+                        cprint(f'''
+{c.ITALIC}{c.DARK_GRAY}You lay down your weapon and the enemy overtakes you...{c.END}
 ''')
-        
                         self.gameOver()
 
                     elif confirm == '2':
-                        self.playerAttack()
+                        self.playerAttack(enemy)
+
 
     def checkHealth(self, enemy):
         """Check's health in battle and who is alive."""
         if self.player.currentHp <= 0:
-            cprint('''
-The enemy takes a swing and hits you square in temple. Your vision goes black, and the
-world goes cold...
+            cprint(f'''
+{c.ITALIC}{c.DARK_GRAY}The enemy takes a swing and hits you square in temple. Your vision goes black, and the
+world goes cold...{c.END}
 ''')    
             self.gameOver()
 
@@ -982,13 +983,13 @@ You bash {enemy.name} across the face and he falls lifeless.
         """Controls all player attacks in battle 1"""
         damage = randint(1, enemy.power)
         cprint(f'''
-{enemy.name} snarls and swings wildly at you. You take {damage} points
-of damage!
+{c.ITALIC}{enemy.name} {c.DARK_GRAY}snarls and swings wildly at you. You take {c.RED}{damage} {c.DARK_GRAY}points
+of damage!{c.END}
 ''')
         self.player.currentHp -= damage
 
 
-# Create instances of classes
+# # Create instances of classes
 plurn = Plurn()
 
 # Start Game
@@ -999,9 +1000,10 @@ plurn.openingSceneGetName()
 while plurn.scene1 == True:
     plurn.sceneOne()
 
-########### Scene 2 ###########
+########## Scene 2 ###########
 plurn.sceneTwoOpen()
-plurn.battle(Character("Grek", "Grunt", 7, 16, 16, 5))
+plurn.battle(Character(f"{c.LIGHT_GREEN}Grek{c.END}", "Grunt", 7, 16, 16, 5))
+
 while plurn.scene2 == True:
     plurn.sceneTwo()
 
