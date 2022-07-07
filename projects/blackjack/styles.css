@@ -139,3 +139,9 @@ button[type="reset"]:hover {
   justify-content: center;
   align-items: center;
 }
+
+@media only screen and (max-width: 736px) {
+  body {
+    background-color: blue;
+  }
+}
