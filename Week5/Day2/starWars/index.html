@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Star Wars Hangar</title>
+    <link defer rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div id="main-container" class="main-container">
+      <div class="title-container">
+        <img
+          src="./images/xwing.png"
+          alt="xwing"
+          height="250px"
+          width="300px"
+        />
+        <img src="./images/logo.png" alt="logo" height="250px" width="600px" />
+
+        <img src="./images/tie.png" alt="tie" height="250px" width="300px" />
+      </div>
+      <div class="subtitle"><p>Hangar!</p></div>
+      <div class="links">
+        <a href="">Galactic Heroes</a>
+        <a href="">Garage</a>
+        <a href="">Hangar</a>
+        <a href="">Galactic Species</a>
+        <a href="">Star Charts</a>
+        <a href="">Cinema Holocrons</a>
+      </div>
+      <div class="search-area">
+        <select id="select-bar">
+          <option>Select a ship!</option>
+        </select>
+        <button id="search-button">Punch It!</button>
+      </div>
+      <div id="display-zone" class="display-zone">
+        <div id="title-zone" class="title-zone"></div>
+        <div id="subtitle-zone" class="subtitle-zone"></div>
+
+        <div id="inner-display" class="inner-display">
+          <div id="fact-zone" class="fact-zone"></div>
+          <div id="pic-zone" class="pic-zone"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

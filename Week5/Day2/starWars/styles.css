@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Puritan&family=Roboto:ital@1&family=Splash&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poller+One&family=Puritan&family=Roboto:ital@1&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background-image: url("./images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  /* border: solid 2px green; */
+}
+
+.subtitle {
+  /* border: solid 2px red; */
+  height: auto;
+  width: 100%;
+  text-align: center;
+  font-family: "Puritan", sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-family: "Splash", cursive;
+  font-size: 80px;
+  color: whitesmoke;
+  margin: -100px;
+}
+
+.title-container {
+  /* border: solid 2px blue; */
+  width: 100%;
+  margin: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  font-family: "Poller One", cursive;
+  font-size: 15px;
+  color: whitesmoke;
+  margin: 10px;
+  background: rgb(255, 192, 7);
+  background: radial-gradient(
+    circle,
+    rgba(255, 192, 7, 1) 0%,
+    rgba(227, 196, 4, 1) 86%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+.search-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 70px;
+}
+
+select {
+  width: 80%;
+  height: 40px;
+  font-family: "Poller One", cursive;
+}
+
+button {
+  width: 50%;
+  height: auto;
+  border-radius: 30px 0px 30px 0px;
+  margin: 5px;
+  font-size: 20px;
+  font-family: "Poller One", cursive;
+}
+
+.display-zone {
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+  width: 100%;
+}
+
+.title-zone {
+  font-family: "Poller One", cursive;
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  height: 100px;
+
+  font-size: 25px;
+}
+
+.subtitle-zone {
+  font-family: "Poller One", cursive;
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  height: 50px;
+}
+
+.inner-display {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 650px;
+}
+
+.fact-zone {
+  display: grid;
+  width: 60%;
+  height: 100%;
+
+  grid-template-areas:
+    "one one"
+    "two two"
+    "three five"
+    "four six";
+}
+.one {
+  grid-area: one;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.two {
+  grid-area: two;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.three {
+  grid-area: three;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.four {
+  grid-area: four;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.five {
+  grid-area: five;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.six {
+  grid-area: six;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  font-family: "Poller One", cursive;
+  font-size: 25px;
+  -webkit-text-stroke: 1px #ffc007;
+  color: black;
+}
+
+.value {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  color: whitesmoke;
+}
+.pic-zone {
+  width: 40%;
+  height: 100%;
+}
