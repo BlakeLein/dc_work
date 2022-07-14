@@ -96,7 +96,7 @@ you can to patch yourself up.
         cprint('A light flashes.')
         cprint('There is a faint glow from the local sun.')
         
-        cprint(f'{c.ITALIC}{c.DARK_GRAY}Do you remember your name?{c.END}')
+        cprint(f'{c.ITALIC}{c.DARK_GRAY}Do you remember your name? (Press Enter, then type in your name){c.END}')
         self.player.name = input(f'''
 {c.DARK_GRAY}>>>{c.END} ''').title()
 
@@ -104,7 +104,7 @@ you can to patch yourself up.
         cprint('You are a member of the P.L.U.R.N. Space Corps.')
         rank = ''
         while rank != '1' and rank != '2' and rank != '3':
-            print('Do you remember your rank?')
+            print('Do you remember your rank? (Press Enter, then choose a rank)')
             rank = input(f'''
     1. {c.CYAN}Soldier (+ Attack, + Health, - Sneak){c.END}
     2. {c.YELLOW}Operative (+ Attack, - Health, + Sneak){c.END}
