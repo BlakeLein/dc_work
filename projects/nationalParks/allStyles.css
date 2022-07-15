@@ -1,0 +1,735 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cabin&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&display=swap");
+
+body {
+  margin: 0;
+  padding: 20px 5px;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.fav-bg {
+  background: url("images/american2.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.all-bg {
+  background: url("images/bg0.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.rand-bg {
+  background: url("images/american.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+h1 {
+  font-size: 60px;
+  margin-bottom: -20px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#header {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  font-family: "Cabin Sketch", cursive;
+}
+
+#type-search {
+  width: 70%;
+  height: 45px;
+  margin: 10px 0px;
+  padding: 10px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #333;
+  color: whitesmoke;
+  border-radius: 15px;
+  font-family: "Cabin", sans-serif;
+}
+
+#type-search:hover {
+  background-color: #444;
+}
+
+#generate {
+  width: 60%;
+  height: auto;
+  margin: 10px 0px;
+  padding: 10px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #333;
+  color: whitesmoke;
+  border-radius: 15px;
+  font-family: "Cabin", sans-serif;
+}
+
+#generate:hover {
+  background-color: #444;
+}
+#select {
+  width: 70%;
+  height: 45px;
+  margin: 10px 0px;
+  border: none;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #333;
+  color: whitesmoke;
+  border-radius: 15px;
+  padding: 5px 20px;
+  font-family: "Cabin", sans-serif;
+}
+
+#select:hover {
+  background-color: #444;
+}
+
+#menu-button {
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 100%;
+  transition: margin-left 0.5s;
+  padding: 2px;
+}
+
+.title {
+  padding: 0px 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  font-family: "Cabin Sketch", cursive;
+}
+
+.search-container {
+  width: 75vmin;
+  height: auto;
+  padding: 0px 5px 5px 5px;
+  margin-top: -20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Cabin Sketch", cursive;
+}
+
+.title-zone {
+  margin: 5px;
+  padding: 15px;
+  text-align: center;
+
+  font-family: "Cabin Sketch", cursive;
+  border-radius: 10px;
+}
+
+#display-zone {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: scroll;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.state-card {
+  font-family: "Cabin", sans-serif;
+  width: 400px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  backdrop-filter: blur(6px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.card-btn {
+  width: 75%;
+  height: 25px;
+  margin: 2px;
+  padding: 2px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #333;
+  color: whitesmoke;
+  font-family: "Cabin", sans-serif;
+}
+.card-btn:hover {
+  background-color: #444;
+}
+
+img {
+  width: 100px;
+  height: auto;
+  margin: 5px;
+  border-radius: 7px;
+}
+
+.card-title {
+  text-align: center;
+  color: whitesmoke;
+  font-size: 16px;
+}
+
+.name-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding: 5px;
+}
+
+input[type="text"] {
+  width: 100%;
+  height: 40px;
+  padding: 2px;
+  margin: 0px;
+  position: relative;
+  outline: none;
+  border: solid 2px #333;
+  border-radius: 15px;
+  background-color: #e8e8e8;
+  font-size: 16px;
+  font-family: "Cabin", sans-serif;
+}
+
+ul {
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  list-style-type: none;
+}
+
+.list {
+  width: 100%;
+  background-color: #e8e8e8;
+  border-radius: 0 0 5px 5px;
+  margin: 0;
+  padding: 0;
+}
+
+.list-items {
+  padding: 10px;
+  height: 30px;
+  font-size: 20px;
+  font-family: "Cabin", sans-serif;
+}
+
+.list-items:hover {
+  background-color: #dddddd;
+}
+
+.autocomplete {
+  width: 100%;
+  padding: 5px;
+  margin: 0;
+}
+
+/* Modal Styles */
+.modal-all {
+  position: fixed;
+  margin-left: 10%;
+  margin-right: 10%;
+  bottom: 10%;
+  top: 10%;
+  transform: scale(0);
+  transition: 200ms ease-in-out;
+  margin: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: whitesmoke;
+  overflow: scroll;
+  font-family: "Cabin", sans-serif;
+  background: rgb(205, 189, 192);
+  background: linear-gradient(
+    175deg,
+    rgba(205, 189, 192, 1) 0%,
+    rgba(141, 166, 185, 1) 51%,
+    rgba(153, 198, 58, 1) 80%,
+    rgba(57, 88, 54, 1) 100%
+  );
+}
+
+.modal-fav {
+  position: fixed;
+  margin-left: 10%;
+  margin-right: 10%;
+  bottom: 10%;
+  top: 10%;
+  transform: scale(0);
+  transition: 200ms ease-in-out;
+  margin: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: whitesmoke;
+  overflow: scroll;
+  font-family: "Cabin", sans-serif;
+  background: rgb(25, 134, 235);
+  background: linear-gradient(
+    175deg,
+    rgba(25, 134, 235, 1) 0%,
+    rgba(201, 218, 235, 1) 46%,
+    rgba(209, 186, 173, 1) 77%,
+    rgba(25, 66, 107, 1) 100%
+  );
+}
+
+.modal-rand {
+  position: fixed;
+  margin-left: 10%;
+  margin-right: 10%;
+  bottom: 10%;
+  top: 10%;
+  transform: scale(0);
+  transition: 200ms ease-in-out;
+  margin: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: whitesmoke;
+  overflow: scroll;
+  font-family: "Cabin", sans-serif;
+  background: rgb(134, 198, 220);
+  background: linear-gradient(
+    175deg,
+    rgba(134, 198, 220, 1) 35%,
+    rgba(239, 209, 121, 1) 58%,
+    rgba(233, 143, 129, 1) 83%,
+    rgba(164, 127, 147, 1) 100%
+  );
+}
+
+.active {
+  transform: scale(1);
+}
+
+.modal-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+  font-family: "Cabin Sketch", cursive;
+}
+
+.close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-body {
+  padding: 10px 15px;
+  gap: 15px;
+  display: grid;
+  grid-template-areas:
+    "one two four"
+    "one two four"
+    "three three three"
+    "five five five"
+    "six six six";
+}
+
+.one {
+  backdrop-filter: blur(6px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  grid-area: one;
+  width: 1fr;
+}
+.two {
+  backdrop-filter: blur(6px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  grid-area: two;
+  width: 1fr;
+}
+.three {
+  backdrop-filter: blur(6px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  grid-area: three;
+}
+.four {
+  backdrop-filter: blur(6px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  grid-area: four;
+  width: 1fr;
+}
+.five {
+  backdrop-filter: blur(6px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  grid-area: five;
+  display: flex;
+  height: 320px;
+  overflow-y: scroll;
+}
+.six {
+  backdrop-filter: blur(6px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  grid-area: six;
+}
+
+.small-box {
+  padding: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+.small-title {
+  font-weight: bold;
+}
+
+.weather-item {
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+.admission {
+  display: flex;
+  justify-content: center;
+}
+
+.admission-style {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+}
+
+.hours {
+  gap: 7px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.activities {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+}
+
+.weather-elements {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.modal-img {
+  width: 450px;
+  height: 300px;
+  margin: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 3px;
+}
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  pointer-events: all;
+  opacity: 1;
+}
+
+/* Side Bar Styles */
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #333;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  font-family: "Cabin", sans-serif;
+}
+
+.sidebar a {
+  align-self: flex-start;
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  width: 50px;
+  cursor: pointer;
+  background-color: #333;
+  color: whitesmoke;
+  padding: 10px 15px;
+  margin: 0px 10px;
+  border: none;
+  border-radius: 7px;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+/* Cell Phone styles */
+@media only screen and (max-width: 600px) {
+  body {
+    margin: 0;
+    padding: 20px 5px;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fav-bg {
+    background: rgb(25, 134, 235);
+    background: linear-gradient(
+      175deg,
+      rgba(25, 134, 235, 1) 0%,
+      rgba(201, 218, 235, 1) 46%,
+      rgba(209, 186, 173, 1) 77%,
+      rgba(25, 66, 107, 1) 100%
+    );
+  }
+
+  .all-bg {
+    background: rgb(205, 189, 192);
+    background: linear-gradient(
+      175deg,
+      rgba(205, 189, 192, 1) 0%,
+      rgba(141, 166, 185, 1) 51%,
+      rgba(153, 198, 58, 1) 80%,
+      rgba(57, 88, 54, 1) 100%
+    );
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  #header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    font-family: "Cabin Sketch", cursive;
+  }
+
+  #generate {
+    width: 40%;
+    height: auto;
+    margin: 10px 0px;
+    padding: 5px 10px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #333;
+    color: whitesmoke;
+    border-radius: 3px;
+    font-family: "Cabin", sans-serif;
+  }
+
+  #generate:hover {
+    background-color: #444;
+  }
+
+  #menu-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 40px;
+    transition: margin-left 0.5s;
+    padding: 2px;
+  }
+
+  .openbtn {
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #333;
+    color: whitesmoke;
+    padding: 10px 15px;
+    border: none;
+  }
+
+  .main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #display-zone {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  .modal {
+    width: 90%;
+    height: auto;
+    transform: scale(0);
+    transition: 200ms ease-in-out;
+    border-radius: 3px;
+    z-index: 10;
+    background-color: whitesmoke;
+    font-family: "Cabin", sans-serif;
+  }
+
+  .modal-body {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 15px;
+    gap: 15px;
+  }
+  .modal-img {
+    width: 100%;
+    height: 200px;
+    margin: 5px;
+    border-radius: 7px;
+  }
+  .one {
+    flex-grow: 1;
+    background: rgba(150, 150, 150, 0.7);
+    border-radius: 10px;
+    padding: 10px 15px;
+  }
+  .two {
+    flex-grow: 1;
+    background: rgba(150, 150, 150, 0.7);
+    border-radius: 10px;
+    padding: 10px 15px;
+  }
+  .three {
+    flex-grow: 1;
+    background: rgba(150, 150, 150, 0.7);
+    border-radius: 10px;
+    padding: 10px 15px;
+  }
+  .activities {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  .four {
+    flex-grow: 1;
+    background: rgba(150, 150, 150, 0.7);
+    border-radius: 10px;
+    padding: 10px 15px;
+  }
+  .five {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    background: rgba(150, 150, 150, 0.7);
+    border-radius: 10px;
+    padding: 10px 15px;
+    height: auto;
+    overflow-y: scroll;
+  }
+  .six {
+    flex-grow: 1;
+    background: rgba(150, 150, 150, 0.7);
+    border-radius: 10px;
+    padding: 10px 15px;
+  }
+
+  .state-card {
+    font-family: "Cabin", sans-serif;
+    width: 350px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    backdrop-filter: blur(6px);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+}

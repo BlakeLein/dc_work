@@ -20,9 +20,18 @@ Published July 2022
 
 ### **Requirements**
 
-- A web browser is the only thing required to view this project.
+- A web browser.
+- 2 API Keys:
+  1. Open Weather API Key (Free - [Found Here](https://openweathermap.org/api))
+  2. National Parks Service API (Free - [Found Here](https://www.nps.gov/subjects/developer/index.htm))
 
-[Click Here to view "Discover America"]()
+**These API Keys will need to be inserted at top of the following JS Files:**
+
+- "allParks.js"
+- "fav.js"
+- "randomScript.js"
+
+\*\*Simply Download the [Discover America Repo](), insert your keys, and launch!
 
 ## How "Discover America" Works
 

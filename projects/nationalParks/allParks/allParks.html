@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NPF - Find a Park</title>
+    <link defer rel="stylesheet" href="../allStyles.css" />
+    <script defer type="text/javascript" src="config.js"></script>
+    <script defer src="allParks.js"></script>
+  </head>
+  <body class="all-bg">
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+      <a href="../index.html">Home</a>
+      <a href="allParks.html">Find a Park</a>
+      <a href="../favParks/fav.html">My Favorites</a>
+      <a href="../randomPark/random.html">Random Adventure</a>
+    </div>
+    <div id="menu-button">
+      <button class="openbtn" onclick="openNav()">☰</button>
+    </div>
+    <div class="main">
+      <div id="header">
+        <div class="title">
+          <h1>Let's Find an Escape</h1>
+          <h2>
+            Search a national park by name or select a state to get started
+          </h2>
+        </div>
+      </div>
+      <div id="main-container" class="main-container">
+        <div id="search-container" class="search-container">
+          <br />
+
+          <div class="autocomplete">
+            <input
+              type="text"
+              id="input"
+              placeholder="Search by Park Name and Click Search..."
+            />
+            <ul class="list"></ul>
+          </div>
+          <button id="type-search">Search</button>
+          <select id="select">
+            <option value="" disabled selected hidden>Select a State...</option>
+          </select>
+        </div>
+        <div id="title-zone"></div>
+        <div id="display-zone"></div>
+        <div class="modal-all" id="modal">
+          <div class="modal-header">
+            <div class="header-title">
+              <h2 id="header-title">Park Title</h2>
+            </div>
+            <div>
+              <button id="close-modal" class="close-button">&times</button>
+            </div>
+          </div>
+          <div class="modal-body" id="modal-body">
+            <div class="one" id="contact-box">
+              <h3>Contact</h3>
+              <hr />
+              <div class="contacts">
+                <a
+                  href=""
+                  target="”_blank”"
+                  class="small-title"
+                  id="contact-url"
+                  >Visit Park Website</a
+                >
+                <p class="small-title" id="address">Address</p>
+                <p class="small-title" id="email">Email</p>
+                <p class="small-title" id="phone">Phone Number</p>
+                <a href="" target="”_blank”" class="small-title" id="directions"
+                  >Directions</a
+                >
+              </div>
+            </div>
+            <div class="two" id="hours-box">
+              <h3>Hours</h3>
+              <hr />
+              <div class="hours" id="hours">
+                <div class="small-box">
+                  <p class="small-title">Monday</p>
+                  <p id="monday"></p>
+                </div>
+                <div class="small-box">
+                  <p class="small-title">Tuesday</p>
+                  <p id="tuesday"></p>
+                </div>
+                <div class="small-box">
+                  <p class="small-title">Wednesday</p>
+                  <p id="wednesday"></p>
+                </div>
+                <div class="small-box">
+                  <p class="small-title">Thursday</p>
+                  <p id="thursday"></p>
+                </div>
+                <div class="small-box">
+                  <p class="small-title">Friday</p>
+                  <p id="friday"></p>
+                </div>
+                <div class="small-box">
+                  <p class="small-title">Saturday</p>
+                  <p id="saturday"></p>
+                </div>
+                <div class="small-box">
+                  <p class="small-title">Sunday</p>
+                  <p id="sunday"></p>
+                </div>
+              </div>
+            </div>
+            <div class="three">
+              <h3>Activities</h3>
+              <hr />
+              <div>
+                <ul class="activities" id="activities"></ul>
+              </div>
+            </div>
+            <div class="four">
+              <h3>Admission Cost</h3>
+              <hr />
+              <div class="admission">
+                <p id="entry-fee"></p>
+              </div>
+            </div>
+            <div class="five" id="pictures"></div>
+            <div class="six" id="weather">
+              <h3>Current Weather Conditions</h3>
+              <hr />
+              <div class="weather-elements">
+                <div class="small-box" id="icon"></div>
+                <div class="small-box" id="current-temp">
+                  <p class="small-title">Current</p>
+                  <p class="weather-item" id="ct-value"></p>
+                </div>
+                <div class="small-box" id="high-low">
+                  <p class="small-title">Low / High</p>
+                  <p class="weather-item" id="hl-value"></p>
+                </div>
+                <div class="small-box" id="feels-like">
+                  <p class="small-title">Feels Like</p>
+                  <p class="weather-item" id="fl-value"></p>
+                </div>
+                <div class="small-box" id="humidity">
+                  <p class="small-title">Humidity</p>
+                  <p class="weather-item" id="h-value"></p>
+                </div>
+                <div class="small-box" id="wind-speed">
+                  <p class="small-title">Wind Speed</p>
+                  <p class="weather-item" id="ws-value"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="" id="overlay"></div>
+  </body>
+</html>
