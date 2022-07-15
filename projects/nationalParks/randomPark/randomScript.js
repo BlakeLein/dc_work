@@ -1,6 +1,6 @@
 // API KEYS
-const weatherAPI = "";
-const npsAPI = "";
+const weatherAPI = "3a37c92ad5008488beef7b9b5ed1b068";
+const npsAPI = "myb3Ggv3zncy7E0gjNGOOPuJiUTblbehZYIAhmEs";
 
 // HTML Grabs
 const mainContainer = document.getElementById("main-container");
@@ -64,7 +64,7 @@ const updateModalInfo = (parkObject) => {
   getAddress(parkObject);
   getEmail(parkObject);
   getPhone(parkObject);
-  directions.href = parkObject.directionsURL;
+  directions.href = parkObject.directionsUrl;
   getHours(parkObject);
   getActivities(parkObject);
   getAdmission(parkObject);

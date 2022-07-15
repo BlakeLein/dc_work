@@ -31,7 +31,7 @@ Published July 2022
 - "fav.js"
 - "randomScript.js"
 
-\*\*Simply Download the [Discover America Repo](), insert your keys, and launch!
+\*\*Simply Download the [Discover America Repo](https://github.com/BlakeLein/dc_work/tree/main/projects/nationalParks), insert your keys, and launch!
 
 ## How "Discover America" Works
 
