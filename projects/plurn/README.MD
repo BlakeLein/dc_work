@@ -105,3 +105,18 @@ Throughout the process of planning and coding, there are several things that I w
 - A settings module to make the game easily scalable for the desired level of difficulty.
 
 These developments and more are on my mind and may appear in a bigger, better P.L.U.R.N. sequel!
+
+## Photos of Plurn
+
+<img src="images/open.png"
+alt="Opening Narration"
+width="700" height="500"
+/>
+<img src="images/menu.png"
+alt="Stats Menu"
+width="700" height="500"
+/>
+<img src="images/battle.png"
+alt="Battle Menu"
+width="700" height="500"
+/>

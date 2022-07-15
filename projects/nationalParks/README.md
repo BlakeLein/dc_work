@@ -56,3 +56,30 @@ As with our first project, there are several things that come to mind to expand 
 - Creating a "plan-your'trip" feature that allows users to view more information related to actually visiting a national park (road maps, available flights, other attractions, relevent news, etc).
 - Including a multi-day weather forecast for each park, not just a current weather forecast.
 - A more sophisticated memory storage technique for users to keep track of their favorite parks (this would include a back-end server access).
+
+## Photos of "Discover America"
+
+<img src="images/home.png"
+alt="Home Page"
+width="900" height="400"
+/>
+<img src="images/search.png"
+alt="Stats Menu"
+width="900" height="400"
+/>
+<img src="images/search2.png"
+alt="Search Function"
+width="900" height="400"
+/>
+<img src="images/favorites.png"
+alt="Favorites Page"
+width="900" height="400"
+/>
+<img src="images/modal1.png"
+alt="Modal Menu 1"
+width="900" height="400"
+/>
+<img src="images/modal2.png"
+alt="Modal Menu 2"
+width="900" height="400"
+/>
