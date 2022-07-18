@@ -7,26 +7,26 @@ const fullContainer = document.getElementById("main");
 const innerContainer = document.getElementById("inner-container");
 const searchInput = document.getElementById("input");
 
-const showCity = (name, icon) => {
+const showCityAndTemp = (name, ele) => {
   const city = document.createElement("div");
   city.classList = "item";
   let cityName = document.createElement("p");
   cityName.innerText = `${name}`;
-  let cityIcon = document.createElement("img");
-  cityIcon.src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-  city.append(cityName, cityIcon);
+  cityName.classList = "city-name";
+  let value = document.createElement("p");
+  value.classList = "temp-value";
+  value.innerText = `${ele.toFixed(0)}°`;
+  city.append(cityName, value);
   displayZone.append(city);
 };
 
-const showTemp = (ele) => {
-  const message = document.createElement("div");
-  message.classList = "item";
-  let name = document.createElement("p");
-  name.innerText = "Current Temperature";
-  let value = document.createElement("p");
-  value.innerText = `${ele.toFixed(1)}°`;
-  message.append(name, value);
-  displayZone.append(message);
+const showIcon = (icon) => {
+  const iconItem = document.createElement("div");
+  iconItem.classList = "item";
+  let cityIcon = document.createElement("img");
+  cityIcon.src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  iconItem.append(cityIcon);
+  displayZone.append(iconItem);
 };
 
 const showHighLow = (low, high) => {
@@ -34,8 +34,10 @@ const showHighLow = (low, high) => {
   highLow.classList = "item";
   let name = document.createElement("p");
   name.innerText = "High and Low";
+  name.classList = "other-name";
   let value = document.createElement("p");
-  value.innerText = `${low.toFixed(1)}° / ${high.toFixed(1)}°`;
+  value.innerText = `${low.toFixed(0)}° / ${high.toFixed(0)}°`;
+  value.classList = "other-value";
   highLow.append(name, value);
   displayZone.append(highLow);
 };
@@ -45,8 +47,10 @@ const showFeelsLike = (ele) => {
   feelsLike.classList = "item";
   let name = document.createElement("p");
   name.innerText = "Feels Like";
+  name.classList = "other-name";
   let value = document.createElement("p");
-  value.innerText = `${ele.toFixed(1)}°`;
+  value.innerText = `${ele.toFixed(0)}°`;
+  value.classList = "other-value";
   feelsLike.append(name, value);
   displayZone.append(feelsLike);
 };
@@ -56,8 +60,10 @@ const showHumidity = (ele) => {
   humidity.classList = "item";
   let name = document.createElement("p");
   name.innerText = "Humidity";
+  name.classList = "other-name";
   let value = document.createElement("p");
   value.innerText = `${ele}%`;
+  value.classList = "other-value";
   humidity.append(name, value);
   displayZone.append(humidity);
 };
@@ -67,8 +73,10 @@ const showWindSpeed = (wind, gust) => {
   windSpeed.classList = "item";
   let name = document.createElement("p");
   name.innerText = "Wind Speed";
+  name.classList = "other-name";
   let value = document.createElement("p");
   value.innerText = `${wind.toFixed(1)} mph`;
+  value.classList = "other-value";
   windSpeed.append(name, value);
   displayZone.append(windSpeed);
 };
@@ -83,8 +91,8 @@ const searchWeather = async () => {
     alert("Please enter a valid US City Name or Zip Code.");
   } else {
     // console.log(navigator.geolocation.getCurrentPosition(success));
-    showCity(json.name, json.weather[0].icon);
-    showTemp(json.main.temp);
+    showCityAndTemp(json.name, json.main.temp);
+    showIcon(json.weather[0].icon);
     showHighLow(json.main.temp_min, json.main.temp_max);
     showFeelsLike(json.main.feels_like);
     showHumidity(json.main.humidity);
