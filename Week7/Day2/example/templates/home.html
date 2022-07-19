@@ -8,5 +8,11 @@
   </head>
   <body>
     <h1>HOWDY</h1>
+    ${user.name}
+    <p>Our teacher's name is ${teacher}.</p>
+    <p>We have two students in our class; their names are:</p>
+    ${students.map(student => `
+    <h2>${student}</h2>
+    `).join('')}
   </body>
 </html>

@@ -12,11 +12,23 @@ app.set("views", "templates");
 //
 app.set("view engine", "html");
 
+// This line lets us use local pathing for our HTML and CSS.
+app.use(express.static("public"));
+
 //Route
 app.get("/", (req, res) => {
-  //   res.send("Hello World!");
+  // Here is some js information. We can pass this in the render function. Note the syntax in the HTML document.
+  const user = { name: "Blake" };
   // This will render the file "home" (from the "templates file on line 11") to the screen. render() comes from the es6 package we downloaded.
-  res.render("home");
+  // HTML manipulation is done and rendered on the server - much faster.
+  // The HTML syntax we use works because it's through a template engine.
+  res.render("home", {
+    locals: {
+      user: user,
+      teacher: "Joe",
+      students: ["Amanda", "Carlos"],
+    },
+  });
 });
 
 // Another route linking a separate HTML file.
@@ -26,6 +38,7 @@ app.get("/file2", (req, res) => {
 
 // This doesnt work when you go to http://localhost:3001/home because that only works on a get request.
 app.post("/home", (req, res) => {
+  // Send doesn't create any HTML
   res.send("Hello World!");
 });
 
