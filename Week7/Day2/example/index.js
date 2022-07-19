@@ -13,7 +13,10 @@ app.set("views", "templates");
 app.set("view engine", "html");
 
 // This line lets us use local pathing for our HTML and CSS.
+// Inside our public folder we will typically put our Javascript.
+// MIDDLEWARE: Let's us link static files to our html.
 app.use(express.static("public"));
+app.use(express.json());
 
 //Route
 app.get("/", (req, res) => {
