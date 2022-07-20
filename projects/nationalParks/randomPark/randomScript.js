@@ -1,6 +1,6 @@
 // API KEYS
-const weatherAPI = "3a37c92ad5008488beef7b9b5ed1b068";
-const npsAPI = "myb3Ggv3zncy7E0gjNGOOPuJiUTblbehZYIAhmEs";
+const weatherAPI = "";
+const npsAPI = "";
 
 // HTML Grabs
 const mainContainer = document.getElementById("main-container");

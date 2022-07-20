@@ -2,8 +2,8 @@ require("dotenv").config();
 
 // API KEYS
 
-const weatherAPI = process.env.weatherKey;
-const npsAPI = process.env.parksKey;
+const weatherAPI = "";
+const npsAPI = "";
 
 // HTML Grabs
 const mainContainer = document.getElementById("main-container");
