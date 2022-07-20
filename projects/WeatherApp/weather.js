@@ -1,4 +1,4 @@
-const API_KEY = "3a37c92ad5008488beef7b9b5ed1b068";
+const API_KEY = "";
 const displayZone = document.getElementById("display");
 displayZone.classList = "display-box";
 const searchButton = document.getElementById("search");

@@ -1,8 +1,9 @@
-// API KEYS
-const apiKeys = require("../../apiKeys.js");
+require("dotenv").config();
 
-const weatherAPI = apiKeys.weatherKey;
-const npsAPI = apiKeys.npsKey;
+// API KEYS
+
+const weatherAPI = process.env.weatherKey;
+const npsAPI = process.env.parksKey;
 
 // HTML Grabs
 const mainContainer = document.getElementById("main-container");
