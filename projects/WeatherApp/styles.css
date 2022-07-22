@@ -6,6 +6,7 @@ body {
   height: 100vh;
   color: whitesmoke;
   font-family: "Lato", sans-serif;
+  background-size: cover;
 }
 
 .main-container {
@@ -45,15 +46,15 @@ label {
 }
 
 .city {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .temp-value {
-  font-size: 60px;
+  font-size: 40px;
 }
 
 .other-value {
-  font-size: 40px;
+  font-size: 20px;
 }
 
 .other-name {
@@ -61,7 +62,7 @@ label {
 }
 
 .city-name {
-  font-size: 40px;
+  font-size: 20px;
 }
 
 .item {
@@ -156,6 +157,7 @@ button:hover::after {
     padding: 0;
     gap: 10px;
     grid-auto-rows: auto;
+    overflow-y: scroll;
   }
   .item {
     height: auto;
