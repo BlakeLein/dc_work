@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "kgnzdysu",
+    "password": "AmdkBVUHNXLzqcw1y5Rx2-48kDrHjHHb",
+    "database": "kgnzdysu",
+    "host": "heffalump.db.elephantsql.com",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "kgnzdysu",
+    "password": "AmdkBVUHNXLzqcw1y5Rx2-48kDrHjHHb",
+    "database": "kgnzdysu",
+    "host": "heffalump.db.elephantsql.com",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "kgnzdysu",
+    "password": "AmdkBVUHNXLzqcw1y5Rx2-48kDrHjHHb",
+    "database": "kgnzdysu",
+    "host": "heffalump.db.elephantsql.com",
+    "dialect": "postgres"
+  }
+}
