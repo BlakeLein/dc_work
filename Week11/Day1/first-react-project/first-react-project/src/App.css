@@ -1,0 +1,78 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 15%;
+  color: white;
+  background-color: navy;
+}
+
+.middle {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 70%;
+}
+
+.Header {
+  width: 100%;
+  height: 15%;
+  border: solid 1px black;
+  display: flex;
+  padding-left: 10px;
+  align-items: center;
+  width: 70%;
+  height: 100%;
+}
+
+.Links {
+  width: 30%;
+  height: 100%;
+  border: solid 1px black;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+}
+
+.Links a {
+  color: white;
+}
+
+.SideMenu {
+  width: 20%;
+  border: solid 1px black;
+  padding-left: 10px;
+}
+
+.SideMenu li {
+  padding: 5px;
+}
+
+.Content {
+  width: 60%;
+  border: solid 1px black;
+  padding: 5px 20px;
+}
+
+.AdMenu {
+  width: 20%;
+  border: solid 1px black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Footer {
+  width: 100%;
+  height: 15%;
+  border: solid 1px black;
+  padding-left: 10px;
+}
