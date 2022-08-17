@@ -1,0 +1,57 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.form-side {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  color: white;
+}
+
+.form {
+  width: 100%;
+  border: solid 1px black;
+  display: flex;
+  flex-direction: column;
+  background-color: #183f49;
+}
+
+.buttons {
+  display: flex;
+  flex-grow: 1;
+}
+.buttons button {
+  width: 100%;
+  margin: 5px;
+}
+
+button {
+  height: 30px;
+}
+
+p {
+  text-align: center;
+}
+
+input {
+  margin: 5px;
+  height: 30px;
+}
+
+.names {
+  display: flex;
+}
+.names input {
+  width: 50%;
+}
+
+.form-reveal {
+  width: 50%;
+}
