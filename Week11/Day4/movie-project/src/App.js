@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import Movie from "./components/Movie";
 import MovieCard from "./components/MovieCard";
 import MovieContainer from "./components/MovieContainer";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
