@@ -254,7 +254,6 @@ function App() {
             );
           })}
       </div>
-      ;
     </div>
   );
 }
