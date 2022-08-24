@@ -1,0 +1,85 @@
+.App {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.homepage {
+  display: flex;
+  width: 100%;
+}
+
+.product-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.product-card {
+  border: solid 1px black;
+  width: 60%;
+  margin: 10px;
+  background-color: navy;
+  color: whitesmoke;
+  border-radius: 10px;
+}
+
+.product-card button {
+  margin: 10px;
+  width: 30%;
+  height: 30px;
+  border: none;
+  background-color: rosybrown;
+  color: whitesmoke;
+  border-radius: 5px;
+}
+
+.product-card button:hover {
+  background-color: darkred;
+}
+
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.cart-card {
+  border: solid 1px black;
+  width: 60%;
+  margin: 10px;
+  background-color: gold;
+  color: whitesmoke;
+  border-radius: 10px;
+}
+
+.cart-card button {
+  margin: 10px;
+  width: 30%;
+  height: 30px;
+  border: none;
+  background-color: rosybrown;
+  color: whitesmoke;
+  border-radius: 5px;
+}
+
+.cart-card button:hover {
+  background-color: darkred;
+}
+
+.check-out {
+  border: none;
+  width: 50%;
+  height: 100px;
+  background-color: darkslategrey;
+  color: whitesmoke;
+  font-size: 20px;
+}
+
+.check-out:hover {
+  background-color: gray;
+}
